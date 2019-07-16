@@ -1,3 +1,5 @@
+"use strict";
+
 var idx = 1;
 
 function Hide_button() {

@@ -3,13 +3,21 @@
 	<meta charset="UTF-8">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 
 <body>
 	<div>
 		<?php include 'menu_test.php' ?>
 	</div>
+
 	<br><br><br><br>
+
+	<div class="slide-container">
+		<img src="resources\img\menu-des-roulants-preview.jpg" alt="slideshow" id="images-slideshow">
+		<a class="prev"onclick="Change_Slide(-1)">&#10094;</a>
+ 		<a class="next" onclick="Change_Slide(1)">&#10095;</a>
+	</div>
 	<div id="button-container">
 		<button class="button" id="boutton-menu-des-roulants" type="button" onclick="window.location.href = 'menu.html';">menu des roulants</button>
 		<button class="button" id="boutton-inscription" type="button" onclick="window.location.href = 'inscription.php';">inscription</button>

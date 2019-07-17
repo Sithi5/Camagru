@@ -14,24 +14,45 @@ function Hide_button() {
     }
 }
 
-var slide = 1;
+var slideindex = 0;
+var slideduration = 3500;
+var directselect;
+var autoslide = 1;
 
-function Change_Slide(way) {
-    var elem;
+var imgArray = [
+    'resources\\img\\menu-des-roulants-preview.jpg',
+    'resources\\img\\test.png',
+    'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg'
+];
 
-    console.log("Changing Slide of Slideshow");
-    slide += way;
-    elem = document.getElementById("images-slideshow")
-    console.log(elem);
+function slideShow(way, onclick, directselect) {
+    console.log("Inside SlideShow");
+    slideindex += way;
+    var element = document.getElementById('images-slideshow');
 
-    if (slide > 2) {
-        slide = 1;
-    } else if (slide < 1) {
-        slide = 2;
+    if (directselect > 0) {
+        slideindex = directselect - 1;
     }
-    if (slide == 1) {
-        elem.src = "resources\\img\\menu-des-roulants-preview.jpg";
-    } else if (slide == 2) {
-        elem.src = "resources\\img\\test.png";
+    if (slideindex == imgArray.length) {
+        slideindex = 0;
+    } else if (slideindex < 0) {
+        slideindex = imgArray.length - 1;
     }
+    console.log("slideindex = " + slideindex);
+
+    element.className += "fadeOut";
+    setTimeout(function() {
+        element.src = imgArray[slideindex];
+        setTimeout(function() {
+            element.className = "";
+        }, 300)
+    }, 1000);
+    if (onclick == 0 && autoslide == 1) {
+        setTimeout(slideShow, slideduration, 1, 0);
+        console.log("auto");
+    } else {
+        console.log("Onclick");
+    }
+
 }
+setTimeout(slideShow, slideduration, 1, 0, 0);

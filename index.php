@@ -1,6 +1,8 @@
 <html>
 <head>
-	<meta charset="UTF-8">
+	<!---meta for autorefresh page--->
+	<meta http-equiv="refresh" content="30"/>
+	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
@@ -14,10 +16,19 @@
 	<br><br><br><br>
 
 	<div class="slide-container">
-		<img src="resources\img\menu-des-roulants-preview.jpg" alt="slideshow" id="images-slideshow">
-		<a class="prev"onclick="Change_Slide(-1)">&#10094;</a>
- 		<a class="next" onclick="Change_Slide(1)">&#10095;</a>
+		<img id="images-slideshow" src="resources\img\menu-des-roulants-preview.jpg" alt="slideshow" >
+		<a class="prev"onclick="slideShow(-1, 1, 0)">&#10094;</a>
+		 <a class="next" onclick="slideShow(1, 1, 0)">&#10095;</a>
+		 <div style="text-align:center">
+		 <a class="dot"onclick="slideShow(0, 1, 1)"></a>
+		 <a class="dot"onclick="slideShow(0, 1, 2)"></a>
+		 <a class="dot"onclick="slideShow(0, 1, 3)"></a>
+
+</div>
 	</div>
+
+	<br><br><br><br>
+
 	<div id="button-container">
 		<button class="button" id="boutton-menu-des-roulants" type="button" onclick="window.location.href = 'menu.html';">menu des roulants</button>
 		<button class="button" id="boutton-inscription" type="button" onclick="window.location.href = 'inscription.php';">inscription</button>

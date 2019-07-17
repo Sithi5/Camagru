@@ -19,12 +19,12 @@
 	<div class="slide-container">
 		<img id="images-slideshow" src="resources\img\menu-des-roulants-preview.jpg" alt="slideshow" >
 		<p id="current-slide-number"></p>
-		<a class="prev"onclick="slideShow(-1, 1, 0)">&#10094;</a>
-		 <a class="next" onclick="slideShow(1, 1, 0)">&#10095;</a>
+		<a class="prev"onclick="slideShow(-1, 1, 0, 0)">&#10094;</a>
+		 <a class="next" onclick="slideShow(1, 1, 0, 0)">&#10095;</a>
 		 <div style="text-align:center">
-		 <a class="dot"onclick="slideShow(0, 1, 1)"></a>
-		 <a class="dot"onclick="slideShow(0, 1, 2)"></a>
-		 <a class="dot"onclick="slideShow(0, 1, 3)"></a>
+		 <a class="dot"onclick="slideShow(0, 1, 1, 0)"></a>
+		 <a class="dot"onclick="slideShow(0, 1, 2, 0)"></a>
+		 <a class="dot"onclick="slideShow(0, 1, 3, 0)"></a>
 
 </div>
 	</div>

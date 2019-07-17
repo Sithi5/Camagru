@@ -29,6 +29,14 @@ body {
     opacity: 0;
 }
 
+#current-slide-number {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    font-size: 25px;
+    color: rgb(77, 63, 63);
+}
+
 .prev,
 .next {
     cursor: pointer;

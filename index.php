@@ -1,7 +1,8 @@
 <html>
 <head>
 	<!---meta for autorefresh page--->
-	<meta http-equiv="refresh" content="30"/>
+	<meta http-equiv="refresh" content="60"/>
+
 	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,6 +18,7 @@
 
 	<div class="slide-container">
 		<img id="images-slideshow" src="resources\img\menu-des-roulants-preview.jpg" alt="slideshow" >
+		<p id="current-slide-number"></p>
 		<a class="prev"onclick="slideShow(-1, 1, 0)">&#10094;</a>
 		 <a class="next" onclick="slideShow(1, 1, 0)">&#10095;</a>
 		 <div style="text-align:center">

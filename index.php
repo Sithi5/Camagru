@@ -33,8 +33,8 @@
 
 	<div id="button-container">
 		<button class="button" id="boutton-menu-des-roulants" type="button" onclick="window.location.href = 'menu.html';">menu des roulants</button>
-		<button class="button" id="boutton-inscription" type="button" onclick="window.location.href = 'inscription.php';">inscription</button>
-		<button class="button" id="boutton-camagru" type="button" onclick="window.location.href = 'Camagru.php';">Camagru</button>
+		<button class="button" id="boutton-inscription" type="button" onclick="window.location.href = 'inscription';">inscription</button>
+		<button class="button" id="boutton-camagru" type="button" onclick="window.location.href = 'Camagru';">Camagru</button>
 	</div>
 	<button class="button" type="button" onclick="Hide_button()">Show/Hide Buttons</button>
 

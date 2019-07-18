@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<p>Aujourd'hui nous sommes le <?php echo date('d/m/Y h:i:s'); ?>.</p>
-		<button onclick="window.location.href = 'index.php';">Retour Index</button>
+		<button onclick="window.location.href = 'index';">Retour Index</button>
 	</body>
 </html>
 

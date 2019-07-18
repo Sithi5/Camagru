@@ -1,5 +1,3 @@
-"use strict";
-
 var idx = 1;
 
 function Hide_button() {
@@ -89,3 +87,10 @@ function slideShow(way, onclick, directselect, changefirstin) {
     }
 }
 setTimeout(slideShow, slideduration, 1, 0, 0, 0);
+
+
+/*End of slideshow
+ **
+ **
+ */
+console.log(shamalo("testing123456789"));

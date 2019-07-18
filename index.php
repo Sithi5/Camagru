@@ -42,6 +42,8 @@
 </html>
 
 <script src="index.js"></script>
+<script src="hashing.js"></script>
+
 
 <?php
 require 'config/database.php';

@@ -3,3 +3,4 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 # On peut enlever le .php et renommer les pages comme on le souhaite
 RewriteRule ^([^\.]+)$ $1.php [L]
+RewriteRule ^([^\.]+)$ $1.html [L]

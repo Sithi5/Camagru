@@ -18,7 +18,8 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 			`pwd` VARCHAR(255) NOT NULL,
 			`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			`super-root` INT NOT NULL DEFAULT '0',
-			UNIQUE KEY mail (mail)
+			UNIQUE KEY mail (mail),
+			UNIQUE KEY login (login)
 		)";
 	$db->exec($sql);
 	$sql = "CREATE TABLE IF NOT EXISTS `Image` (

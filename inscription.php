@@ -1,9 +1,10 @@
 <?php
 	session_start();
+	print_r($_SESSION);
 	require 'config/database.php';
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index
-	if (isset($_SESSION['id'])) {
+	if ($_SESSION['loggued_on'] == 1) {
 		header('Location: index.php'); 
 		exit;
 	}
@@ -92,6 +93,7 @@
 		<title>Inscription</title>
 	</head>
 	<body>
+		<?php include 'menu.php' ?>
 		<div>Inscription</div>
 		<form method="post">
 			<?php

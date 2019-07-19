@@ -1,93 +1,36 @@
-body
-{
-    background-color: rgb(196, 196, 196);
-    background-size: cover;
+/*
+* Open dropdowns on hover instead of click.
+*/
+@media (min-width: 768px) {
+	.dropdown:hover {
+	background: #e7e7e7;
+	}
+	.dropdown:hover > .dropdown-menu {
+	display: block;
+	}
 }
 
-body nav
-{
-    color: white;
-    font-size: 1.5vw;
-    text-align: center
+/*
+* The following is needed since the dropdowns are <div> elements instead
+* of <a> elements
+*/
+.nav > li > div {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	cursor: default;
 }
-
-body nav ul
-{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.navbar-nav > li > div {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: 20px;
 }
-
-body nav ul li
-{
-    float: left;
-    width: 20vw;
-    height: 4vh;
-    margin: 0;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    line-height: 4vh;
+.navbar-default .navbar-nav > li > div {
+	color: rgb(119, 119, 119);
 }
-
-body nav > ul > li > a
-{
-    display: block;
+.navbar-collapse.collapse {
+	display: none;
 }
-
-body nav ul li a:hover
-{
-    background-color: orangered;
-}
-body nav ul li ul li:hover
-{
-    background-color: grey;
-}
-body nav ul li ul li a:hover
-{
-    background-color: orangered;
-}
-
-ul ul, ul ul ul
-{
-    display: none;
-}
-
-nav ul li:hover ul.niveau2, nav ul li ul li:hover ul
-{
-    display: block;
-}
-
-body nav ul li ul li ul.first
-{
-    float: left;
-    width: 20vw;
-    height: 4vh;
-    margin-left: 20vw;
-    margin-top: -12%;
-    text-align: center;
-    line-height: 4vh;
-}
-body nav ul li ul li ul.second
-{
-    float: left;
-    width: 20vw;
-    height: 4vh;
-    margin-left: 20vw;
-    text-align: center;
-    line-height: 4vh;
-}
-
-.colorsubmenu
-{
-    color: whitesmoke;
-    font-size: 1.2vw;
-    text-decoration: none;
-}
-
-.colorsubsubmenu
-{
-    color: whitesmoke;
-    font-size: 1.2vw;
-    text-decoration: none;
+.dropdown-open {
+	background: #e7e7e7;
 }

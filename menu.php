@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php session_start();
+print_r($_SESSION); ?>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -54,12 +56,12 @@
 					}
 					echo '><a href="inscription.php">Inscription</a></li>';
 				}?>
-				<?php if ($_SESSION['root'] == 1 && $_SESSION['loggued_on']  == 1) echo '
+				<?php if ($_SESSION['sa'] == 1 && $_SESSION['loggued_on']  == 1) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
-				<li class="dropdown-header">Utilisateurs</li>
-				<li><a href="#">Liste des utilisateurs</a></li>
+				<li class="dropdown-eader">Utilisateurs</li>
+				<li><a href="list_users.php">Liste des utilisateurs</a></li>
 				<li><a href="#">Ajouter un utilisateur</a></li>
 				<li><a href="#">Modifier un utilisateur</a></li>
 				<li><a href="#">Supprimer un utilisateur</a></li>
@@ -68,7 +70,8 @@
 				<li><a href="#">Actions sur la galerie</a></li>
 				</ul>
 				</li>'?>
-				<?php if ($_SESSION['loggued_on'] == 1) echo '<li><a href="index.php">Logout</a></li>' ?>
+				<?php if ($_SESSION['loggued_on'] == 1) echo '<li><a href="logout.php">Logout</a></li>' ?>
+				<li><a href="config/tmp.php">Co root tmp</a></li>
 			</ul>
 			</div>
 			</nav>

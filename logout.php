@@ -1,7 +1,7 @@
 <?php
+	session_destroy();
 	session_start();
-	session_unset($_SESSION);
-	$_SESSION['loggued_on'] == "";
-	$_SESSION['root'] = "0";
+	$_SESSION['loggued_on'] = "0";
+	$_SESSION['sa'] = "0";
 	header("Location: index.php");
 ?>

@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	print_r($_SESSION);
 	require 'config/database.php';
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index

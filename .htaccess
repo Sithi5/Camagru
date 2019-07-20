@@ -4,3 +4,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # On peut enlever le .php et renommer les pages comme on le souhaite
 RewriteRule ^([^\.]+)$ $1.php [L]
 RewriteRule ^([^\.]+)$ $1.html [L]
+RewriteCond %{THE_REQUEST} ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp|shtml)
+RewriteRule ^(.*)index.(htm|html|php|asp|shtml)$ /$1 [R=301,L]

@@ -9,7 +9,7 @@
 		<?php
 			session_start();
 			if ($_SESSION['sa'] != 1) {
-				header('Location: index.php'); 
+				header('Location: ./'); 
 				exit;
 			}
 			include("menu.php");

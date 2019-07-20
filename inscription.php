@@ -4,7 +4,7 @@
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index
 	if ($_SESSION['loggued_on'] == 1) {
-		header('Location: index.php'); 
+		header('Location: ./'); 
 		exit;
 	}
 	if (!empty($_POST)) {
@@ -80,7 +80,7 @@
 				//On insert de facon securisé les donnees recup
 				$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
 				$req->execute(array($login, $nom, $prenom, "test", $mail, $mdph));
-				header('Location: index.php');
+				header('Location: ./');
 				exit;
 			}
 		}

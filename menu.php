@@ -32,30 +32,30 @@ print_r($_SESSION); ?>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li <?php if ($_SERVER['PHP_SELF'] === "/index.php") {
+							<li <?php if ($_SERVER['PHP_SELF'] === "./") {
 								echo 'class="active"';
-							}?>><a href="index.php">Accueil</a></li>
+							}?>><a href="./">Accueil</a></li>
 				<?php if ($_SESSION['loggued_on'] == 0) {
 					echo '<li ';
-					if ($_SERVER['PHP_SELF'] === "/connexion.php") {
+					if ($_SERVER['PHP_SELF'] === "/connexion") {
 						echo 'class="active"';
 					}
 					echo '><a href="">Connexion</a></li>';
 				}?>
 				<?php if ($_SESSION['loggued_on'] == 0) {
 					echo '<li ';
-					if ($_SERVER['PHP_SELF'] === "/inscription.php") {
+					if ($_SERVER['PHP_SELF'] === "/inscription") {
 						echo 'class="active"';
 					}
-					echo '><a href="inscription.php">Inscription</a></li>';
+					echo '><a href="inscription">Inscription</a></li>';
 				}?>
 
 				<?php if ($_SESSION['loggued_on'] == 1) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
-				<li><a href="profile.php">Afficher mon profile</a></li>
-				<li><a href="modif_profile.php">Modifier mon profile</a></li>
+				<li><a href="profile">Afficher mon profile</a></li>
+				<li><a href="modif_profile">Modifier mon profile</a></li>
 				</ul>
 				</li>'?>
 
@@ -64,7 +64,7 @@ print_r($_SESSION); ?>
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
 				<li class="dropdown-header">Utilisateurs</li>
-				<li><a href="list_users.php">Liste des utilisateurs</a></li>
+				<li><a href="list_users">Liste des utilisateurs</a></li>
 				<li><a href="#">Ajouter un utilisateur</a></li>
 				<li><a href="#">Modifier un utilisateur</a></li>
 				<li><a href="#">Supprimer un utilisateur</a></li>
@@ -73,8 +73,8 @@ print_r($_SESSION); ?>
 				<li><a href="#">Actions sur la galerie</a></li>
 				</ul>
 				</li>'?>
-				<?php if ($_SESSION['loggued_on'] == 1) echo '<li><a href="logout.php">Logout</a></li>' ?>
-				<li><a href="config/tmp.php">Co root tmp</a></li>
+				<?php if ($_SESSION['loggued_on'] == 1) echo '<li><a href="logout">Logout</a></li>' ?>
+				<li><a href="config/tmp">Co root tmp</a></li>
 			</ul>
 			</div>
 			</nav>

@@ -4,7 +4,7 @@
 	require 'config/connexiondb.php'; 
 	// S'il n'y a pas de session alors on ne va pas sur cette page
 	if ($_SESSION['loggued_on'] == '0' || !isset($_SESSION['id'])) {
-		header('Location: index.php'); 
+		header('Location: ./'); 
 		exit; 
 	}
 	$res = $_SESSION['id'];

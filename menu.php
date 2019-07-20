@@ -35,13 +35,6 @@ print_r($_SESSION); ?>
 							<li <?php if ($_SERVER['PHP_SELF'] === "/index.php") {
 								echo 'class="active"';
 							}?>><a href="index.php">Accueil</a></li>
-						<?php if ($_SESSION['loggued_on'] == 1) {
-					echo '<li ';
-					if ($_SERVER['PHP_SELF'] === "/compte.php") {
-						echo 'class="active"';
-					}
-					echo '><a href="">Mon Compte</a></li>';
-				}?>
 				<?php if ($_SESSION['loggued_on'] == 0) {
 					echo '<li ';
 					if ($_SERVER['PHP_SELF'] === "/connexion.php") {
@@ -56,11 +49,21 @@ print_r($_SESSION); ?>
 					}
 					echo '><a href="inscription.php">Inscription</a></li>';
 				}?>
+
+				<?php if ($_SESSION['loggued_on'] == 1) echo '
+				<li class="dropdown">
+				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="profile.php">Afficher mon profile</a></li>
+				<li><a href="modif_profile.php">Modifier mon profile</a></li>
+				</ul>
+				</li>'?>
+
 				<?php if ($_SESSION['sa'] == 1 && $_SESSION['loggued_on']  == 1) echo '
 				<li class="dropdown">
-				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></div>
+				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
-				<li class="dropdown-eader">Utilisateurs</li>
+				<li class="dropdown-header">Utilisateurs</li>
 				<li><a href="list_users.php">Liste des utilisateurs</a></li>
 				<li><a href="#">Ajouter un utilisateur</a></li>
 				<li><a href="#">Modifier un utilisateur</a></li>

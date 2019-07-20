@@ -90,11 +90,18 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Inscription</title>
+		<style>
+		input {
+			height : 25px; 
+			text-align : center;
+		}
+		</style>
 	</head>
 	<body>
 		<?php include 'menu.php' ?>
-		<div>Inscription</div>
-		<form method="post">
+		<center>
+		<h1 style="center">Inscription</h1>
+		<form method="post" >
 			<?php
 				if (isset($er_login)){
 					?>
@@ -102,7 +109,9 @@
 					<?php   
 				}
 				?>
-			<input type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" maxlength="8" required>   
+			<input size=50 type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" maxlength="10" required>   
+			<br>
+			<br>
 			<?php
 				if (isset($er_prenom)){
 					?>
@@ -110,7 +119,9 @@
 					<?php   
 				}
 				?>
-			<input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" maxlength="50" required>   
+			<input size=50 type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" maxlength="50" required>   
+			<br>
+			<br>
 			<?php
 					if (isset($er_nom)){
 					?>
@@ -118,7 +129,9 @@
 					<?php   
 					}
 				?>
-				<input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" maxlength="50" required>   
+			<input size=50 type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" maxlength="50" required>   
+			<br>
+			<br>
 			<?php
 				if (isset($er_mail)){
 				?>
@@ -126,7 +139,9 @@
 				<?php   
 				}
 			?>
-			<input type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" maxlength="254" required>
+			<input size=50 type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" maxlength="50" required>
+			<br>
+			<br>
 			<?php
 				if (isset($er_mdp)){
 				?>
@@ -134,9 +149,14 @@
 				<?php   
 				}
 			?>
-			<input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" maxlength="25" required>
-			<input type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
+			<input size=50 type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" maxlength="25" required>
+			<br>
+			<br>
+			<input size=50 type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
+			<br>
+			<br>
 			<button type="submit" name="inscription">Envoyer</button>
 		</form>
+		</center>
 	</body>
 </html>

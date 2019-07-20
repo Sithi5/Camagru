@@ -12,7 +12,7 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 	$db->exec($sql);
 	$sql = "CREATE TABLE IF NOT EXISTS `User` (
 			`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			`login` VARCHAR(8) NOT NULL,
+			`login` VARCHAR(10) NOT NULL,
 			`mail` VARCHAR(255) NOT NULL,
 			`prenom` VARCHAR(255) NOT NULL,
 			`nom` VARCHAR(255) NOT NULL,
@@ -20,6 +20,7 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 			`pwd` VARCHAR(255) NOT NULL,
 			`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			`super-root` INT NOT NULL DEFAULT '0',
+			`theme` INT NOT NULL DEFAULT '0',
 			UNIQUE KEY mail (mail),
 			UNIQUE KEY login (login)
 		)";

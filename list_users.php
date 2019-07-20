@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" >
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<title> Liste des Users </title>
-		<style type="text/css">
-			table {
-				width: 100%;
-				border-collapse: collapse;
-			}
-			td {
-				border: 1px solid black;
-				text-align: center;
-			}
-		</style>
 	</head>
 	<body>
 		<?php
@@ -21,14 +12,21 @@
 				header('Location: index.php'); 
 				exit;
 			}
-			include("menu.php")
+			include("menu.php");
 		?>
-		<table>
+		<h2 style="text-align: center"> Liste des Users </h2>
+		<table class="table table-bordered">
 			<tr>
-				<th>ID</th><th>Pseudo</th><th>Email</th><th>Prenom</th><th>Nom</th><th>PP</th><th>Date de Creation</th><th>Root</th>
+				<th>ID</th>
+				<th>Pseudo</th>
+				<th>Email</th>
+				<th>Prenom</th>
+				<th>Nom</th>
+				<th>PP</th>
+				<th>Date de Creation</th>
+				<th>Root</th>
 			</tr>
 			<?php
-				session_start();
 				require 'config/database.php';
 				require 'config/connexiondb.php';
 				$reponse = $db->query('SELECT * FROM User');
@@ -36,7 +34,7 @@
 				while ($donnees = $reponse->fetch()) // recup sous formne de tab les donnes de la table
 				{
 				?>
-					<tr>
+					<tr scope="row">
 						<td><?php echo $donnees['id']; ?></td>
 						<td><?php echo $donnees['login']; ?></td>
 						<td><?php echo $donnees['mail']; ?></td>
@@ -44,10 +42,12 @@
 						<td><?php echo $donnees['nom']; ?></td>
 						<td><?php echo $donnees['pp']; ?></td>
 						<td><?php echo $donnees['creation_date']; ?></td>
-						<td><?php echo $donnees['super-root']; ?></td>
+						<td><?php
+							if ($donnees['super-root'] == "1")
+								echo "Oui";
+							else echo "Non"; ?></td>
 					</tr>
-				<?php
-				}?>
+				<?php } ?>
 		</table>
 	</body>
 </html>

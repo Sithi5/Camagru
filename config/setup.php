@@ -1,6 +1,7 @@
 <?php
 $_SESSION['loggued_on'] = "0";
 $_SESSION['sa'] = "0";
+$_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
 require 'database.php';
 // On se connecte (user:julien mdp:root)

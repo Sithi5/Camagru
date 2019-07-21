@@ -24,7 +24,7 @@
 				if ($_POST['mdp'])
 				{
 					$modif = 1;
-					$req = $db->query('UPDATE `User` SET `mdp` = "'.$mdph.'" WHERE `id` = "'.$_SESSION['id'].'"');
+					$req = $db->query('UPDATE `User` SET `pwd` = "'.$mdph.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
 			}
 		}

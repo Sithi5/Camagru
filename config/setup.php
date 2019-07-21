@@ -11,6 +11,7 @@ try {
 	print "Error message :\t" . $e->getMessage() . "\n";
 	exit();
 }
+echo("connection to db ok!\n");
 $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 
 

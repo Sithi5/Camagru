@@ -3,7 +3,7 @@
 	require 'config/database.php';
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index
-	if ($_SESSION['loggued_on'] == 1) {
+	if ($_SESSION['loggued_on'] == '1' || $_SESSION['id'] != "0") {
 		header('Location: ./'); 
 		exit;
 	}
@@ -11,6 +11,7 @@
 		extract($_POST);
 		$valid = true;
 		if (isset($_POST['inscription'])){
+			$login = htmlentities(trim($login));
 			$prenom = htmlentities(trim($prenom));
 			$nom  = htmlentities(trim($nom));
 			$mail = htmlentities(strtolower(trim($mail)));
@@ -79,7 +80,7 @@
 				$mdph = hash("sha512", $mdp);
 				//On insert de facon securisé les donnees recup
 				$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
-				$req->execute(array($login, $nom, $prenom, "test", $mail, $mdph));
+				$req->execute(array($login, $prenom, $nom, "test", $mail, $mdph));
 				header('Location: ./');
 				exit;
 			}

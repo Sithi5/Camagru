@@ -1,44 +1,114 @@
 <?php
 	session_start();
 	require 'config/database.php';
-	require 'config/connexiondb.php'; 
-	// S'il n'y a pas de session alors on ne va pas sur cette page
+	require 'config/connexiondb.php';
+	// Si session dans ce cas go index
 	if ($_SESSION['loggued_on'] == '0' || $_SESSION['id'] == "0") {
 		header('Location: ./'); 
-		exit; 
+		exit;
 	}
-	$res = $_SESSION['id'];
-	// On récupère les informations de l'utilisateur connecté
-	$req = $db->query("SELECT * FROM User WHERE id = $res");
-	$afficher_profil = $req->fetch(); 
-?>
+	if (!empty($_POST)) {
+		extract($_POST);
+		$valid = true;
+		if (isset($_POST['modification_profile'])){
+			$login = htmlentities(trim($login));
+			$prenom = htmlentities(trim($prenom));
+			$nom  = htmlentities(trim($nom));
+			$mail = htmlentities(strtolower(trim($mail)));
+			if (!empty($login))
+			{
+				$sql = $db->query('SELECT COUNT(*) AS existe_pseudo FROM User WHERE `login` = "'.$login.'"');
+				while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
+				{
+					//Si il n'y a aucune ligne le login est inexistant
+					if (($data['existe_pseudo'] != '0')) {
+						$valid = false;
+						$er_login = ("Le pseudo choisis existe déjà");
+					}
+				}
+			}
+			if (!empty($mail) && !preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail))
+			{
+				$valid = false;
+				$er_mail = "Le mail n'est pas valide";
+			}
+			else if (!empty($login) && !empty ($mail) && $mail === $login) {
+				$valid = false;
+				$er_mail = "Le login et le mail ne peuvent pas etre les memes";
+			}
+			else
+			{
+				$sql = $db->query('SELECT COUNT(*) AS existe_mail FROM User WHERE `mail` = "'.$mail.'"');
+				while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
+				{
+					//Si il n'y a aucune ligne le login est inexistant
+					if (($data['existe_mail'] != '0')) {
+						$valid = false;
+						$er_login = ("Adresse email deja prise.");
+					}
+				}
+			}
+			if ($valid) {
+				//On insert de facon securisé les donnees recup
+				if ($_POST['login'])
+				{
+					$req = $db->query('UPDATE `User` SET `login` = "'.$login.'" WHERE `id` = "'.$_SESSION['id'].'"');
+				}
+				if ($_POST['prenom'])
+				{
+					$req = $db->query('UPDATE `User` SET `prenom` = "'.$prenom.'" WHERE `id` = "'.$_SESSION['id'].'"');
+				}
+				if ($_POST['nom'])
+				{
+					$req = $db->query('UPDATE `User` SET `nom` = "'.$nom.'" WHERE `id` = "'.$_SESSION['id'].'"');
+				}
+				if ($_POST['mail'])
+				{
+					$req = $db->query('UPDATE `User` SET `mail` = "'.$mail.'" WHERE `id` = "'.$_SESSION['id'].'"');
+				}
 
-<!DOCTYPE html>
+			}
+		}
+	}
+?>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Modifier votre profil</title>
+		<title>Modification du profile</title>
+		<style>
+		input {
+			height : 25px; 
+			text-align : center;
+		}
+		</style>
 	</head>
 	<body>
-		<?php include ("menu.php") ?>
-		<div>Modification</div>
-		<form method="post">
+		<?php include 'menu.php' ?>
+		<center>
+		<h1 style="center">Modification du profile</h1>
+		<form method="post" >
 			<?php
-				if (isset($er_nom)){
-				?>
-					<div><?= $er_nom ?></div>
-				<?php   
+				session_start();
+				if (isset($er_login)){
+					?>
+					<div><?= $er_login ?></div>
+					<?php
 				}
-			?>
-			<input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }else{ echo $afficher_profil['nom'];}?>" required>   
-			<?php
-				if (isset($er_prenom)){
+				$sql = $db->query('SELECT * FROM User WHERE `id` = "'.$_SESSION['id'].'"');
+				$data = $sql->fetch();
 				?>
-					<div><?= $er_prenom ?></div>
-				<?php   
-				}
-			?>
-			<input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }else{ echo $afficher_profil['prenom'];}?>" required>   
+			<p>Ancien Login : <?php echo $data['login'] ?></p>
+			<input size=50 type="text" placeholder="Nouveau login" name="login" value="" maxlength="10">
+			<br>
+			<br>
+			<p>Ancien Prenom : <?php echo ucfirst($data['prenom']) ?></p>
+			<input size=50 type="text" placeholder="Nouveau prénom" name="prenom" value="" maxlength="50">
+			<br>
+			<br>
+			<p>Ancien Nom : <?php echo ucfirst($data['nom']) ?></p>
+			<input size=50 type="text" placeholder="Nouveau nom" name="nom" value="" maxlength="50">
+			<br>
+			<br>
 			<?php
 				if (isset($er_mail)){
 				?>
@@ -46,8 +116,12 @@
 				<?php   
 				}
 			?>
-			<input type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }else{ echo $afficher_profil['mail'];}?>" required>
-			<button type="submit" name="modification">Modifier</button>
+			<p>Ancien Mail : <?php $data['mail'] ?></p>
+			<input size=50 type="email" placeholder="Nouvelle Adresse mail" name="mail" value="" maxlength="50">
+			<br>
+			<br>
+			<button type="submit" name="modification_profile">Envoyer</button>
 		</form>
+		</center>
 	</body>
 </html>

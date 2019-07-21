@@ -24,9 +24,9 @@
 		<div>Quelques informations sur vous : </div>
 		<ul>
 			<li>Votre Login est : <?= $afficher_profil['login'] ?></li>
-			<li>Votre Prenom est : <?= $afficher_profil['prenom'] ?></li>
-			<li>Votre Nom est : <?= $afficher_profil['nom'] ?></li>
-			<li>Votre mail est : <?= $afficher_profil['mail'] ?></li>
+			<li>Votre Prenom est : <?= ucfirst($afficher_profil['prenom']) ?></li>
+			<li>Votre Nom est : <?= ucfirst($afficher_profil['nom']) ?></li>
+			<li>Votre Mail est : <?= $afficher_profil['mail'] ?></li>
 			<li>Votre compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 		</ul>
 	</body>

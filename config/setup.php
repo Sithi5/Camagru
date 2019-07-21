@@ -42,7 +42,8 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 		)";
 	$db->exec($sql);
 	// Creation admin root
-	$sql = "INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES ('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', '../ressources/img/test.png', 'test', '1')";
+				$mdph = hash("sha512", "test");
+				$sql = "INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES ('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', '../ressources/img/test.png', 'test', $mdph)";
 	$db->exec($sql);
 	// creation d'une image
 	$sql="INSERT INTO Image (`user_id`, `image_path`, `image_name`) VALUES ('admin', 'test.png', '../ressources/img/test.png');";

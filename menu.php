@@ -56,6 +56,7 @@ print_r($_SESSION); ?>
 				<ul class="dropdown-menu" role="menu">
 				<li><a href="profile">Afficher mon profile</a></li>
 				<li><a href="modif_profile">Modifier mon profile</a></li>
+				<li><a href="modifier_mdp.php">Modifier mon mot de passe</a></li>
 				</ul>
 				</li>'?>
 

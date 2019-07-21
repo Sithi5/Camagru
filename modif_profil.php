@@ -3,14 +3,15 @@
 	require 'config/database.php';
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index
-	if ($_SESSION['loggued_on'] == '0' || $_SESSION['id'] == "0") {
+	if (!isset($_SESSION['loggued_on']) || $_SESSION['loggued_on'] == '0'
+			|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {
 		header('Location: ./'); 
 		exit;
 	}
 	if (!empty($_POST)) {
 		extract($_POST);
 		$valid = true;
-		if (isset($_POST['modification_profile'])){
+		if (isset($_POST['modification_profil'])){
 			$login = htmlentities(trim($login));
 			$prenom = htmlentities(trim($prenom));
 			$nom  = htmlentities(trim($nom));
@@ -74,7 +75,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Modification du profile</title>
+		<title>Modification du profil</title>
 		<style>
 		input {
 			height : 25px; 
@@ -85,7 +86,7 @@
 	<body>
 		<?php include 'menu.php' ?>
 		<center>
-		<h1 style="center">Modification du profile</h1>
+		<h1 style="center">Modification du profil</h1>
 		<form method="post" >
 			<?php
 				session_start();
@@ -113,14 +114,14 @@
 				if (isset($er_mail)){
 				?>
 					<div><?= $er_mail ?></div>
-				<?php   
+				<?php
 				}
 			?>
 			<p>Ancien Mail : <?php $data['mail'] ?></p>
 			<input size=50 type="email" placeholder="Nouvelle Adresse mail" name="mail" value="" maxlength="50">
 			<br>
 			<br>
-			<button type="submit" name="modification_profile">Envoyer</button>
+			<button type="submit" name="modification_profil">Envoyer</button>
 		</form>
 		</center>
 	</body>

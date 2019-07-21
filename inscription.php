@@ -80,7 +80,7 @@
 				$mdph = hash("sha512", $mdp);
 				//On insert de facon securisé les donnees recup
 				$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
-				$req->execute(array($login, $prenom, $nom, "test", $mail, $mdph));
+				$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdph));
 				header('Location: ./');
 				exit;
 			}

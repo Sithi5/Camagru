@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php
-print_r($_SESSION); ?>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -56,8 +54,8 @@ if (isset($_SESSION['loggued_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
-				<li><a href="profile">Afficher mon profile</a></li>
-				<li><a href="modif_profile">Modifier mon profile</a></li>
+				<li><a href="profil">Afficher mon profil</a></li>
+				<li><a href="modif_profil">Modifier mon profil</a></li>
 				<li><a href="modifier_mdp.php">Modifier mon mot de passe</a></li>
 				</ul>
 				</li>';
@@ -69,9 +67,6 @@ if (isset($_SESSION['loggued_on'])) echo '
 				<ul class="dropdown-menu" role="menu">
 				<li class="dropdown-header">Utilisateurs</li>
 				<li><a href="list_users">Liste des utilisateurs</a></li>
-				<li><a href="#">Ajouter un utilisateur</a></li>
-				<li><a href="#">Modifier un utilisateur</a></li>
-				<li><a href="#">Supprimer un utilisateur</a></li>
 				<li class="divider"></li>
 				<li class="dropdown-header">Galerie</li>
 				<li><a href="#">Actions sur la galerie</a></li>

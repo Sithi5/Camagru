@@ -11,7 +11,7 @@
 		extract($_POST);
 		$valid = true;
 		$modif = 0;
-		if (isset($_POST['modification_profile'])){
+		if (isset($_POST['modification_profil'])){
 			$mdp = trim($mdp);
 			$confmdp = trim($confmdp);
 			if ($mdp != $confmdp){
@@ -33,7 +33,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Modification du profile</title>
+		<title>Modification du profil</title>
 		<style>
 		input {
 			height : 25px; 
@@ -44,7 +44,7 @@
 	<body>
 		<?php include 'menu.php' ?>
 		<center>
-		<h1 style="center">Modification du profile</h1>
+		<h1 style="center">Modification du profil</h1>
 		<form method="post" >
 			<?php
 				session_start();
@@ -65,7 +65,7 @@
 			<input size=50 type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
 			<br>
 			<br>
-			<button type="submit" name="modification_profile">Envoyer</button>
+			<button type="submit" name="modification_profil">Envoyer</button>
 		</form>
 		</center>
 	</body>

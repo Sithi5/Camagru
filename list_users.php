@@ -4,11 +4,18 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<title> Liste des Users </title>
+		<style>
+		#remove {
+			width: 10px;
+			height: 10px;
+			margin-left: 4vw;
+		}
+		</style>
 	</head>
 	<body>
 		<?php
 			session_start();
-			if ($_SESSION['sa'] != 1) {
+			if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
 				header('Location: ./'); 
 				exit;
 			}
@@ -25,14 +32,22 @@
 				<th>PP</th>
 				<th>Date de Creation</th>
 				<th>Root</th>
+				<th>Modification</th>
+				<th>Suppression</th>
 			</tr>
 			<?php
 				require 'config/database.php';
 				require 'config/connexiondb.php';
-				$reponse = $db->query('SELECT * FROM User');
-				// On affiche  le tout avec le while et du html
-				while ($donnees = $reponse->fetch()) // recup sous formne de tab les donnes de la table
-				{
+				$reponse = $db->query("SELECT * FROM `User`");
+				$reponse = $reponse->fetchAll();
+				
+				
+				//$reponse = $db->query('SELECT * FROM User');
+				// Foreach agit comme une boucle mais celle-ci s'arrête de façon intelligente. 
+				// Elle s'arrête avec le nombre de lignes qu'il y a dans la variable $afficher_profil
+				// La variable $afficher_profil est comme un tableau contenant plusieurs valeurs
+				// pour lire chacune des valeurs distinctement on va mettre un pointeur que l'on appellera ici $ap
+				foreach($reponse as $donnees){
 				?>
 					<tr scope="row">
 						<td><?php echo $donnees['id']; ?></td>
@@ -46,6 +61,8 @@
 							if ($donnees['super-root'] == "1")
 								echo "Oui";
 							else echo "Non"; ?></td>
+						 <td><a href="voir_profil.php?id=<?= $donnees['id'] ?>">Modifier le profil</a></td>
+						<td><a href="remove.php?id=<?= $donnees['id']?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
 					</tr>
 				<?php } ?>
 		</table>

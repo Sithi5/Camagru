@@ -5,8 +5,16 @@ $_SESSION['sa'] = "0";
 require 'database.php';
 // On se connecte (user:julien mdp:root)
 $dns = $dsn = "mysql:host=".$DB_HOST;
-$db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
+try {
+    $db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
+} catch (Exception $e) {
+	print "Error message :\t" . $e->getMessage() . "\n";
+	exit();
+}
 $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
+
+
+
 	$db->exec($sql);
 	$sql = "USE ".$DB_NAME;
 	$db->exec($sql);

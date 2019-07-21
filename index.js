@@ -93,4 +93,3 @@ setTimeout(slideShow, slideduration, 1, 0, 0, 0);
  **
  **
  */
-console.log(shamalo("testing123456789"));

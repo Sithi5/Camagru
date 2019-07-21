@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php session_start();
+<?php
 print_r($_SESSION); ?>
 <html lang="fr">
 	<head>
@@ -34,23 +34,25 @@ print_r($_SESSION); ?>
 						<ul class="nav navbar-nav">
 							<li <?php if ($_SERVER['PHP_SELF'] === "./") {
 								echo 'class="active"';
-							}?>><a href="./">Accueil</a></li>
-				<?php if ($_SESSION['loggued_on'] == 0) {
-					echo '<li ';
-					if ($_SERVER['PHP_SELF'] === "/connexion") {
-						echo 'class="active"';
-					}
-					echo '><a href="">Connexion</a></li>';
-				}?>
-				<?php if ($_SESSION['loggued_on'] == 0) {
-					echo '<li ';
-					if ($_SERVER['PHP_SELF'] === "/inscription") {
-						echo 'class="active"';
-					}
-					echo '><a href="inscription">Inscription</a></li>';
-				}?>
+							}?>>
+							<a href="./">Accueil</a></li>
+				<?php
+	//if is not logged, display connection or inscription
+	if (!isset($_SESSION['loggued_on'])) {
+		echo '<li ';
+		if ($_SERVER['PHP_SELF'] === "/connexion") {
+			echo 'class="active"';
+		}
+		echo '><a href="connexion">Connexion</a></li>';
+		echo '<li ';
+		if ($_SERVER['PHP_SELF'] === "/inscription") {
+			echo 'class="active"';
+		}
+		echo '><a href="inscription">Inscription</a></li>';
+	}
 
-				<?php if ($_SESSION['loggued_on'] == 1) echo '
+//if is logged, display the dropdown
+if (isset($_SESSION['loggued_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
@@ -58,9 +60,10 @@ print_r($_SESSION); ?>
 				<li><a href="modif_profile">Modifier mon profile</a></li>
 				<li><a href="modifier_mdp.php">Modifier mon mot de passe</a></li>
 				</ul>
-				</li>'?>
+				</li>';
 
-				<?php if ($_SESSION['sa'] == 1 && $_SESSION['loggued_on']  == 1) echo '
+				//if is logged as admin?
+				if (isset($_SESSION['sa'], $_SESSION['loggued_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
@@ -73,8 +76,10 @@ print_r($_SESSION); ?>
 				<li class="dropdown-header">Galerie</li>
 				<li><a href="#">Actions sur la galerie</a></li>
 				</ul>
-				</li>'?>
-				<?php if ($_SESSION['loggued_on'] == 1) echo '<li><a href="logout">Logout</a></li>' ?>
+				</li>';
+				//if is logged, button to unlog
+				if (isset($_SESSION['loggued_on'])) echo '<li><a href="logout">Logout</a></li>';
+				 ?>
 				<li><a href="config/tmp">Co root tmp</a></li>
 			</ul>
 			</div>

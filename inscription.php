@@ -3,8 +3,8 @@
 	require 'config/database.php';
 	require 'config/connexiondb.php';
 	// Si session dans ce cas go index
-	if ($_SESSION['loggued_on'] == '1' || $_SESSION['id'] != "0") {
-		header('Location: ./'); 
+	if (isset($_SESSION['loggued_on'])) {
+		header('Location: ./');
 		exit;
 	}
 	if (!empty($_POST)) {
@@ -93,7 +93,7 @@
 		<title>Inscription</title>
 		<style>
 		input {
-			height : 25px; 
+			height : 25px;
 			text-align : center;
 		}
 		</style>
@@ -107,37 +107,37 @@
 				if (isset($er_login)){
 					?>
 					<div><?= $er_login ?></div>
-					<?php   
+					<?php
 				}
 				?>
-			<input size=50 type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" maxlength="10" required>   
+			<input size=50 type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" maxlength="10" required>
 			<br>
 			<br>
 			<?php
 				if (isset($er_prenom)){
 					?>
 					<div><?= $er_prenom ?></div>
-					<?php   
+					<?php
 				}
 				?>
-			<input size=50 type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" maxlength="50" required>   
+			<input size=50 type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" maxlength="50" required>
 			<br>
 			<br>
 			<?php
 					if (isset($er_nom)){
 					?>
 						<div><?= $er_nom ?></div>
-					<?php   
+					<?php
 					}
 				?>
-			<input size=50 type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" maxlength="50" required>   
+			<input size=50 type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" maxlength="50" required>
 			<br>
 			<br>
 			<?php
 				if (isset($er_mail)){
 				?>
 					<div><?= $er_mail ?></div>
-				<?php   
+				<?php
 				}
 			?>
 			<input size=50 type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" maxlength="50" required>
@@ -147,7 +147,7 @@
 				if (isset($er_mdp)){
 				?>
 					<div><?= $er_mdp ?></div>
-				<?php   
+				<?php
 				}
 			?>
 			<input size=50 type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" maxlength="25" required>

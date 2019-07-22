@@ -27,9 +27,12 @@ var autoslide = 1; //permit to stop the autoslide when set to zero, and allow it
 var firstin = 0; //avoiding multiple recursive autoslide in case of multiple clicking
 var changefirstin = 0; //same as firstin, use to set firstin to 0 after the settimeout
 
+
+
+//image sources for the slideshow
 var imgArray = [
-    'resources\\img\\menu-des-roulants-preview.jpg',
-    'resources\\img\\test.png',
+    'ressources\\img\\menu-des-roulants-preview.jpg',
+    'ressources\\img\\test.png',
     'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg'
 ];
 

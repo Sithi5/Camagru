@@ -12,7 +12,7 @@ function settoalpha($str)
 			$ascii = substr($str, $i, 1) + substr($str, ($i % 3), 1) * 10 + 46;
 		}
 		else {
-			$ascii = substr($str, $i, 1) + substr($str, $i + 1, 1) * 10 + 46;
+			$ascii = substr($str, $i, 1) + substr($str, ($i + 1), 1) * 10 + 46;
 		}
 		if (!($ascii >= 48 && $ascii <= 57)) {
 
@@ -72,7 +72,18 @@ function shamalo($str)
 		if ($hash >= 50000) {
 			$hash = $hash % 20000;
 		}
+		if (strlen($result) >= 200)
+		{
+			return (substr($result, 0, 200));
+		}
 	}
-	return ($result);
+	if (strlen($result) >= 200)
+	{
+		return (substr($result, 0, 200));
+	}
+	else
+	{
+		return ($result);
+	}
 }
 ?>

@@ -54,7 +54,7 @@ function shamalo($str)
 {
 	if (!($str) || !is_string($str))
 	{
-		return (0);
+		return ;
 	}
 	$sumchar = calcsumchar($str);
 	$hash = $sumchar;

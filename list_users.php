@@ -101,7 +101,7 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
-				<th>Pseudo</th>
+				<th>Login</th>
 				<th>Email</th>
 				<th>Prenom</th>
 				<th>Nom</th>
@@ -163,6 +163,6 @@
 					</tr>
 				<?php } ?>
 		</table>
-		<center><form action="list_users"><button type="submit">Refraichir</button></center>
+		<center><form action="list_users"><button type="submit">Reactualiser</button></center>
 	</body>
 </html>

@@ -7,7 +7,7 @@ function settoalpha($str)
 	$result = NULL;
 	for ($i = 0; $i < $len; $i++)
 	{
-		if ($len + 1 == strlen($str))
+		if ($i + 1 == $len)
 		{
 			$ascii = substr($str, $i, 1) + substr($str, ($i % 3), 1) * 10 + 46;
 		}

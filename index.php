@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php session_start();
+print_r($_SESSION);
+?>
 <html>
 	<head>
 		<meta http-equiv="refresh" content="60"/>
@@ -11,7 +13,7 @@
 	<body>
 		<?php include 'menu.php' ?>
 		<div class="slide-container">
-			<img id="images-slideshow" src="ressources\img\menu-des-roulants-preview.jpg" alt="slideshow" >
+			<img id="images-slideshow" src="ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
 			<p id="current-slide-number"></p>
 			<a class="prev"onclick="slideShow(-1, 1, 0, 0)">&#10094;</a>
 			<a class="next" onclick="slideShow(1, 1, 0, 0)">&#10095;</a>

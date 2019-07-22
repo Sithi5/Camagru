@@ -5,5 +5,6 @@
 	// Si on y arrive pas
 	catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
+		exit();
 	}
 ?>

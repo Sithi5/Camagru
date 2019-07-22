@@ -5,8 +5,8 @@
 	// Si session dans ce cas go index
 	if (!isset($_SESSION['loggued_on']) || $_SESSION['loggued_on'] == '0'
 			|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {
-		header('Location: ./'); 
-		exit;
+		header('Location: ./');
+		exit();
 	}
 	if (!empty($_POST)) {
 		extract($_POST);
@@ -78,7 +78,7 @@
 		<title>Modification du profil</title>
 		<style>
 		input {
-			height : 25px; 
+			height : 25px;
 			text-align : center;
 		}
 		</style>

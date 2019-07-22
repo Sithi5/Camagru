@@ -49,7 +49,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `Comment` (
 	)";
 $db->exec($sql);
 // Creation admin root
-$mdph = hash("sha512", "test");
+$mdph = shamalo("test");
 $req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, '1'));
 // creation d'une image

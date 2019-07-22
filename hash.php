@@ -60,7 +60,9 @@ function shamalo($str)
 	$hash = $sumchar;
 	$result = NULL;
 	for ($i = 0, $len = strlen($str); $i < $len; $i++) {
-		$hash += pow(ord($str[$i]), 2) * ($sumchar % 7);
+		$hash += ord($str[$i]) * (ord($str[$i]) + 1) * ($sumchar % 7);
+		if (($sumchar % 2) == 0)
+			$hash++;
 		$hash = $hash << 4;
 		if (!($result == 0))
 		{
@@ -71,6 +73,10 @@ function shamalo($str)
 		}
 		if ($hash >= 50000) {
 			$hash = $hash % 20000;
+		}
+		else
+		{
+			$i--;
 		}
 		if (strlen($result) >= 200)
 		{

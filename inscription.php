@@ -5,7 +5,7 @@
 	// Si session dans ce cas go index
 	if (isset($_SESSION['loggued_on'])) {
 		header('Location: ./');
-		exit;
+		exit();
 	}
 	if (!empty($_POST)) {
 		extract($_POST);

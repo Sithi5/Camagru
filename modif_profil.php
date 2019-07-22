@@ -2,7 +2,7 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php';
-	// Si session dans ce cas go index
+	// Si pas de session dans ce cas go index
 	if (!isset($_SESSION['loggued_on']) || $_SESSION['loggued_on'] == '0'
 			|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {
 		header('Location: ./');

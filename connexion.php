@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 
 <?php
-
+	session_start();
+	require 'config/database.php';
+	// Si session dans ce cas go index
+	if (isset($_SESSION['loggued_on'])) {
+		header('Location: ./');
+		exit();
+	}
+	$login = htmlentities(trim($login));
+	echo $login . "\n";
 ?>
 
 <form action="" method="post">

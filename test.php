@@ -23,8 +23,11 @@ echo shamalo("5") . "\n";
 echo shamalo("6") . "\n";
 echo shamalo("7") . "\n";
 echo shamalo("8") . "\n";
-echo shamalo("9") . "\n";
-echo shamalo("10") . "\n";
+echo shamalo("9") . "\n\n";
+echo shamalo("10") . "\n\n";
+echo shamalo("bonjour") . "\n\n";
+echo shamalo("bonjour123456789") . "\n\n";
+
 
 
 echo shamalo("1248rfiujdshglkjdsfhgjshdflgjl;esjlgresdlg;krsejoig;") . "\n";

@@ -16,8 +16,8 @@
 			$prenom = htmlentities(trim($prenom));
 			$nom  = htmlentities(trim($nom));
 			$mail = htmlentities(strtolower(trim($mail)));
-			$mdp = trim($mdp);
-			$confmdp = trim($confmdp);
+			$mdp = shamalo(htmlentities(trim($mdp)));
+			$confmdp = shamalo(htmlentities(trim($confmdp)));
 			if (empty($login)) {
 				$valid = false;
 				$er_login = ("Le login ne peut pas être vide");
@@ -78,10 +78,9 @@
 				$er_mdp = "La confirmation du mot de passe ne correspond pas";
 			}
 			if ($valid) {
-				$mdph = shamalo($mdp);
 				//On insert de facon securisé les donnees recup
 				$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
-				$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdph));
+				$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdp));
 				header('Location: ./');
 				exit;
 			}

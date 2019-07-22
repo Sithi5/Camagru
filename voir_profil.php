@@ -22,7 +22,6 @@
 		extract($_POST);
 		$valid = true;
 		if (isset($_POST['modification_profil'])){
-			print_r($_POST);
 			$login = htmlentities(trim($login));
 			$prenom = htmlentities(trim($prenom));
 			$nom = htmlentities(trim($nom));
@@ -88,7 +87,7 @@
 				<br>
 			</ul>
 			<br>
-			<center><form action="list_users"><button type="submit" name="retour">Retour</button></center>
+			<center><form action="list_users"><button type="submit">Retour</button></form></center>
 			</td>
 			<td>
 			<center>
@@ -108,7 +107,7 @@
 				<input size=50 type="email" placeholder="Nouvelle Adresse mail" name="mail" value="" maxlength="50">
 				<br>
 				<br>
-				<p>root : 
+				<p>Root :
 				<label class="switch">
 				<input type="checkbox" name="root" <?php if ($afficher_profil['super-root'] == 1) echo "checked";?>>
 					<span class="slider round"></span>

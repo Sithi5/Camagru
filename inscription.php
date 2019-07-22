@@ -8,7 +8,7 @@
 		header('Location: ./');
 		exit();
 	}
-	if (!empty($_POST)) {
+	if (isset($_POST) && !empty($_POST) ){
 		extract($_POST);
 		$valid = true;
 		if (isset($_POST['inscription'])){

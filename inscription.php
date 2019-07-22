@@ -2,6 +2,7 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php';
+	require 'hash.php';
 	// Si session dans ce cas go index
 	if (isset($_SESSION['loggued_on'])) {
 		header('Location: ./');
@@ -77,7 +78,7 @@
 				$er_mdp = "La confirmation du mot de passe ne correspond pas";
 			}
 			if ($valid) {
-				$mdph = hash("sha512", $mdp);
+				$mdph = shamalo($mdp);
 				//On insert de facon securisé les donnees recup
 				$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
 				$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdph));

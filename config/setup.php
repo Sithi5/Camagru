@@ -46,6 +46,7 @@ $db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Comment` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		`user_id` VARCHAR(8) NOT NULL,
+		`id_image` INT UNSIGNED,
 		`description` VARCHAR(255) NOT NULL,
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
@@ -64,7 +65,7 @@ $db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `di
 $db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 199, 0);");
 $db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('3', 'test.png', './ressources/img/test.png', 1, 125);");
 // creation d'un commentaire
-$sql = "INSERT INTO Comment (`description`, `liker_id`) VALUES ('Ceci est un test', 'judumay')";
+$sql = "INSERT INTO Comment (`user_id`, `id_image`,`description`) VALUES ('1', '1', 'Ceci est un test')";
 $db->exec($sql);
 echo "FIN DU SETUP\n";
 ?>

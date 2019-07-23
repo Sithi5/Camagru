@@ -74,15 +74,17 @@ function shamalo($str)
 		if ($hash >= 50000) {
 			$hash = $hash % 20000;
 		}
-		else
-		{
-			$i--;
-		}
 		if (strlen($result) >= 200)
 		{
 			return (substr($result, 0, 200));
 		}
+		else if ($i == $len - 1)
+		{
+			$i = -1; //force loop until result have 200 caract
+		}
 	}
+
+	//useless if loop forced
 	if (strlen($result) >= 200)
 	{
 		return (substr($result, 0, 200));

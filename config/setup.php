@@ -4,6 +4,7 @@ $_SESSION['sa'] = "0";
 $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
 require 'database.php';
+require 'hash.php';
 // On se connecte (user:julien mdp:root)
 $dns = $dsn = "mysql:host=".$DB_HOST;
 try {
@@ -52,6 +53,8 @@ $db->exec($sql);
 $mdph = shamalo("root");
 $req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, '1'));
+$req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, '1'));
 // creation d'une image
 $sql="INSERT INTO Image (`user_id`, `image_path`, `image_name`) VALUES ('admin', 'test.png', './ressources/img/test.png');";
 $db->exec($sql);

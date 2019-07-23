@@ -73,10 +73,28 @@ if (empty($login) || empty($password)) {
 <body>
 <?php include 'menu.php' ?>
 <center>
+	<h1 style="center">Connexion</h1>
 	<form action="" method="post">
-
-		<input type="text" name="login" placeholder="Votre login" required>
-		<input type="password" name="password" placeholder="Mot de passe" required>
+		<?php
+			if (isset($er_login)){
+		?>
+			<div><?= $er_login ?></div>
+		<?php
+			}
+		?>
+		<input size=50 type="text" name="login" placeholder="Votre login" maxlength="10" required>
+		<br>
+		<br>
+		<?php
+			if (isset($er_password)){
+		?>
+			<div><?= $er_password ?></div>
+		<?php
+			}
+		?>
+		<input size=50 type="password" name="password" placeholder="Mot de passe" maxlength="25" required>
+		<br>
+		<br>
 		<input type="submit">
 	</form>
 	</center>

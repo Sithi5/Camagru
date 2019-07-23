@@ -156,7 +156,7 @@
 			<input size=50 type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
 			<br>
 			<br>
-			<button type="submit" name="inscription">Envoyer</button>
+			<button type="submit" name="inscription">Valider</button>
 		</form>
 		</center>
 	</body>

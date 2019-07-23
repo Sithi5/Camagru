@@ -54,10 +54,10 @@
 		<div id="info"><h3>Quelques informations sur vous : </h3></div>
 		<br>
 		<ul>
-			<li>Votre Login est : <?= $afficher_profil['login'] ?></li>
-			<li>Votre Prenom est : <?= ucfirst($afficher_profil['prenom']) ?></li>
-			<li>Votre Nom est : <?= ucfirst($afficher_profil['nom']) ?></li>
-			<li>Votre Mail est : <?= $afficher_profil['mail'] ?></li>
+			<li>Votre login est : <?= $afficher_profil['login'] ?></li>
+			<li>Votre prenom est : <?= ucfirst($afficher_profil['prenom']) ?></li>
+			<li>Votre nom est : <?= ucfirst($afficher_profil['nom']) ?></li>
+			<li>Votre mail est : <?= $afficher_profil['mail'] ?></li>
 			<li>Votre compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 		</ul>
 		</div>

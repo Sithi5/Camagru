@@ -9,7 +9,6 @@
 	}
 	
 	// Récupèration de l'id passer en argument dans l'URL
-	//$id = (int)$_GET('id');
 	extract($_GET);
 	// On récupère les informations de l'utilisateur grâce à son ID
 	$afficher_profil = $db->query('SELECT * FROM User WHERE id = "'.$id.'"');

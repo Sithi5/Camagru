@@ -111,20 +111,32 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 	<br>
 	<table class="table table-bordered">
 		<tr>
-			<th>ID</th>
+			<th>Id</th>
+			<th>Id_User</th>
 			<th>Login</th>
 			<th>Path</th>
 			<th>Nom</th>
 			<th>Like</th>
+			<th>Dislike</th>
 			<th>Date de Creation</th>
+			<th>Utilisateur root</th>
 			<th>Modification</th>
 			<th>Suppression</th>
 		</tr>
 		<?php
-		$reponse = $db->query("SELECT * FROM `Image`");
+		$reponse = $db->query("SELECT User.id, User.login, User.`super-root`,
+							Image.id as id_image,
+							Image.image_path, Image.image_name, Image.like,
+							Image.dislike, Image.creation_date FROM `User`
+							INNER JOIN `Image` ON User.id = Image.user_id");
 		if (isset($_GET) && !empty($_GET['root'])) {
 			$root = 1;
-			//$reponse = $db->query("SELECT * FROM `Image` WHERE `super-root` = 1");
+			$reponse = $db->query("SELECT User.id, User.login, User.`super-root`,
+							Image.id as id_image,
+							Image.image_path, Image.image_name, Image.like,
+							Image.dislike, Image.creation_date FROM `User`
+							INNER JOIN `Image` ON User.id = Image.user_id
+							WHERE `super-root` = 1");
 		}
 		if (isset($_GET) && !empty($_GET['research'])) {
 			extract($_GET);
@@ -147,14 +159,20 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		foreach ($reponse as $donnees) {
 			?>
 			<tr scope="row">
+				<td><?php echo $donnees['id_image']; ?></td>
 				<td><?php echo $donnees['id']; ?></td>
-				<td><?php echo $donnees['user_id']; ?></td>
+				<td><?php echo $donnees['login']; ?></td>
 				<td><?php echo $donnees['image_path']; ?></td>
 				<td><?php echo $donnees['image_name']; ?></td>
 				<td><?php echo $donnees['like']; ?></td>
+				<td><?php echo $donnees['dislike']; ?></td>
 				<td><?php echo $donnees['creation_date']; ?></td>
-				<td><a href=".">Modifier le post</a></td>
-				<td><a href="."><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+				<td><?php
+					if ($donnees['super-root'] == "1")
+					echo "Oui";
+					else echo "Non"; ?></td>
+				<td><a href="voir_image.php?id=<?= $donnees['id_image'] ?>">Modifier le post</a></td>
+				<td><a href="remove_img.php?id=<?= $donnees['id_image'] ?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
 			</tr>
 		<?php } ?>
 	</table>

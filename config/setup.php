@@ -39,6 +39,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `Image` (
 		`image_path` VARCHAR(255) NOT NULL,
 		`image_name` VARCHAR(255) NOT NULL,
 		`like` INT NOT NULL DEFAULT '0',
+		`dislike` INT NOT NULL DEFAULT '0',
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 $db->exec($sql);
@@ -52,12 +53,16 @@ $db->exec($sql);
 // Creation admin root
 $mdph = shamalo("root");
 $req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, '1'));
+$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 1));
 $req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, '1'));
+$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, 1));
+$mdph = shamalo("test");
+$req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
+$req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph));
 // creation d'une image
-$sql="INSERT INTO Image (`user_id`, `image_name`, `image_path`) VALUES ('judumay', 'test.png', './ressources/img/test.png');";
-$db->exec($sql);
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 12, 0);");
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 199, 0);");
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('3', 'test.png', './ressources/img/test.png', 1, 125);");
 // creation d'un commentaire
 $sql = "INSERT INTO Comment (`description`, `liker_id`) VALUES ('Ceci est un test', 'judumay')";
 $db->exec($sql);

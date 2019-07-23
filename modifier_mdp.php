@@ -2,15 +2,17 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php';
+	require 'hash.php';
 	// Si session dans ce cas go index
-	if ($_SESSION['loggued_on'] == '0' || $_SESSION['id'] == "0") {
-		header('Location: ./'); 
+	if (!isset($_SESSION['loggued_on']) || !isset($_SESSION['id'])) {
+		header('Location: ./');
 		exit;
 	}
+	$modif = 0;
+
 	if (!empty($_POST)) {
 		extract($_POST);
 		$valid = true;
-		$modif = 0;
 		if (isset($_POST['modification_profil'])){
 			$mdp = trim($mdp);
 			$confmdp = trim($confmdp);
@@ -19,7 +21,7 @@
 				$er_mdp = "La confirmation du mot de passe ne correspond pas";
 			}
 			if ($valid) {
-				$mdph = hash("sha512", $mdp);
+				$mdph = shamalo($mdp);
 				//On insert de facon securisé les donnees recup
 				if ($_POST['mdp'])
 				{
@@ -36,7 +38,7 @@
 		<title>Modification du profil</title>
 		<style>
 		input {
-			height : 25px; 
+			height : 25px;
 			text-align : center;
 		}
 		</style>
@@ -47,7 +49,6 @@
 		<h1 style="center">Modification du profil</h1>
 		<form method="post" >
 			<?php
-				session_start();
 				if (isset($er_mdp)){
 				?>
 					<div><?= $er_mdp ?></div>

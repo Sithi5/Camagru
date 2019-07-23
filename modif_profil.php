@@ -89,7 +89,6 @@
 		<h1 style="center">Modification du profil</h1>
 		<form method="post" >
 			<?php
-				session_start();
 				if (isset($er_login)){
 					?>
 					<div><?= $er_login ?></div>

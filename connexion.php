@@ -40,12 +40,11 @@ if (empty($login) || empty($password)) {
 		$er_login = ("Le login ne correspond pas a un utilisateur inscrit");
 	} else {
 		if ($user['pwd'] === $password) {
-			$_SESSION['user_id'] = $user['id'];
+			$_SESSION['id'] = $user['id'];
 			$_SESSION['user_login'] = $user['login'];
 			$_SESSION['loggued_on'] = "1";
 			$_SESSION['logged_in'] = time();
-			if ($user['super-root'] == 1)
-			{
+			if ($user['super-root'] == 1) {
 				$_SESSION['sa'] = "1";
 			}
 			header('Location: ./');
@@ -72,9 +71,13 @@ if (empty($login) || empty($password)) {
 </head>
 
 <body>
+<?php include 'menu.php' ?>
+<center>
 	<form action="" method="post">
-		<input type="text" name="login" placeholder="Enter your username" required>
-		<input type="password" name="password" placeholder="Enter your password" required>
+
+		<input type="text" name="login" placeholder="Votre login" required>
+		<input type="password" name="password" placeholder="Mot de passe" required>
 		<input type="submit">
 	</form>
+	</center>
 </body>

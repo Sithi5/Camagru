@@ -29,13 +29,6 @@ print_r($_SESSION);
 			<button class="button" id="boutton-camagru" type="button" onclick="window.location.href = 'Camagru';">Camagru</button>
 		</div>
 		<button class="button" type="button" onclick="Hide_button()">Show/Hide Buttons</button>
-
-		<!--- login part--->
-
-		<form action="" method="post">
-    <input type="text" name="username" placeholder="Enter your username" required>
-    <input type="password" name="password" placeholder="Enter your password" required>
-    <input type="submit">
 	</body>
 </html>
 

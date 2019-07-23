@@ -2,7 +2,7 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php'; 
-
+	require 'hash.php';
 	if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
 		header('Location: index.php'); 
 		exit;
@@ -40,6 +40,11 @@
 				{
 					$req = $db->query('UPDATE `User` SET `nom` = "'.$nom.'" WHERE `id` = "'.$id.'"');
 				}
+				if ($_POST['mdp'])
+				{
+					$mdph = shamalo($mdp);
+					$req = $db->query('UPDATE `User` SET `pwd` = "'.$mdph.'" WHERE `id` = "'.$id.'"');
+				}
 				if ($_POST['mail'])
 				{
 					$req = $db->query('UPDATE `User` SET `mail` = "'.$mail.'" WHERE `id` = "'.$id.'"');
@@ -73,6 +78,7 @@
 			<tr scope="row">
 			</tr>
 			<td>
+			<br><br>
 			<br>
 			<div>Quelques informations sur vous : </div>
 			<ul>
@@ -84,6 +90,7 @@
 				<li>Le compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 				<?php if ($afficher_profil['super-root'] == 1)
 								echo "<li>Le compte est root</li>";?>
+				<br>
 				<br>
 			</ul>
 			<br>
@@ -105,6 +112,9 @@
 				<br>
 				<br>
 				<input size=50 type="email" placeholder="Nouvelle Adresse mail" name="mail" value="" maxlength="50">
+				<br>
+				<br>
+				<input size=50 type="password" placeholder="Nouveau mot de passe" name="mdp" value="" maxlength="50">
 				<br>
 				<br>
 				<p>Root :

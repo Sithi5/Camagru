@@ -56,7 +56,7 @@ $req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './
 $req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, '1'));
 // creation d'une image
-$sql="INSERT INTO Image (`user_id`, `image_path`, `image_name`) VALUES ('admin', 'test.png', './ressources/img/test.png');";
+$sql="INSERT INTO Image (`user_id`, `image_name`, `image_path`) VALUES ('judumay', 'test.png', './ressources/img/test.png');";
 $db->exec($sql);
 // creation d'un commentaire
 $sql = "INSERT INTO Comment (`description`, `liker_id`) VALUES ('Ceci est un test', 'judumay')";

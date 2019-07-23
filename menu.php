@@ -69,7 +69,7 @@ if (isset($_SESSION['loggued_on'])) echo '
 				<li><a href="list_users">Liste des utilisateurs</a></li>
 				<li class="divider"></li>
 				<li class="dropdown-header">Galerie</li>
-				<li><a href="#">Actions sur la galerie</a></li>
+				<li><a href="list_img.php">Actions sur la galerie</a></li>
 				</ul>
 				</li>';
 				//if is logged, button to unlog

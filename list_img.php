@@ -14,7 +14,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<title> Liste des Users </title>
+	<title> Liste des Images </title>
 	<style>
 		#remove {
 			width: 10px;
@@ -91,7 +91,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 	<?php
 	include("menu.php");
 	?>
-	<h2 style="text-align: center"> Liste des Users </h2>
+	<h2 style="text-align: center"> Liste des Images </h2>
 	<br>
 	<form method="GET">
 		<center>
@@ -101,8 +101,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 			<br>
 			<p>Id: <input type="radio" name="by" value="id" />
 				<span class="marge">Login: <input type="radio" name="by" value="login" /></span>
-				<span class="marge">Prenom: <input type="radio" name="by" value="prenom" /></span>
-				<span class="marge">Nom: <input type="radio" name="by" value="nom" /></span></p>
 				<br>
 				<p>Afficher les roots seulement :
 					<label class="switch">
@@ -115,20 +113,18 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		<tr>
 			<th>ID</th>
 			<th>Login</th>
-			<th>Email</th>
-			<th>Prenom</th>
+			<th>Path</th>
 			<th>Nom</th>
-			<th>PP</th>
+			<th>Like</th>
 			<th>Date de Creation</th>
-			<th>Root</th>
 			<th>Modification</th>
 			<th>Suppression</th>
 		</tr>
 		<?php
-		$reponse = $db->query("SELECT * FROM `User`");
+		$reponse = $db->query("SELECT * FROM `Image`");
 		if (isset($_GET) && !empty($_GET['root'])) {
 			$root = 1;
-			$reponse = $db->query("SELECT * FROM `User` WHERE `super-root` = 1");
+			//$reponse = $db->query("SELECT * FROM `Image` WHERE `super-root` = 1");
 		}
 		if (isset($_GET) && !empty($_GET['research'])) {
 			extract($_GET);
@@ -137,22 +133,14 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 				$root = 1;
 			if (isset($research) && !empty($research) && isset($by) && $root == 0) {
 				if ($by == "id")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `id` LIKE "' . $research . '"');
+					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `id` LIKE "' . $research . '"');
 				if ($by == "login")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `login` LIKE "%' . $research . '%"');
-				if ($by == "prenom")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `prenom` LIKE "%' . $research . '%"');
-				if ($by == "nom")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `nom` LIKE "%' . $research . '%"');
+					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%"');
 			} else if (isset($research) && !empty($research) && isset($by) && $root == 1) {
 				if ($by == "id")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `id` LIKE "' . $research . '" AND `super-root`= 1');
+					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `id` LIKE "' . $research . '" AND `super-root`= 1');
 				if ($by == "login")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `login` LIKE "%' . $research . '%" AND `super-root`= 1');
-				if ($by == "prenom")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `prenom` LIKE "%' . $research . '%" AND `super-root`= 1');
-				if ($by == "nom")
-					$reponse = $db->query('SELECT * FROM `User` WHERE `nom` LIKE "%' . $research . '%" AND `super-root`= 1');
+					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%" AND `super-root`= 1');
 			}
 		}
 		$reponse = $reponse->fetchAll();
@@ -160,23 +148,18 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 			?>
 			<tr scope="row">
 				<td><?php echo $donnees['id']; ?></td>
-				<td><?php echo $donnees['login']; ?></td>
-				<td><?php echo $donnees['mail']; ?></td>
-				<td><?php echo $donnees['prenom']; ?></td>
-				<td><?php echo $donnees['nom']; ?></td>
-				<td><?php echo $donnees['pp']; ?></td>
+				<td><?php echo $donnees['user_id']; ?></td>
+				<td><?php echo $donnees['image_path']; ?></td>
+				<td><?php echo $donnees['image_name']; ?></td>
+				<td><?php echo $donnees['like']; ?></td>
 				<td><?php echo $donnees['creation_date']; ?></td>
-				<td><?php
-					if ($donnees['super-root'] == "1")
-						echo "Oui";
-					else echo "Non"; ?></td>
-				<td><a href="voir_profil.php?id=<?= $donnees['id'] ?>">Modifier le profil</a></td>
-				<td><a href="remove.php?id=<?= $donnees['id'] ?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+				<td><a href=".">Modifier le post</a></td>
+				<td><a href="."><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
 			</tr>
 		<?php } ?>
 	</table>
 	<center>
-		<form action="list_users"><button type="submit">Reactualiser</button>
+		<form action="list_img"><button type="submit">Reactualiser</button>
 	</center>
 </body>
 

@@ -155,7 +155,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%" AND `super-root`= 1');
 			}
 		}
-		$reponse = $reponse->fetchAll();
+		$reponse = $reponse->fetch();
 		foreach ($reponse as $donnees) {
 			?>
 			<tr scope="row">

@@ -14,7 +14,7 @@ print_r($_SESSION);
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@ print_r($_SESSION);
 		</div>
 	</div>
 	<!-- The Modal connection -->
-	<div id="modal01" class="connect-modal">
+	<div id="modal01" class="modal">
 		<div class="connect-modal-content">
 			<div class="connect-container">
 				<?php
@@ -41,7 +41,7 @@ print_r($_SESSION);
 	</div>
 	<!-- End of Modal -->
 	<!-- The Modal inscription -->
-	<div id="modal02" class="inscri-modal">
+	<div id="modal02" class="modal">
 		<div class="inscri-modal-content">
 			<div class="inscri-container">
 				<?php

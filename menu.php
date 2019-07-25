@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Menu</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<style>
 		body {
 			padding-top: 20px;

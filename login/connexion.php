@@ -68,7 +68,7 @@ if (empty($login) || empty($password)) {
 <body>
 <center>
 	<h1 style="center">Connexion</h1>
-	<a class="modal-close-button" onclick="hide_modal_connect()">&#10006<a>
+	<a class="modal-close-button" onclick="hide_modal_connect()">&#10006</a>
 	<img src="ressources\img\default.png" class="avatar">
 	<form action="" method="post">
 		<?php
@@ -92,6 +92,10 @@ if (empty($login) || empty($password)) {
 		<br>
 		<br>
 		<button type="submit" name="connexion">Valider</button>
+		<button type="button" name="Cancel" class="cancelbutton" onclick="hide_modal_connect()">Cancel</button>
+
+		<a type="button" onclick="hide_modal_connect(), inscri_onclick()">Inscription</button>
+
 
 	</form>
 	</center>

@@ -96,7 +96,7 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 	</head>
 	<body>
 		<center>
-	<a class="modal-close-button" onclick="hide_modal_inscri()">&#10006<a>
+	<a class="modal-close-button" onclick="hide_modal_inscri()">&#10006</a>
 		<h1 style="center">Inscription</h1>
 		<form method="post" >
 			<?php
@@ -153,6 +153,9 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 			<br>
 			<br>
 			<button type="submit" name="inscription">Valider</button>
+			<button type="button" name="Cancel" class="cancelbutton" onclick="hide_modal_inscri()">Cancel</button>
+		<a type="button" onclick="hide_modal_inscri(), connexion_onclick()">Connexion</button>
+
 		</form>
 		</center>
 	</body>

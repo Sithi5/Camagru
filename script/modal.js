@@ -13,3 +13,15 @@ function hide_modal_connect() {
 function hide_modal_inscri() {
     document.getElementById("modal02").style.display = "none";
 }
+
+var modal01 = document.getElementById("modal01");
+var modal02 = document.getElementById("modal02");
+
+
+window.onclick = function(event) {
+    if (event.target == modal01) {
+        modal01.style.display = "none";
+    } else if (event.target == modal02) {
+        modal02.style.display = "none";
+    }
+}

@@ -41,12 +41,12 @@
 		if ($_SERVER['PHP_SELF'] === "/connexion") {
 			echo 'class="active"';
 		}
-		echo '><a href="connexion">Connexion</a></li>';
+		echo '><a onclick="connexion_onclick()">Connexion</a></li>';
 		echo '<li ';
 		if ($_SERVER['PHP_SELF'] === "/inscription") {
 			echo 'class="active"';
 		}
-		echo '><a href="inscription">Inscription</a></li>';
+		echo '><a onclick="inscri_onclick()">Inscription</a></li>';
 	}
 
 //if is logged, display the dropdown
@@ -80,6 +80,7 @@ if (isset($_SESSION['loggued_on'])) echo '
 			</div>
 			</nav>
 		</div>
-		<script src="navbar.js"></script>
+		<script src="./script/navbar.js"></script>
+		<script src="./script/modal.js"></script>
 	</body>
 </html>

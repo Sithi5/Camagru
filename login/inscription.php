@@ -152,8 +152,8 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 			<input size=50 type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
 			<br>
 			<br>
-			<button type="submit" name="inscription">Valider</button>
-			<button type="button" name="Cancel" class="cancelbutton" onclick="hide_modal_inscri()">Cancel</button>
+			<button type="submit" name="inscription" class="btn btn-primary btn-lg btn-block">Valider</button>
+		<button type="button" name="Cancel" class="btn btn-warning btn-lg btn-block" onclick="hide_modal_connect()">Cancel</button>
 		<a type="button" onclick="hide_modal_inscri(), connexion_onclick()">Connexion</button>
 
 		</form>

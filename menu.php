@@ -41,12 +41,12 @@
 		if ($_SERVER['PHP_SELF'] === "/connexion") {
 			echo 'class="active"';
 		}
-		echo '><a onclick="connexion_onclick()">Connexion</a></li>';
+		echo '><a onclick="connexion_onclick()" href="#">Connexion</a></li>';
 		echo '<li ';
 		if ($_SERVER['PHP_SELF'] === "/inscription") {
 			echo 'class="active"';
 		}
-		echo '><a onclick="inscri_onclick()">Inscription</a></li>';
+		echo '><a onclick="inscri_onclick()" href="#">Inscription</a></li>';
 	}
 
 //if is logged, display the dropdown

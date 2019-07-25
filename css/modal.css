@@ -57,27 +57,19 @@
     height: 200px;
 }
 
-button {
-    background-color: rgb(116, 117, 117);
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
 input {
     width: 100%;
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.4;
+    background-color: rgb(99, 99, 99);
 }
 
 .cancelbutton {
     width: auto;
     padding: 10px 18px;
-    background-color: #e92012;
+    background-color: #c0372d;
 }
 
 

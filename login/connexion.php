@@ -91,9 +91,8 @@ if (empty($login) || empty($password)) {
 		<input size=50 type="password" name="password" placeholder="Mot de passe" maxlength="25" required>
 		<br>
 		<br>
-		<button type="submit" name="connexion">Valider</button>
-		<button type="button" name="Cancel" class="cancelbutton" onclick="hide_modal_connect()">Cancel</button>
-
+		<button type="submit" name="connexion" class="btn btn-primary btn-lg btn-block">Valider</button>
+		<button type="button" name="Cancel" class="btn btn-warning btn-lg btn-block" onclick="hide_modal_connect()">Cancel</button>
 		<a type="button" onclick="hide_modal_connect(), inscri_onclick()">Inscription</button>
 
 

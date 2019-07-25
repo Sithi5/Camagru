@@ -12,7 +12,7 @@ print_r($_SESSION);
 
 	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
-	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 
 </head>

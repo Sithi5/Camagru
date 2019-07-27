@@ -76,7 +76,7 @@
 		<?php
 		$reponse = $db->query('SELECT Comment.id, Comment.user_id, Comment.id_image,
 							Comment.description, Comment.creation_date,
-							Image.id FROM `Comment`
+							Image.id as img_id FROM `Comment`
 							INNER JOIN `Image` ON Comment.id_image = Image.id
 							WHERE Image.id = "'.$profil_image['id_image'].'"');
 		$reponse = $reponse->fetchAll();
@@ -84,7 +84,8 @@
 		?>
 			<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
 			<a href=""><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/modifier.png" alt="Supprimer"></a></td>
-			<a href="remove_com?id=<?= $donnees['Comment.id']?>"><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+			<a href="remove_com?id=<?= $donnees['id']?>"><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+			<p><?= $donnees['id']?></p>
 			</div>
 			<br>
 		<?php } ?>

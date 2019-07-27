@@ -4,7 +4,7 @@ $_SESSION['sa'] = "0";
 $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
 require 'database.php';
-require 'hash.php';
+require 'hashing/hash.php';
 // On se connecte (user:julien mdp:root)
 $dns = $dsn = "mysql:host=".$DB_HOST;
 try {

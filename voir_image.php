@@ -2,7 +2,6 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php'; 
-	require 'hash.php';
 	if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
 		header('Location: index.php'); 
 		exit;

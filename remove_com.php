@@ -9,13 +9,13 @@
 	extract($_GET);
 	echo $id;
 	// On récupère les informations de l'utilisateur grâce à son ID
-	$afficher_profil = $db->query('SELECT * FROM `Commentaire` WHERE id = "'.$id.'"');
+	$afficher_profil = $db->query('SELECT * FROM `Comment` WHERE id = "'.$id.'"');
 	$res = $afficher_profil->fetch();
 	if(!isset($res['id'])){
 		header('Location: modif_com'.$_GET['id_image']);
 		exit;
 	}
-	$req = $db->query('DELETE FROM `Commentaire` WHERE `Commentaire`.`id` = "'.$id.'"');
+	$req = $db->query('DELETE FROM `Comment` WHERE `Comment`.`id` = "'.$id.'"');
 	header('Location: modif_com'.$_GET['id_image']);
 	exit;
 ?>

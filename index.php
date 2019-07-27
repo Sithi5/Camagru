@@ -33,8 +33,8 @@ print_r($_SESSION);
 	<!---end of slideshow-->
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
-		<div class="connect-modal-content">
-			<div class="connect-container">
+		<div class="connect-modal-content" style="margin-top: 100px">
+			<div class="connect-container" >
 				<?php
 				include './login/connexion.php' ?>
 			</div>
@@ -43,7 +43,7 @@ print_r($_SESSION);
 	<!-- End of Modal -->
 	<!-- The Modal inscription -->
 	<div id="modal02" class="modal">
-		<div class="inscri-modal-content">
+		<div class="inscri-modal-content" style="margin-top: 100px">
 			<div class="inscri-container">
 				<?php
 				include './login/inscription.php' ?>

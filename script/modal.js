@@ -1,5 +1,6 @@
 function connexion_onclick() {
-    document.getElementById("modal01").style.display = "block";
+    let elem = document.getElementById("modal01");
+    elem.style.display = "block";
 }
 
 function inscri_onclick() {

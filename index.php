@@ -6,7 +6,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 print_r($_SESSION);
 ?>
 <html>
-
 <head>
 	<meta http-equiv="refresh" content="60" />
 
@@ -19,6 +18,7 @@ print_r($_SESSION);
 
 <body>
 	<?php include 'menu.php' ?>
+	<!--slideshow-->
 	<div class="slide-container">
 		<img id="images-slideshow" src="ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
 		<p id="current-slide-number"></p>
@@ -30,6 +30,7 @@ print_r($_SESSION);
 			<a class="dot" onclick="slideShow(0, 1, 3, 0)"></a>
 		</div>
 	</div>
+	<!---end of slideshow-->
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
 		<div class="connect-modal-content">

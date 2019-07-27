@@ -10,8 +10,8 @@
 	echo $id;
 	// On récupère les informations de l'utilisateur grâce à son ID
 	$afficher_profil = $db->query('SELECT * FROM `Commentaire` WHERE id = "'.$id.'"');
-	$afficher_profil = $afficher_profil->fetch();
-	if(!isset($afficher_profil['id'])){
+	$res = $afficher_profil->fetch();
+	if(!isset($res['id'])){
 		header('Location: modif_com'.$_GET['id_image']);
 		exit;
 	}

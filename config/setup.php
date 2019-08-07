@@ -5,7 +5,7 @@ $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
 require 'database.php';
 require 'hashing/hash.php';
-// On se connecte (user:julien mdp:root)
+// On se connecte (user:root mdp:root)
 $dns = $dsn = "mysql:host=".$DB_HOST;
 try {
 	$db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
@@ -68,4 +68,9 @@ $db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `di
 $sql = "INSERT INTO Comment (`user_id`, `id_image`,`description`) VALUES ('1', '1', 'Ceci est un test')";
 $db->exec($sql);
 echo "FIN DU SETUP\n";
+
+
+
+
+
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-require 'hash.php';
+require './hashing/hash.php';
 
 echo "bonjour\n";
 
@@ -27,6 +27,8 @@ echo shamalo("9") . "\n\n";
 echo shamalo("10") . "\n\n";
 echo shamalo("bonjour") . "\n\n";
 echo shamalo("bonjour123456789") . "\n\n";
+echo shamalo("22") . "\n\n";
+
 
 
 

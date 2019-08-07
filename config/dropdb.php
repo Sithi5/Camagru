@@ -1,22 +1,14 @@
 <?Php
 require 'database.php';
+require 'connexiondb.php';
 
 
-$dns = $dsn = "mysql:host=".$DB_HOST;
-try {
-	$db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
-}
-catch (Exception $e) {
-	print "Error message :\t" . $e->getMessage() . "\n";
-	exit();
-}
-echo("connection to db ok!\n");
-
+$connexion = connexion();
 
 $sql = "DROP DATABASE IF EXISTS " . "$DB_NAME";
 
 //Prepare the SQL query.
-$statement = $db->prepare($sql);
+$statement = $connexion->prepare($sql);
 //Execute the statement.
 $statement->execute();
 

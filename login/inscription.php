@@ -149,9 +149,10 @@ if (isset($_POST) && !empty($_POST)) {
 				<input type="password" id="Inputpasswordconfirm1" class="form-control" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 				<br>
-				<button type="submit" name="inscription" class="btn btn-primary btn-lg btn-block">Valider</button>
-				<button type="button" name="Annuler" class="btn btn-warning btn-lg btn-block" onclick="hide_modal_connect()">Annuler</button>
-				<a type="button" href="#" onclick="hide_modal_inscri(), connexion_onclick()">Deja un compte? Connexion</button>
+				<br>
+				<button type="submit" name="inscription" class="btn btn-success btn-lg btn-block" style="width: 40vw">Valider</button>
+				<button type="button" name="Annuler" class="btn btn-warning btn-lg btn-block" style="width: 40vw" onclick="hide_modal_connect()">Annuler</button>
+				<button type="button" href="#" class="btn btn-info btn-lg btn-block" style="width: 20vw" onclick="hide_modal_inscri(), connexion_onclick()">Deja un compte? Connexion</button>
 			</div>
 
 		</form>

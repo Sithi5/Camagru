@@ -98,9 +98,9 @@ if (!isset($_POST) || empty($_POST) || isset($er_login) || isset($er_password))
 				<input class="form-control" id="Inputpassword1" type="password" name="password" placeholder="Mot de passe" maxlength="25" required>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 			</div>
-			<button type="submit" data-dismiss = "modal" name="connexion" class="btn btn-primary btn-lg btn-block">Valider</button>
-			<button type="button" name="Annuler" class="btn btn-warning btn-lg btn-block" onclick="hide_modal_connect()">Annuler</button>
-			<a type="button" href="#" onclick="hide_modal_connect(), inscri_onclick()">Inscription</button>
+			<button type="submit" data-dismiss = "modal" name="connexion" class="btn btn-success btn-lg btn-block" style="width: 40vw">Valider</button>
+			<button type="button" name="Annuler" class="btn btn-warning btn-lg btn-block" style="width: 40vw" onclick="hide_modal_connect()">Annuler</button>
+			<button type="button" href="#" class="btn btn-info btn-lg btn-block" style="width: 20vw" onclick="hide_modal_connect(), inscri_onclick()">Inscription</button>
 		</div>
 		</form>
 	</center>

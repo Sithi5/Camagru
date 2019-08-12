@@ -85,7 +85,6 @@
 			<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
 			<a href=""><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/modifier.png" alt="Supprimer"></a></td>
 			<a href="remove_com?id=<?= $donnees['id']?>"><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
-			<p><?= $donnees['id']?></p>
 			</div>
 			<br>
 		<?php } ?>

@@ -10,7 +10,6 @@
 	// On récupère les informations de l'utilisateur grâce à son ID
 	$afficher_profil = $db->query('SELECT * FROM `Comment` WHERE id = "'.$id.'"');
 	$res = $afficher_profil->fetch();
-	echo 'modif_com' . $res['id_image'];
 	if(!isset($res['id'])){
 		header('Location: modif_com?id='.$res['id_image']);
 		exit;

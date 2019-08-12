@@ -6,5 +6,4 @@
 		print "Error message :\t" . $e->getMessage() . "\n";
 		exit();
 	}
-	echo("connexion to db ok!\n");
 ?>

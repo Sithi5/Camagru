@@ -7,12 +7,10 @@ require 'database.php';
 require 'hashing/hash.php';
 require 'connexiondb.php';
 // On se connecte (user:root mdp:root)
-$connexion = connexion();
 $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
-
-$connexion->exec($sql);
+$db->exec($sql);
 $sql = "USE ".$DB_NAME;
-$connexion->exec($sql);
+$db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `User` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		`login` VARCHAR(10) NOT NULL,
@@ -25,7 +23,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `User` (
 		`super-root` INT NOT NULL DEFAULT '0',
 		`theme` INT NOT NULL DEFAULT '0'
 	)";
-$connexion->exec($sql);
+$db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Image` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		`user_id` VARCHAR(8) NOT NULL,
@@ -35,7 +33,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `Image` (
 		`dislike` INT NOT NULL DEFAULT '0',
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
-$connexion->exec($sql);
+$db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Comment` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		`user_id` VARCHAR(8) NOT NULL,
@@ -43,23 +41,23 @@ $sql = "CREATE TABLE IF NOT EXISTS `Comment` (
 		`description` VARCHAR(255) NOT NULL,
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
-$connexion->exec($sql);
+$db->exec($sql);
 // Creation admin root
 $mdph = shamalo("root");
-$req = $connexion->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
+$req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 1));
-$req = $connexion->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
+$req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, 1));
 $mdph = shamalo("test");
-$req = $connexion->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
+$req = $db->prepare('INSERT INTO User (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
 $req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph));
 // creation d'une image
-$connexion->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 12, 0);");
-$connexion->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 199, 0);");
-$connexion->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('3', 'test.png', './ressources/img/test.png', 1, 125);");
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 12, 0);");
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('1', 'test.png', './ressources/img/test.png', 199, 0);");
+$db->exec("INSERT INTO Image (`user_id`, `image_name`, `image_path`, `like`, `dislike`) VALUES ('3', 'test.png', './ressources/img/test.png', 1, 125);");
 // creation d'un commentaire
 $sql = "INSERT INTO Comment (`user_id`, `id_image`,`description`) VALUES ('1', '1', 'Ceci est un test')";
-$connexion->exec($sql);
+$db->exec($sql);
 echo "FIN DU SETUP\n";
 
 

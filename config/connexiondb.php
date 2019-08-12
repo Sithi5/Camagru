@@ -1,10 +1,16 @@
 <?php
+function connexion()
+{
+	require 'database.php';
+	$dns = $dsn = "mysql:host=".$DB_HOST;
 	try {
-		$db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$connexion = new PDO($dns, $DB_USER, $DB_PASSWORD);
 	}
-	// Si on y arrive pas
 	catch (Exception $e) {
-		die('Erreur : ' . $e->getMessage());
+		print "Error message :\t" . $e->getMessage() . "\n";
 		exit();
 	}
+	echo("connection to db ok!\n");
+	return ($connexion);
+}
 ?>

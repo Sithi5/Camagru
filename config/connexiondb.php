@@ -10,7 +10,5 @@ function connexion()
 		print "Error message :\t" . $e->getMessage() . "\n";
 		exit();
 	}
-	echo("connection to db ok!\n");
-	return ($connexion);
-}
+	echo("connexion to db ok!\n");
 ?>

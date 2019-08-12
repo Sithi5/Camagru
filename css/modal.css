@@ -1,64 +1,64 @@
 /* Modal Content/Box */
 
 .connect-modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: 5% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    border-radius: 20%;
-    /* Could be more or less, depending on screen size */
+	position: relative;
+	background-color: #fefefe;
+	margin: 5% auto;
+	/* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
+	border-radius: 20%;
+	/* Could be more or less, depending on screen size */
 }
 
 
 /* The Close Button */
 
 .modal-close-button {
-    color: #aaa;
-    position: absolute;
-    top: 5%;
-    right: 10%;
-    font-size: 28px;
-    font-weight: bold;
+	color: #aaa;
+	position: absolute;
+	top: 5%;
+	right: 10%;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 .modal-close-button:hover,
 .modal-close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .avatar {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
 }
 
 button:hover {
-    opacity: 0.4;
-    background-color: rgb(99, 99, 99);
+	opacity: 0.4;
+	background-color: rgb(99, 99, 99);
 }
 
 .cancelbutton {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #c0372d;
+	width: auto;
+	padding: 10px 18px;
+	background-color: #c0372d;
 }
 
 
 /*inscription modal*/
 
 .inscri-modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    border-radius: 20%;
-    /* Could be more or less, depending on screen size */
+	position: relative;
+	background-color: #fefefe;
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
+	border-radius: 20%;
+	/* Could be more or less, depending on screen size */
 }

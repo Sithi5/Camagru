@@ -2,14 +2,14 @@
 	session_start();
 	require 'config/database.php';
 	require 'config/connexiondb.php';
-	require 'hash.php';
+	require 'hashing/hash.php';
+	echo 'ici';
 	// Si session dans ce cas go index
 	if (!isset($_SESSION['loggued_on']) || !isset($_SESSION['id'])) {
 		header('Location: ./');
 		exit;
 	}
 	$modif = 0;
-
 	if (!empty($_POST)) {
 		extract($_POST);
 		$valid = true;

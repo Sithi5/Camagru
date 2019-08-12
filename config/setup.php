@@ -5,7 +5,15 @@ $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
 require 'database.php';
 require 'hashing/hash.php';
-require 'connexiondb.php';
+$dsn = "mysql:host=".$DB_HOST;
+try {
+	$db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
+}
+catch (Exception $e) {
+	print "Error message :\t" . $e->getMessage() . "\n";
+	exit();
+}
+echo("connection to db ok!\n");
 // On se connecte (user:root mdp:root)
 $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
 $db->exec($sql);

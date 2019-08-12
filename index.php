@@ -3,7 +3,6 @@ require 'config/database.php';
 require 'config/connexiondb.php';
 require './hashing/hash.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
-print_r($_SESSION);
 ?>
 <html>
 <head>
@@ -13,11 +12,19 @@ print_r($_SESSION);
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
+	<link rel="stylesheet" type="text/css" href="./css/test.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body>
-	<?php include 'menu.php' ?>
+	<?php
+		include 'menu.php';
+		if (isset($_SESSION['loggued_on']))
+		{
+			include "webcam.php";
+			echo "<br><br>";
+		}
+	?>
 	<!--slideshow-->
 	<div class="slide-container">
 		<img id="images-slideshow" src="ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
@@ -52,7 +59,6 @@ print_r($_SESSION);
 	</div>
 	<!-- End of Modal -->
 </body>
-
 </html>
 <script src="./script/index.js"></script>
 <script src="./script/modal.js"></script>

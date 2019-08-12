@@ -34,6 +34,8 @@
 								echo 'class="active"';
 							}?>>
 							<a href="./">Accueil</a></li>
+				<li><a href="galerie">Galerie</a></li>
+	
 				<?php
 	//if is not logged, display connection or inscription
 	if (!isset($_SESSION['loggued_on'])) {

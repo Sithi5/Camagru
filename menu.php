@@ -38,7 +38,7 @@
 	
 				<?php
 	//if is not logged, display connection or inscription
-	if (!isset($_SESSION['loggued_on'])) {
+	if (!isset($_SESSION['logged_on'])) {
 		echo '<li ';
 		if ($_SERVER['PHP_SELF'] === "/connexion") {
 			echo 'class="active"';
@@ -52,7 +52,7 @@
 	}
 
 //if is logged, display the dropdown
-if (isset($_SESSION['loggued_on'])) echo '
+if (isset($_SESSION['logged_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
@@ -63,7 +63,7 @@ if (isset($_SESSION['loggued_on'])) echo '
 				</li>';
 
 				//if is logged as admin?
-				if (isset($_SESSION['sa'], $_SESSION['loggued_on'])) echo '
+				if (isset($_SESSION['sa'], $_SESSION['logged_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
@@ -75,7 +75,7 @@ if (isset($_SESSION['loggued_on'])) echo '
 				</ul>
 				</li>';
 				//if is logged, button to unlog
-				if (isset($_SESSION['loggued_on'])) echo '<li><a href="logout">Logout</a></li>';
+				if (isset($_SESSION['logged_on'])) echo '<li><a href="logout">Logout</a></li>';
 				 ?>
 				<li><a href="config/tmp">Co root tmp</a></li>
 			</ul>

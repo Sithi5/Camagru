@@ -5,7 +5,7 @@
 	require 'hashing/hash.php';
 	echo 'ici';
 	// Si session dans ce cas go index
-	if (!isset($_SESSION['loggued_on']) || !isset($_SESSION['id'])) {
+	if (!isset($_SESSION['logged_on']) || !isset($_SESSION['id'])) {
 		header('Location: ./');
 		exit;
 	}

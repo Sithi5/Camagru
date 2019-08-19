@@ -1,5 +1,5 @@
 <?php
-$_SESSION['loggued_on'] = "0";
+$_SESSION['logged_on'] = "0";
 $_SESSION['sa'] = "0";
 $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
@@ -34,7 +34,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `User` (
 $db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Image` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		`user_id` VARCHAR(8) NOT NULL,
+		`user_id` VARCHAR(10) NOT NULL,
 		`image_path` VARCHAR(255) NOT NULL,
 		`image_name` VARCHAR(255) NOT NULL,
 		`like` INT NOT NULL DEFAULT '0',
@@ -44,11 +44,18 @@ $sql = "CREATE TABLE IF NOT EXISTS `Image` (
 $db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Comment` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		`user_id` VARCHAR(8) NOT NULL,
+		`user_id` VARCHAR(10) NOT NULL,
 		`id_image` INT UNSIGNED,
 		`description` VARCHAR(255) NOT NULL,
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
+$db->exec($sql);
+$sql = "CREATE TABLE IF NOT EXISTS `Like` (
+	`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	`img_id` INT UNSIGNED,
+	`liker_id` INT UNSIGNED,
+	`like_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+)";
 $db->exec($sql);
 // Creation admin root
 $mdph = shamalo("root");

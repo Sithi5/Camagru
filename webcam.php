@@ -8,6 +8,7 @@
 	width: 500px;
 	height: 375px;
 	background-color: #666;
+	transform: rotateY(180deg);
 	}
 	
 	button {

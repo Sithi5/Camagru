@@ -37,7 +37,7 @@ if (isset($_POST) && !empty($_POST)) {
 			if ($user['pwd'] === $password) {
 				$_SESSION['id'] = $user['id'];
 				$_SESSION['user_login'] = $user['login'];
-				$_SESSION['loggued_on'] = "1";
+				$_SESSION['logged_on'] = "1";
 				$_SESSION['logged_in'] = time();
 				if ($user['super-root'] == 1) {
 					$_SESSION['sa'] = "1";

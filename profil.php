@@ -3,7 +3,7 @@
 	require 'config/database.php';
 	require 'config/connexiondb.php'; 
 	// S'il n'y a pas de session alors on ne va pas sur cette page
-	if (!isset($_SESSION['loggued_on']) || $_SESSION['loggued_on'] == '0'
+	if (!isset($_SESSION['logged_on']) || $_SESSION['logged_on'] == '0'
 		|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {
 		header('Location: ./'); 
 		exit; 

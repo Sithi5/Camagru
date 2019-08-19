@@ -133,19 +133,19 @@
 					<?php
 				}
 				?>
-				<input size=50 type="text" placeholder="Nouvel auteur" name="auteur" value="" maxlength="10">
+				<input size=50 type="text" placeholder="Nouvel auteur" name="auteur" value="">
 				<br>
 				<br>
-				<input size=50 type="text" placeholder="Nouveau nom" name="name" value="" maxlength="10">
+				<input size=50 type="text" placeholder="Nouveau nom" name="name" value="">
 				<br>
 				<br>
-				<input size=50 type="text" placeholder="Nouveau path" name="path" value="" maxlength="10">
+				<input size=50 type="text" placeholder="Nouveau path" name="path" value="">
 				<br>
 				<br>
-				<input size=50 type="text" placeholder="Nouveau nombre de like" name="like" value="" maxlength="10">
+				<input size=50 type="text" placeholder="Nouveau nombre de like" name="like" value="">
 				<br>
 				<br>
-				<input size=50 type="text" placeholder="Nouveau nombre de dislike" name="dislike" value="" maxlength="10">
+				<input size=50 type="text" placeholder="Nouveau nombre de dislike" name="dislike" value="">
 				<br>
 				<br>
 				<p>Date de creation : <input size=10 style="height:30px" type="date" name="date"></p>

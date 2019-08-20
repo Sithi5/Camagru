@@ -1,88 +1,64 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 	<head>
-		<meta charset="utf-8">
-		<title>Menu</title>
-		<style>
-		body {
-			padding-top: 20px;
-			padding-bottom: 20px;
-		}
-		.navbar {
-			margin-bottom: 20px;
-		}
-		</style>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="./css/menu.css">
 	</head>
 	<body>
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Menu</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="./">Camagru</a>
-					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li <?php if ($_SERVER['PHP_SELF'] === "./") {
-								echo 'class="active"';
-							}?>>
-							<a href="./">Accueil</a></li>
-				<li><a href="./galerie.php">Galerie</a></li>
-	
-				<?php
-	//if is not logged, display connection or inscription
-	if (!isset($_SESSION['logged_on'])) {
-		echo '<li ';
-		if ($_SERVER['PHP_SELF'] === "/connexion") {
-			echo 'class="active"';
-		}
-		echo '><a onclick="connexion_onclick()" href="#">Connexion</a></li>';
-		echo '<li ';
-		if ($_SERVER['PHP_SELF'] === "/inscription") {
-			echo 'class="active"';
-		}
-		echo '><a onclick="inscri_onclick()" href="#">Inscription</a></li>';
-	}
-
-//if is logged, display the dropdown
-if (isset($_SESSION['logged_on'])) echo '
-				<li class="dropdown">
-				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
-				<ul class="dropdown-menu" role="menu">
-				<li><a href="./profil.php">Afficher mon profil</a></li>
-				<li><a href="./modif_profil.php">Modifier mon profil</a></li>
-				<li><a href="./modifier_mdp.php">Modifier mon mot de passe</a></li>
-				</ul>
-				</li>';
-
-				//if is logged as admin?
-				if (isset($_SESSION['sa'], $_SESSION['logged_on'])) echo '
-				<li class="dropdown">
-				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
-				<ul class="dropdown-menu" role="menu">
-				<li class="dropdown-header">Utilisateurs</li>
-				<li><a href="./list_users.php">Liste des utilisateurs</a></li>
-				<li class="divider"></li>
-				<li class="dropdown-header">Galerie</li>
-				<li><a href="list_img.php">Liste des Images</a></li>
-				</ul>
-				</li>';
-				//if is logged, button to unlog
-				if (isset($_SESSION['logged_on'])) echo '<li><a href="logout.php">Logout</a></li>';
-				 ?>
-				<li><a href="./config/tmp.php">Co root tmp</a></li>
-			</ul>
-			</div>
-			</nav>
+		<div class="topnav" id="myTopnav">
+			<a href="./"
+				<?php if ($_SERVER['PHP_SELF'] === "/index.php")
+				echo 'class="active"'?>
+			>Accueil</a>
+			<a href="./galerie.php"
+			<?php if ($_SERVER['PHP_SELF'] === "/galerie.php")
+				echo 'class="active"'?>
+			>Galerie</a>
+			<?php
+				if (!isset($_SESSION['logged_on'])) {
+					echo '<a href="#" onclick="connexion_onclick()" >Connexion</a>';
+					echo '<a href="#" onclick="inscri_onclick()" >Inscription</a>';
+					echo '<a href="./config/tmp.php">Co root tmp</a>';
+				}
+				else {
+					echo '<div class="dropdown">
+								<button class="dropbtn">Mon Compte
+									<i class="fa fa-caret-down"></i>
+								</button>
+								<div class="dropdown-content">
+									<a href="./profil.php">Afficher mon profil</a>
+									<a href="./modif_profil.php">Modifier mon profil</a>
+									<a href="./modifier_mdp.php">Modifier mon mot de passe</a>
+								</div>
+							</div> ';
+					if (isset($_SESSION['sa'], $_SESSION['logged_on'])) {
+						echo '<div class="dropdown">
+								<button class="dropbtn">Administration 
+									<i class="fa fa-caret-down"></i>
+								</button>
+								<div class="dropdown-content">
+									<a href="./list_users.php">Liste des users</a>
+									<a href="list_img.php">Liste des Images</a>
+								</div>
+							</div> ';
+					}
+					echo '<a href="logout.php">Logout</a>';
+				}
+			?>
+			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 		</div>
-		<script src="./script/navbar.js"></script>
-		<script src="./script/modal.js"></script>
+		<div style="padding-left:16px"></div>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("myTopnav");
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+		</script>
+	<script src="./script/modal.js"></script>
 	</body>
 </html>

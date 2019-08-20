@@ -13,7 +13,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	<link rel="stylesheet" type="text/css" href="./css/test.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body>

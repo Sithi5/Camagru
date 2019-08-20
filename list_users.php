@@ -13,8 +13,8 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<title> Liste des Users </title>
+	<link rel="stylesheet" type="text/css" href="./css/table.css">	
 	<style>
 		#remove {
 			width: 10px;
@@ -111,7 +111,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 					</label></p>
 	</form>
 	<br>
-	<table class="table table-bordered">
+	<table class="users">
 		<tr>
 			<th>ID</th>
 			<th>Login</th>
@@ -176,7 +176,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		<?php } ?>
 	</table>
 	<center>
-		<form action="list_users"><button type="submit">Reactualiser</button>
+		<form action="./list_users.php"><button type="submit">Reactualiser</button>
 	</center>
 </body>
 

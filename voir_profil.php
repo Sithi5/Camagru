@@ -63,12 +63,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/voir_profil.css">
+		<link rel="stylesheet" type="text/css" href="./css/table2.css">	
 	<head>
 	<body>
 		<?php include("menu.php") ?>
-		<table class="table table-bordered">
+		<table class="users">
 			<tr>
 				<th><h2 style="text-align : center">Profil de l'id : <?php echo $id ?></h2></th>
 				<th><h2 style="text-align : center">Modification du profil</h2></th>

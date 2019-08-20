@@ -11,7 +11,6 @@
 		<title>Mes projets Web</title>
 		<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 		<link rel="stylesheet" type="text/css" href="./css/modal.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	</head>
 	<body>
 		<?php include 'menu.php' ?>

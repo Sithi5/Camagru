@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php';
+	require './config/database.php';
+	require './config/connexiondb.php';
 	// Si pas de session dans ce cas go index
 	if (!isset($_SESSION['logged_on']) || $_SESSION['logged_on'] == '0'
 			|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {

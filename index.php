@@ -1,6 +1,6 @@
 <?php session_start();
-require 'config/database.php';
-require 'config/connexiondb.php';
+require './config/database.php';
+require './config/connexiondb.php';
 require './hashing/hash.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 ?>
@@ -27,7 +27,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	?>
 	<!--slideshow-->
 	<div class="slide-container">
-		<img id="images-slideshow" src="ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
+		<img id="images-slideshow" src="./ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
 		<p id="current-slide-number"></p>
 		<a class="prev" onclick="slideShow(-1, 1, 0, 0)">&#10094;</a>
 		<a class="next" onclick="slideShow(1, 1, 0, 0)">&#10095;</a>

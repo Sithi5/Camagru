@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php';
+	require './config/database.php';
+	require './config/connexiondb.php';
 	require 'hashing/hash.php';
 	echo 'ici';
 	// Si session dans ce cas go index

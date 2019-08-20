@@ -1,9 +1,9 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php'; 
+	require './config/database.php';
+	require './config/connexiondb.php'; 
 	if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
-		header('Location: index.php'); 
+		header('Location: ./'); 
 		exit;
 	}
 	
@@ -18,7 +18,7 @@
 									WHERE Image.id = "'.$id.'"');
 	$afficher_image = $afficher_image->fetch();
 	if(!isset($afficher_image['id_image'])){
-		header('Location: list_img.php');
+		header('Location: ./list_img.php');
 		exit;
 	}
 	if (!empty($_POST)) {
@@ -78,7 +78,7 @@
 		<meta charset="utf-8">
 		<title>Mon profil</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/voir_profil.css">
+		<link rel="stylesheet" href="./css/voir_profil.css">
 		<style>
 		ul {
 			list-style: none;

@@ -16,8 +16,8 @@ var changefirstin = 0; //same as firstin, use to set firstin to 0 after the sett
 
 //image sources for the slideshow
 var imgArray = [
-    'ressources\\img\\menu-des-roulants-preview.jpg',
-    'ressources\\img\\test.png',
+    './ressources\\img\\menu-des-roulants-preview.jpg',
+    './ressources\\img\\test.png',
     'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg'
 ];
 

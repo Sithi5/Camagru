@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php';
+	require './config/database.php';
+	require './config/connexiondb.php';
 	if (!isset($_GET))
 	{
 		header('Location: ./'); 

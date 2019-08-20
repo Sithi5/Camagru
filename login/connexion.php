@@ -73,7 +73,7 @@ if (!isset($_POST) || empty($_POST) || isset($er_login) || isset($er_password))
 	<center>
 		<h1 style="center">Connexion</h1>
 		<a class="modal-close-button" onclick="hide_modal_connect()">&#10006</a>
-		<img src="ressources\img\default.png" class="avatar">
+		<img src="./ressources\img\default.png" class="avatar">
 		<form action="" method="post">
 			<div class="form-group">
 				<?php

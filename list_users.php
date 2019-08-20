@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/connexiondb.php';
+require './config/database.php';
+require './config/connexiondb.php';
 if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
-	header('Location: index.php');
+	header('Location: ./');
 	exit;
 }
 ?>
@@ -170,8 +170,8 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 					if ($donnees['super-root'] == "1")
 						echo "Oui";
 					else echo "Non"; ?></td>
-				<td><a href="voir_profil.php?id=<?= $donnees['id'] ?>">Modifier le profil</a></td>
-				<td><a href="remove_user.php?id=<?= $donnees['id'] ?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+				<td><a href="./voir_profil.php?id=<?= $donnees['id'] ?>">Modifier le profil</a></td>
+				<td><a href="./remove_user.php?id=<?= $donnees['id'] ?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
 			</tr>
 		<?php } ?>
 	</table>

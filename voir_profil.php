@@ -1,9 +1,9 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php'; 
+	require './config/database.php';
+	require './config/connexiondb.php'; 
 	if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
-		header('Location: index.php'); 
+		header('Location: ./'); 
 		exit;
 	}
 	
@@ -13,7 +13,7 @@
 	$afficher_profil = $db->query('SELECT * FROM User WHERE id = "'.$id.'"');
 	$afficher_profil = $afficher_profil->fetch();
 	if(!isset($afficher_profil['id'])){
-		header('Location: list_users.php');
+		header('Location: ./list_users.php');
 		exit;
 	}
 	if (!empty($_POST)) {
@@ -64,7 +64,7 @@
 		<meta charset="utf-8">
 		<title>Mon profil</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/voir_profil.css">
+		<link rel="stylesheet" href="./css/voir_profil.css">
 	<head>
 	<body>
 		<?php include("menu.php") ?>

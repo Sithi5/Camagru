@@ -13,7 +13,7 @@
 		}
 		</style>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/menu.css">
+		<link rel="stylesheet" href="./css/menu.css">
 	</head>
 	<body>
 		<div class="container">
@@ -34,7 +34,7 @@
 								echo 'class="active"';
 							}?>>
 							<a href="./">Accueil</a></li>
-				<li><a href="galerie">Galerie</a></li>
+				<li><a href="./galerie.php">Galerie</a></li>
 	
 				<?php
 	//if is not logged, display connection or inscription
@@ -56,9 +56,9 @@ if (isset($_SESSION['logged_on'])) echo '
 				<li class="dropdown">
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon Compte<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
-				<li><a href="profil">Afficher mon profil</a></li>
-				<li><a href="modif_profil">Modifier mon profil</a></li>
-				<li><a href="modifier_mdp.php">Modifier mon mot de passe</a></li>
+				<li><a href="./profil.php">Afficher mon profil</a></li>
+				<li><a href="./modif_profil.php">Modifier mon profil</a></li>
+				<li><a href="./modifier_mdp.php">Modifier mon mot de passe</a></li>
 				</ul>
 				</li>';
 
@@ -68,16 +68,16 @@ if (isset($_SESSION['logged_on'])) echo '
 				<div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration<span class="caret"></span></div>
 				<ul class="dropdown-menu" role="menu">
 				<li class="dropdown-header">Utilisateurs</li>
-				<li><a href="list_users">Liste des utilisateurs</a></li>
+				<li><a href="./list_users.php">Liste des utilisateurs</a></li>
 				<li class="divider"></li>
 				<li class="dropdown-header">Galerie</li>
 				<li><a href="list_img.php">Liste des Images</a></li>
 				</ul>
 				</li>';
 				//if is logged, button to unlog
-				if (isset($_SESSION['logged_on'])) echo '<li><a href="logout">Logout</a></li>';
+				if (isset($_SESSION['logged_on'])) echo '<li><a href="logout.php">Logout</a></li>';
 				 ?>
-				<li><a href="config/tmp">Co root tmp</a></li>
+				<li><a href="./config/tmp.php">Co root tmp</a></li>
 			</ul>
 			</div>
 			</nav>

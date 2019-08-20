@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	require 'config/database.php';
-	require 'config/connexiondb.php'; 
+	require './config/database.php';
+	require './config/connexiondb.php'; 
 	// S'il n'y a pas de session alors on ne va pas sur cette page
 	if (!isset($_SESSION['logged_on']) || $_SESSION['logged_on'] == '0'
 		|| !isset($_SESSION['id']) || $_SESSION['id'] == "0" || !isset($_GET)) {
@@ -17,7 +17,7 @@
 									WHERE Image.id = "'.$id.'"');
 	$profil_image = $profil_image->fetch();
 	if(!isset($profil_image['id_image'])){
-		header('Location: list_img.php');
+		header('Location: ./list_img.php');
 		exit;
 	}
 ?>
@@ -84,14 +84,14 @@
 		?>
 			<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
 			<a href=""><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/modifier.png" alt="Supprimer"></a></td>
-			<a href="remove_com?id=<?= $donnees['id']?>"><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+			<a href="./remove_com.php?id=<?= $donnees['id']?>"><img style ="margin-left:1px;width:10px; height:10px; margin-top:5px;" id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
 			</div>
 			<br>
 		<?php } ?>
 		</div>
 		</div>
 		</center>
-		<a style="margin-left:100px" href="list_img">Revenir a la liste</a>
-		<a style="margin-left:90px" href="voir_image?id=<?= $profil_image['id_image'] ?>">Revenir au profil</a>
+		<a style="margin-left:100px" href="./list_img.php">Revenir a la liste</a>
+		<a style="margin-left:90px" href="./voir_image.php?id=<?= $profil_image['id_image'] ?>">Revenir au profil</a>
 	</body>
 </html>

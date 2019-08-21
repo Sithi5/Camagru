@@ -5,7 +5,7 @@
 	}
 
 .users td, #users th {
-	border: 1px solid #ddd;
+	border: 1px solid rgb(255, 255, 255);
 	padding: 8px;
 	}
 
@@ -15,6 +15,6 @@
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
-	background-color: grey;
-	color: white;
+	background-color: rgb(255, 255, 255);
+	color: black;
 	}

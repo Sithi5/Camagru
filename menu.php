@@ -38,7 +38,7 @@
 									<i class="fa fa-caret-down"></i>
 								</button>
 								<div class="dropdown-content">
-									<a href="./list_users.php">Liste des users</a>
+									<a href="./list_users.php">Liste des Users</a>
 									<a href="list_img.php">Liste des Images</a>
 								</div>
 							</div> ';

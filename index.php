@@ -20,7 +20,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 		include 'menu.php';
 		if (isset($_SESSION['logged_on']))
 		{
-			include "webcam.php";
 			echo "<br><br>";
 		}
 	?>

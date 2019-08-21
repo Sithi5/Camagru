@@ -151,8 +151,10 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 			} else if (isset($research) && !empty($research) && isset($by) && $root == 1) {
 				if ($by == "id")
 					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `id` LIKE "' . $research . '" AND `super-root`= 1');
-				if ($by == "login")
+				else if ($by == "login")
 					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%" AND `super-root`= 1');
+				else
+					;//$reponse = $db->query('SELECT * FROM `User` WHERE `super-root`= 1');
 			}
 		}
 		$reponse = $reponse->fetchAll();
@@ -177,7 +179,8 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		<?php } ?>
 	</table>
 	<center>
-		<form action="./list_img.php"><button type="submit">Reactualiser</button>
+		<br>
+		<form action="./list_img.php"><button class="btn rea" type="submit">Reactualiser</button>
 	</center>
 </body>
 

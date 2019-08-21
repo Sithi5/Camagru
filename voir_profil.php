@@ -92,7 +92,7 @@
 				<br>
 			</ul>
 			<br>
-			<center><form action="list_users"><button type="submit">Retour</button></form></center>
+			<center><form action="list_users.php"><button type="submit">Retour</button></form></center>
 			</td>
 			<td>
 			<center>
@@ -117,7 +117,7 @@
 				<br>
 				<p>Root :
 				<label class="switch">
-				<input type="checkbox" name="root" <?php if ($afficher_profil['super-root'] == 1) echo "checked";?>>
+				<input style="margin-top:4px"type="checkbox" name="root" <?php if ($afficher_profil['super-root'] == 1) echo "checked";?>>
 					<span class="slider round"></span>
 				</label></p>
 				<button type="submit" name="modification_profil">Envoyer</button>

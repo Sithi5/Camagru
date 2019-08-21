@@ -3,7 +3,6 @@
 	require './config/database.php';
 	require './config/connexiondb.php';
 	require 'hashing/hash.php';
-	echo 'ici';
 	// Si session dans ce cas go index
 	if (!isset($_SESSION['logged_on']) || !isset($_SESSION['id'])) {
 		header('Location: ./');

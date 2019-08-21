@@ -118,7 +118,7 @@
 				<br>
 			</ul>
 			<br>
-			<center><form action="list_img"><button type="submit">Retour</button></form></center>
+			<center><form action="list_img.php"><button type="submit">Retour</button></form></center>
 			</td>
 			<td>
 			<center>

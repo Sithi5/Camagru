@@ -176,7 +176,8 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		<?php } ?>
 	</table>
 	<center>
-		<form action="./list_users.php"><button type="submit">Reactualiser</button>
+		<br>
+		<form action="./list_users.php"><button class="btn rea" type="submit">Reactualiser</button>
 	</center>
 </body>
 

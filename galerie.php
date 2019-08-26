@@ -9,19 +9,28 @@
 
 		<meta charset="UTF-16">
 		<title>Mes projets Web</title>
-		<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
-		<link rel="stylesheet" type="text/css" href="./css/modal.css">
+		<link rel="stylesheet" type="text/css" href="./css/galerie.css">
 	</head>
 	<body>
-		<?php include 'menu.php' ?>
+		<?php include 'menu.php'?>
 		<center><span style="text-decoration: underline;"><h2>WALL OF FAME</h2></span></center>
-		<?php
-		$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image FROM `Image`');
-		$liste = $liste->fetchALL();
-		foreach ($liste as $donnees) {
-			?><a href="./post.php?img=<?= $donnees['id_image']?>"><img style ="width:300px; height:300px; margin-top:10px; margin-left:10px; margin-right:10px;" src= "<?php echo $donnees['image_path']?>"></a>
-		<?php
-		}
-		?>
+		<div class="flex-container">
+			<?php
+				$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image FROM `Image`');
+				$liste = $liste->fetchALL();
+				foreach ($liste as $donnees) {
+			?>
+			<a href="./post.php?img=<?= $donnees['id_image']?>">
+			<div class="container">
+				<img src= "<?php echo $donnees['image_path']?>">
+				<div class="overlay">
+					<div class="text">Acceder au post</div>
+				</div>
+			</div></a>
+			<?php
+				}
+			?>
+		</div>
 	</body>
 </html>
+

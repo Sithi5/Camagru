@@ -93,22 +93,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 	?>
 	<h2 style="text-align: center"> Liste des Images </h2>
 	<br>
-	<form method="GET">
-		<center>
-			<input style="width:250px;" type="search" name="research" placeholder="Recherche..." value="" />
-			<input type="submit" value="Valider" />
-			<br>
-			<br>
-			<p>Id: <input type="radio" name="by" value="id" />
-				<span class="marge">Login: <input type="radio" name="by" value="login" /></span>
-				<br>
-				<p>Afficher les roots seulement :
-					<label class="switch">
-						<input type="checkbox" name="root">
-						<span class="slider round"></span>
-					</label></p>
-	</form>
-	<br>
 	<table class="users">
 		<tr>
 			<th>Id</th>
@@ -129,34 +113,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 							Image.image_path, Image.image_name, Image.like,
 							Image.dislike, Image.creation_date FROM `User`
 							INNER JOIN `Image` ON User.id = Image.user_id");
-		if (isset($_GET) && !empty($_GET['root'])) {
-			$root = 1;
-			$reponse = $db->query("SELECT User.id, User.login, User.`super-root`,
-							Image.id as id_image,
-							Image.image_path, Image.image_name, Image.like,
-							Image.dislike, Image.creation_date FROM `User`
-							INNER JOIN `Image` ON User.id = Image.user_id
-							WHERE `super-root` = 1");
-		}
-		if (isset($_GET) && !empty($_GET['research'])) {
-			extract($_GET);
-			$root = 0;
-			if (!empty($_GET['root']))
-				$root = 1;
-			if (isset($research) && !empty($research) && isset($by) && $root == 0) {
-				if ($by == "id")
-					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `id` LIKE "' . $research . '"');
-				if ($by == "login")
-					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%"');
-			} else if (isset($research) && !empty($research) && isset($by) && $root == 1) {
-				if ($by == "id")
-					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `id` LIKE "' . $research . '" AND `super-root`= 1');
-				else if ($by == "login")
-					;//$reponse = $db->query('SELECT * FROM `Image` WHERE `login` LIKE "%' . $research . '%" AND `super-root`= 1');
-				else
-					;//$reponse = $db->query('SELECT * FROM `User` WHERE `super-root`= 1');
-			}
-		}
 		$reponse = $reponse->fetchAll();
 		foreach ($reponse as $donnees) {
 			?>

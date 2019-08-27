@@ -64,6 +64,7 @@
 	<body>
 		<?php include("menu.php") ?>
 		<center>
+		<br>
 		<?php
 			$reponse = $db->query('SELECT Comment.id, Comment.user_id, Comment.id_image,
 									Comment.description, Comment.creation_date,

@@ -1,12 +1,12 @@
 <?php
 	session_start();
 	require './config/database.php';
-	require './config/connexiondb.php'; 
+	require './config/connexiondb.php';
 	if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']) && $_SESSION['sa'] != "1")) {
-		header('Location: ./'); 
+		header('Location: ./');
 		exit;
 	}
-	
+
 	// Récupèration de l'id passer en argument dans l'URL
 	extract($_GET);
 	// On récupère les informations de l'utilisateur grâce à son ID
@@ -64,7 +64,7 @@
 		<meta charset="utf-8">
 		<title>Mon profil</title>
 		<link rel="stylesheet" href="./css/voir_profil.css">
-		<link rel="stylesheet" type="text/css" href="./css/table2.css">	
+		<link rel="stylesheet" type="text/css" href="./css/table2.css">
 	<head>
 	<body>
 		<?php include("menu.php") ?>
@@ -97,9 +97,6 @@
 			<td>
 			<center>
 			<form method="post" >
-				<?php
-					session_start();
-					?>
 				<input size=50 type="text" placeholder="Nouveau login" name="login" value="" maxlength="10">
 				<br>
 				<br>

@@ -1,72 +1,92 @@
-/* Modal Content/Box */
-input[type=text], input[type=password] {
-	width: 100%;
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+	position: relative;
+	background-color: #fefefe;
+	margin: 5px auto; /* 15% from the top and centered */
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+	max-width: 1000px;
+	border-radius: 10%;
+}
+  
+  /* The Close Button */
+  .close {
+	/* Position it in the top right corner outside of the modal */
+	position: absolute;
+	right: 20px;
+	top: 10px; 
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+	color: red;
+	cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+  }
+
+  .avatar {
+	width: 30%;
+	border-radius: 50%;
+	max-width: 200px;
+  }
+  
+  input[type=text], input[type=password] {
+	width: 80%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
-}
+  }
 
-.connect-modal-content {
-	position: relative;
-	background-color: #fefefe;
-	margin: 5% auto;
-	/* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 50%;
-	border-radius: 20%;
-	/* Could be more or less, depending on screen size */
-}
-
-
-/* The Close Button */
-
-.modal-close-button {
-	color: #aaa;
-	position: absolute;
-	top: 5%;
-	right: 10%;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.modal-close-button:hover,
-.modal-close-button:focus {
-	color: black;
-	text-decoration: none;
+  button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
 	cursor: pointer;
-}
+	width: 20%;
+  }
 
-.avatar {
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-}
+  button:hover {
+	opacity: 0.6;
+  }
 
-button:hover {
-	opacity: 0.4;
-	background-color: rgb(99, 99, 99);
-}
+  .cancelbtn {
+	background-color: red;
+  }
 
-.cancelbutton {
-	width: auto;
-	padding: 10px 18px;
-	background-color: #c0372d;
-}
+  @-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)} 
+	to {-webkit-transform: scale(1)}
+  }
 
-
-/*inscription modal*/
-
-.inscri-modal-content {
-	position: relative;
-	background-color: #fefefe;
-	margin: 15% auto;
-	/* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 50%;
-	border-radius: 20%;
-	/* Could be more or less, depending on screen size */
-}
+  @keyframes animatezoom {
+	from {transform: scale(0)} 
+	to {transform: scale(1)}
+  }
+  

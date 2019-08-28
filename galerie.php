@@ -2,14 +2,15 @@
 	session_start();
 	require './config/database.php';
 	require './config/connexiondb.php';
+	$magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 ?>
 <html>
 	<head>
 		<meta http-equiv="refresh" content="60" />
-
 		<meta charset="UTF-16">
 		<title>Mes projets Web</title>
 		<link rel="stylesheet" type="text/css" href="./css/galerie.css">
+		<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	</head>
 	<body>
 		<?php include 'menu.php'?>
@@ -31,6 +32,25 @@
 				}
 			?>
 		</div>
+			<!-- The Modal connection -->
+	<div id="modal01" class="modal">
+		<div class="modal-content">
+				<?php
+				include './login/connexion.php' ?>
+		</div>
+	</div>
+	<!-- End of Modal -->
+	<!-- The Modal inscription -->
+	<div id="modal02" class="modal">
+		<div class="modal-content">
+				<?php
+				include './login/inscription.php' ?>
+		</div>
+	</div>
+	<!-- End of Modal -->
 	</body>
+
 </html>
+<script src="./script/modal.js"></script>
+
 

@@ -6,13 +6,11 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 ?>
 <html>
 <head>
-	<meta http-equiv="refresh" content="60" />
-
+	<meta http-equiv="refresh" content="500" />
 	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
-	<link rel="stylesheet" type="text/css" href="./css/test.css">
 </head>
 
 <body>
@@ -38,21 +36,17 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<!---end of slideshow-->
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
-		<div class="connect-modal-content" style="margin-top: 100px">
-			<div class="connect-container" >
+		<div class="modal-content">
 				<?php
 				include './login/connexion.php' ?>
-			</div>
 		</div>
 	</div>
 	<!-- End of Modal -->
 	<!-- The Modal inscription -->
 	<div id="modal02" class="modal">
-		<div class="inscri-modal-content" style="margin-top: 100px">
-			<div class="inscri-container">
+		<div class="modal-content">
 				<?php
 				include './login/inscription.php' ?>
-			</div>
 		</div>
 	</div>
 	<!-- End of Modal -->

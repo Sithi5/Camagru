@@ -90,7 +90,7 @@ if (isset($_POST) && !empty($_POST)) {
 
 <body>
 	<center>
-		<a class="modal-close-button" onclick="hide_modal_inscri()">&#10006</a>
+		<a class="close" onclick="hide_modal_inscri()">&#10006</a>
 		<h1 style="center">Inscription</h1>
 		<form method="post">
 			<div class="form-group">
@@ -102,7 +102,7 @@ if (isset($_POST) && !empty($_POST)) {
 				}
 				?>
 				<label for="Inputlogin2">Login</label>
-				<input class="form-control" id="Inputlogin2" type="text" name="login" placeholder="Votre login" maxlength="10" required>
+				<input class="" id="Inputlogin2" type="text" name="login" placeholder="Votre login" maxlength="10" required>
 				<?php
 				if (isset($er_prenom)) {
 					?>

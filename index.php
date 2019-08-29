@@ -52,7 +52,8 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<!-- The Modal take a picture -->
 		<div id="modal03" class="modal">
 		<div class="modal-content">
-
+		<?php
+				include './camera.php' ?>
 		</div>
 	</div>
 	<!-- End of Modal -->

@@ -10,7 +10,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
-	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 </head>
 
 <body>

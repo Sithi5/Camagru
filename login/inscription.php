@@ -80,6 +80,7 @@ if (isset($_POST) && !empty($_POST)) {
 <head>
 	<meta charset="utf-8">
 	<title>Inscription</title>
+	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	<style>
 		input {
 			height: 25px;
@@ -102,6 +103,7 @@ if (isset($_POST) && !empty($_POST)) {
 				}
 				?>
 				<label for="Inputlogin2">Login</label>
+				<br>
 				<input class="" id="Inputlogin2" type="text" name="login" placeholder="Votre login" maxlength="10" required>
 				<?php
 				if (isset($er_prenom)) {
@@ -110,7 +112,9 @@ if (isset($_POST) && !empty($_POST)) {
 				<?php
 				}
 				?>
+				<br>
 				<label for="Inputprenom1">Prenom</label>
+				<br>
 				<input type="text" class="form-control" id="Inputprenom1" placeholder="Votre prénom" name="prenom" value="<?php if (isset($prenom)) {
 																																echo $prenom;
 																															} ?>" maxlength="50" required>
@@ -121,7 +125,9 @@ if (isset($_POST) && !empty($_POST)) {
 				<?php
 				}
 				?>
-				<label for="Inputnom1">Prenom</label>
+				<br>
+				<label for="Inputnom1">Nom</label>
+				<br>
 				<input type="text" class="form-control" id="Inputnom1" placeholder="Votre nom" name="nom" value="<?php if (isset($nom)) {
 																														echo $nom;
 																													} ?>" maxlength="50" required>
@@ -132,7 +138,9 @@ if (isset($_POST) && !empty($_POST)) {
 				<?php
 				}
 				?>
+				<br>
 				<label for="Inputemail1">Email</label>
+				<br>
 				<input type="email" class="form-control" id="Inputemail1" placeholder="Adresse mail" name="mail" value="<?php if (isset($mail)) {
 																															echo $mail;
 																														} ?>" maxlength="50" required>
@@ -143,16 +151,22 @@ if (isset($_POST) && !empty($_POST)) {
 				<?php
 				}
 				?>
+				<br>
 				<label for="Inputpassword2">Password</label>
+				<br>
 				<input class="form-control" id="Inputpassword2" type="password" name="mdp" placeholder="Mot de passe" maxlength="25" required>
+				<br>
 				<label for="Inputpasswordconfirm1">Confirmation du password</label>
+				<br>
 				<input type="password" id="Inputpasswordconfirm1" class="form-control" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
+				<br>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 				<br>
 				<br>
-				<button type="submit" name="inscription" class="btn btn-success btn-lg btn-block" style="width: 40vw">Valider</button>
-				<button type="button" name="Annuler" class="btn btn-warning btn-lg btn-block" style="width: 40vw" onclick="hide_modal_connect()">Annuler</button>
-				<button type="button" href="#" class="btn btn-info btn-lg btn-block" style="width: 20vw" onclick="hide_modal_inscri(), connexion_onclick()">Deja un compte? Connexion</button>
+				<button type="submit" name="inscription" class="btn">Valider</button>
+				<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal_connect()">Annuler</button>
+				<br>
+				<button type="button" href="#" class="cobtn btn" onclick="hide_modal_inscri(), connexion_onclick()">Deja un compte? Connexion</button>
 			</div>
 
 		</form>

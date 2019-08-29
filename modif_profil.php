@@ -81,6 +81,18 @@
 			height : 25px;
 			text-align : center;
 		}
+		.btn {
+			background-color: green;
+			border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			font-size: 16px;
+			margin: 4px 2px;
+			opacity: 0.6;
+			transition: 0.3s;
+		}
+		.btn:hover {opacity: 1}
 		</style>
 	</head>
 	<body>
@@ -120,7 +132,7 @@
 			<input size=50 type="email" placeholder="Nouvelle Adresse mail" name="mail" value="" maxlength="50">
 			<br>
 			<br>
-			<button type="submit" name="modification_profil">Envoyer</button>
+			<button class="btn" type="submit" name="modification_profil">Envoyer</button>
 		</form>
 		</center>
 	</body>

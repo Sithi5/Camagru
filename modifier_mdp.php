@@ -13,9 +13,26 @@
 		extract($_POST);
 		$valid = true;
 		if (isset($_POST['modification_profil'])){
+			$old_mdp = trim($old_mdp);
 			$mdp = trim($mdp);
 			$confmdp = trim($confmdp);
-			if ($mdp != $confmdp){
+			$sql = $db->query('SELECT `pwd` FROM `user` WHERE `id` = "'.$_SESSION['id'].'"');
+			$data = $sql->fetch();
+			if (!isset($data)) {
+				$valid = false;
+				$er_mdp = "Nous avons rencontré un problème avec votre requête.";
+			}
+			print_r ($data);
+			$old_mdp = shamalo($old_mdp);
+			if ($old_mdp !== $data['pwd']) {
+				$valid = false;
+				$er_mdp = "L'ancien mot de passe ne correspond pas";
+			}
+			if ($mdp !== $confmdp){
+				$valid = false;
+				$er_mdp = "La confirmation du mot de passe ne correspond pas";
+			}
+			if ($mdp !== $confmdp){
 				$valid = false;
 				$er_mdp = "La confirmation du mot de passe ne correspond pas";
 			}
@@ -25,7 +42,7 @@
 				if ($_POST['mdp'])
 				{
 					$modif = 1;
-					$req = $db->query('UPDATE `User` SET `pwd` = "'.$mdph.'" WHERE `id` = "'.$_SESSION['id'].'"');
+					$req = $db->exec('UPDATE `user` SET `pwd` = "'.$mdph.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
 			}
 		}
@@ -40,12 +57,24 @@
 			height : 25px;
 			text-align : center;
 		}
+		.btn {
+			background-color: green;
+			border: none;
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			font-size: 16px;
+			margin: 4px 2px;
+			opacity: 0.6;
+			transition: 0.3s;
+		}
+		.btn:hover {opacity: 1}
 		</style>
 	</head>
 	<body>
 		<?php include 'menu.php' ?>
 		<center>
-		<h1 style="center">Modification du profil</h1>
+		<h1 style="center">Modification du mot de passe</h1>
 		<form method="post" >
 			<?php
 				if (isset($er_mdp)){
@@ -59,13 +88,16 @@
 					$modif = 0;
 				}
 			?>
+			<input size=50 type="password" placeholder="Ancien mot de passe" name="old_mdp" value="" maxlength="25" required>
+			<br>
+			<br>
 			<input size=50 type="password" placeholder="Mot de passe" name="mdp" value="" maxlength="25" required>
 			<br>
 			<br>
 			<input size=50 type="password" placeholder="Confirmer le mot de passe" name="confmdp" maxlength="25" required>
 			<br>
 			<br>
-			<button type="submit" name="modification_profil">Envoyer</button>
+			<button class="btn" type="submit" name="modification_profil">Envoyer</button>
 		</form>
 		</center>
 	</body>

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
 <?php
 // Si n'es pas executer a partir de index, go index
 if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
-	header('Location: index.php');
+	header('Location: ../.');
 	exit();
 }
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
 	$login = htmlentities(trim($login));
 	$password = shamalo(htmlentities(trim($password)));
-
+	
 	//verify if login and password are provided
 	if (empty($login) || empty($password)) {
 		$valid = false;
@@ -22,10 +20,10 @@ if (isset($_POST) && !empty($_POST)) {
 	} else {
 		$sql = "SELECT `login`, id, pwd, `super-root` FROM user WHERE `login` = :login";
 		$stmt = $db->prepare($sql);
-
+		
 		//Bind value.
 		$stmt->bindValue(':login', $login);
-
+		
 		//Execute.
 		$stmt->execute();
 
@@ -42,7 +40,6 @@ if (isset($_POST) && !empty($_POST)) {
 				if ($user['super-root'] == 1) {
 					$_SESSION['sa'] = "1";
 				}
-				header('Location: ./');
 				exit();
 			} else {
 				$er_password_connect = ("Le mot de passe ne correspond pas au login");
@@ -56,11 +53,13 @@ if (isset($er_login_connect) || isset($er_password_connect))
 ?>
 
 
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
 	<meta charset="utf-16">
 	<title>Inscription</title>
+	<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	<style>
 		input {
 			height: 25px;
@@ -104,8 +103,8 @@ print_r($_POST);
 				<br>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 			</div>
-			<button type="submit" data-dismiss = "modal" name="connexion" value="ok" class="" >Valider</button>
-			<button type="button" name="Annuler" class="cancelbtn" onclick="hide_modal_connect()">Annuler</button>
+			<button type="submit" data-dismiss = "modal" name="connexion" class="btn" value="ok">Valider</button>
+			<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal_connect()">Annuler</button>
 		<br>
 			<a type="onclick" href="#"  onclick="hide_modal_connect(), inscri_onclick()">Pas encore inscrit ?</a>
 		</div>

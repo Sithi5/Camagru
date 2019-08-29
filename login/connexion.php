@@ -1,48 +1,51 @@
 <?php
 // Si n'es pas executer a partir de index, go index
 if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
-	header('Location: ../.');
+	header('Location: ./');
 	exit();
 }
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
-	$login = htmlentities(trim($login));
-	$password = shamalo(htmlentities(trim($password)));
-	
-	//verify if login and password are provided
-	if (empty($login) || empty($password)) {
-		$valid = false;
-		if (empty($login)) {
-			$er_login_connect = ("Le login ne peut pas être vide");
-		} else {
-			$er_password_connect = ("Le mot de passe ne peut pas être vide");
-		}
-	} else {
-		$sql = "SELECT `login`, id, pwd, `super-root` FROM user WHERE `login` = :login";
-		$stmt = $db->prepare($sql);
-		
-		//Bind value.
-		$stmt->bindValue(':login', $login);
-		
-		//Execute.
-		$stmt->execute();
-
-		//Fetch row return the result of the sql request as an array. NULL if no result.
-		$user = $stmt->fetch(PDO::FETCH_ASSOC);
-		if ($user === false) {
-			$er_login_connect = ("Le login ne correspond pas a un utilisateur inscrit");
-		} else {
-			if ($user['pwd'] === $password) {
-				$_SESSION['id'] = $user['id'];
-				$_SESSION['user_login'] = $user['login'];
-				$_SESSION['logged_on'] = "1";
-				$_SESSION['logged_in'] = time();
-				if ($user['super-root'] == 1) {
-					$_SESSION['sa'] = "1";
-				}
-				exit();
+	if (isset($loginco))
+	{
+			$loginco = htmlentities(trim($loginco));
+			$passwordco = shamalo(htmlentities(trim($passwordco)));
+		//verify if login and password are provided
+		if (empty($loginco) || empty($passwordco)) {
+			$valid = false;
+			if (empty($loginco)) {
+				$er_login_connect = ("Le login ne peut pas être vide");
 			} else {
-				$er_password_connect = ("Le mot de passe ne correspond pas au login");
+				$er_password_connect = ("Le mot de passe ne peut pas être vide");
+			}
+		} else {
+			$sql = "SELECT `login`, id, pwd, `super-root` FROM user WHERE `login` = :login";
+			$stmt = $db->prepare($sql);
+
+			//Bind value.
+			$stmt->bindValue(':login', $loginco);
+
+			//Execute.
+			$stmt->execute();
+
+			//Fetch row return the result of the sql request as an array. NULL if no result.
+			$user = $stmt->fetch(PDO::FETCH_ASSOC);
+			if ($user === false) {
+				$er_login_connect = ("Le login ne correspond pas a un utilisateur inscrit");
+			} else {
+				if ($user['pwd'] === $passwordco) {
+					$_SESSION['id'] = $user['id'];
+					$_SESSION['user_login'] = $user['login'];
+					$_SESSION['logged_on'] = "1";
+					$_SESSION['logged_in'] = time();
+					if ($user['super-root'] == 1) {
+						$_SESSION['sa'] = "1";
+					}
+					header('Location: ./');
+					exit();
+				} else {
+					$er_password_connect = ("Le mot de passe ne correspond pas au login");
+				}
 			}
 		}
 	}
@@ -85,7 +88,7 @@ if (isset($er_login_connect) || isset($er_password_connect))
 				<br>
 				<label for="Inputlogin1">Login</label>
 				<br>
-				<input class="" id="Inputlogin1" type="text" name="login" placeholder="Votre login" maxlength="10" required>
+				<input class="" id="Inputlogin1" type="text" name="loginco" placeholder="Votre login" maxlength="10" required>
 			</div>
 			<div class="form-group">
 				<?php
@@ -99,7 +102,7 @@ print_r($_POST);
 				?>
 				<label for="Inputpassword1">Password</label>
 				<br>
-				<input class="form-control" id="Inputpassword1" type="password" name="password" placeholder="Mot de passe" maxlength="25" required>
+				<input class="form-control" id="Inputpassword1" type="password" name="passwordco" placeholder="Mot de passe" maxlength="25" required>
 				<br>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 			</div>

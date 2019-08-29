@@ -34,7 +34,7 @@
 							</div> ';
 					if (isset($_SESSION['sa'], $_SESSION['logged_on'])) {
 						echo '<div class="dropdown">
-								<button class="dropbtn">Administration 
+								<button class="dropbtn">Administration
 									<i class="fa fa-caret-down"></i>
 								</button>
 								<div class="dropdown-content">
@@ -44,6 +44,7 @@
 							</div> ';
 					}
 					echo '<a href="logout.php">Logout</a>';
+					echo '<img href="#" src="ressources\img\logo-insta.png" onclick="take_a_pict_onclick()" alt="take a picture" class="insta-logo">';
 				}
 			?>
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>

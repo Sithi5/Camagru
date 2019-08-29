@@ -49,6 +49,13 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 		</div>
 	</div>
 	<!-- End of Modal -->
+	<!-- The Modal take a picture -->
+		<div id="modal03" class="modal">
+		<div class="modal-content">
+
+		</div>
+	</div>
+	<!-- End of Modal -->
 </body>
 </html>
 <script src="./script/index.js"></script>

@@ -1,0 +1,39 @@
+video, #cssfilters-video, #screenshot-img {
+width: 40vw;
+height: 30vw;
+}
+#filtre {
+	width:10vw;
+	height:10vw;
+	position: absolute;
+	top: 10vw;
+	left: 25vw;
+	margin: auto;
+}
+video, #cssfilters-stream {
+z-index: 1;
+border: 1px solid #ccc;
+}
+
+.images {
+	width:10vw;
+	height:10vw;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+	cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+	outline: 1px solid #f00;
+}

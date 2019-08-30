@@ -2,22 +2,15 @@
 	session_start();
 	require './config/database.php';
 	require './config/connexiondb.php';
-	if (!isset($_GET))
-	{
-		header('Location: ./'); 
-		exit; 
-	}
 	// S'il n'y a pas de session alors on ne va pas sur cette page
-	extract($_GET);
 	$profil_image = $db->query('SELECT User.id, User.login,
 									Image.id as id_image, Image.`user_id`,
 									Image.image_path, Image.image_name, Image.like,
 									Image.creation_date FROM `User`
 									INNER JOIN `Image` ON User.id = Image.`user_id`
-									WHERE Image.id = "'.$img.'"');
+									WHERE Image.id = "'.$donnees['id_image'].'"');
 	$profil_image = $profil_image->fetch();
 	if(!isset($profil_image['id_image'])){
-		header('Location: ./');
 		exit;
 	}
 ?>
@@ -27,13 +20,12 @@
 		<meta charset="utf-8">
 		<title>Mon profil</title>
 		<style>
-		img {
+		.imgs {
 			height: 500px;
 			width: 500px;
 		}
 		#mega_box {
 			height : auto;
-			padding: 10px 10px 10px 10px;
 			width: 400px;
 			height: 350px;
 			overflow: auto;
@@ -44,12 +36,11 @@
 			border: black solid 1px;
 			max-width: 750px;
 			margin: auto;
-			padding: 1px;
-			margin-left: 10px;
 			word-wrap: break-word;
 		}
 		table {
 		width:50%;
+		border: 0;
 		}
 		td { 
 		width:50%;
@@ -66,9 +57,6 @@
 		</style>
 	<head>
 	<body>
-		<center>
-		<?php include("menu.php") ?>
-		<br>
 		<?php
 			$reponse = $db->query('SELECT Comment.id, Comment.user_id, Comment.id_image,
 									Comment.description, Comment.creation_date,
@@ -79,11 +67,12 @@
 			$like = $db->query('SELECT img_id, liker_id FROM `like` WHERE img_id = "'.$profil_image['id_image'].'"
 								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
-		<table class="table">
+		<div width="50%" height="100%" style="position:relative; float: left">
+			<img class="imgs" src="<?= $profil_image['image_path']?>"></td>
+	</div>
+	<div width="50%" height="100%" style="position:relative; float: left">
+			<table class="table">
 		<tbody>
-			<tr>
-				<td rowspan=5><img src="<?= $profil_image['image_path']?>"></td>
-			</tr>
 			<tr>
 			<td colspan=2 class="border_bottom" height=50px>Nom du mec</td>
 			</tr>
@@ -109,7 +98,6 @@
 			</tr>
 		</tbody>
 		</table>
-		<a href="galerie">Revenir a la galerie</a>
-		</center>
+		</div>
 	</body>
 </html>

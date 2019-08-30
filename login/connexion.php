@@ -73,7 +73,7 @@ if (isset($er_login_connect) || isset($er_password_connect))
 <body>
 	<center>
 		<h1 style="center">Connexion</h1>
-		<a class="close" onclick="hide_modal_connect()">&#10006</a>
+		<a class="close" onclick="hide_modal(1)">&#10006</a>
 		<img src="./ressources\img\default.png" class="avatar">
 		<form action="" method="post">
 			<div class="form-group">
@@ -96,8 +96,6 @@ if (isset($er_login_connect) || isset($er_password_connect))
 					<p style="color:red;"><?= $er_password_connect ?></p>
 				<?php
 				}
-print_r($_POST);
-
 				?>
 				<label for="Inputpassword1">Password</label>
 				<br>
@@ -106,9 +104,9 @@ print_r($_POST);
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 			</div>
 			<button type="submit" data-dismiss = "modal" name="connexion" class="btn" value="ok">Valider</button>
-			<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal_connect()">Annuler</button>
+			<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal(1)">Annuler</button>
 		<br>
-			<a type="onclick" href="#"  onclick="hide_modal_connect(), inscri_onclick()">Pas encore inscrit ?</a>
+			<button type="button" href="#" class="cobtn btn" onclick="hide_modal(1), modal_onclick(2)">Pas encore inscrit ?</button>		
 		</div>
 		</form>
 	</center>

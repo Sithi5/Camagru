@@ -91,7 +91,7 @@ if (isset($_POST) && !empty($_POST)) {
 
 <body>
 	<center>
-		<a class="close" onclick="hide_modal_inscri()">&#10006</a>
+		<a class="close" onclick="hide_modal(2)">&#10006</a>
 		<h1 style="center">Inscription</h1>
 		<form method="post">
 			<div class="form-group">
@@ -164,9 +164,9 @@ if (isset($_POST) && !empty($_POST)) {
 				<br>
 				<br>
 				<button type="submit" name="inscription" class="btn">Valider</button>
-				<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal_connect()">Annuler</button>
+				<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal(2)">Annuler</button>
 				<br>
-				<button type="button" href="#" class="cobtn btn" onclick="hide_modal_inscri(), connexion_onclick()">Deja un compte? Connexion</button>
+				<button type="button" href="#" class="cobtn btn" onclick="hide_modal(2), modal_onclick(1)">Deja un compte? Connexion</button>
 			</div>
 
 		</form>

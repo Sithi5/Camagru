@@ -17,8 +17,8 @@
 			>Galerie</a>
 			<?php
 				if (!isset($_SESSION['logged_on'])) {
-					echo '<a href="#" onclick="connexion_onclick()" >Connexion</a>';
-					echo '<a href="#" onclick="inscri_onclick()" >Inscription</a>';
+					echo '<a href="#" onclick="modal_onclick(1)" >Connexion</a>';
+					echo '<a href="#" onclick="modal_onclick(2)" >Inscription</a>';
 					echo '<a href="./config/tmp.php">Co root tmp</a>';
 				}
 				else {
@@ -44,7 +44,7 @@
 							</div> ';
 					}
 					echo '<a href="logout.php">Logout</a>';
-					echo '<img href="#" src="ressources\img\logo-insta.png" onclick="take_a_pict_onclick()" alt="take a picture" class="insta-logo">';
+					echo '<img href="#" src="ressources\img\logo-insta.png" onclick="modal_onclick(3)" alt="take a picture" class="insta-logo">';
 				}
 			?>
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>

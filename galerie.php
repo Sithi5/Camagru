@@ -17,7 +17,7 @@
 		<center><span style="text-decoration: underline;"><h2>WALL OF FAME</h2></span></center>
 		<div class="flex-container">
 			<?php
-				$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image FROM `Image`');
+				$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
 				$liste = $liste->fetchALL();
 				foreach ($liste as $donnees) {
 			?>
@@ -25,7 +25,7 @@
 			<div class="container">
 				<img src= "<?php echo $donnees['image_path']?>">
 				<div class="overlay">
-					<div class="text">Acceder au post</div>
+					<div class="text"><img id="jaime" src=./ressources/img/jaime.png/><?=$donnees['like']?></div>
 				</div>
 			</div></a>
 			<?php

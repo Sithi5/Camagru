@@ -13,7 +13,7 @@
 	$afficher_image = $db->query('SELECT User.id, User.login,
 									Image.id as id_image, Image.`user_id`,
 									Image.image_path, Image.image_name, Image.like,
-									Image.dislike, Image.creation_date FROM `User`
+									Image.creation_date FROM `User`
 									INNER JOIN `Image` ON User.id = Image.`user_id`
 									WHERE Image.id = "'.$id.'"');
 	$afficher_image = $afficher_image->fetch();
@@ -59,9 +59,6 @@
 				}
 				if ($_POST['like']) {
 					$req = $db->query('UPDATE `Image` SET `like` = "'.$like.'" WHERE `id` = "'.$afficher_image['id_image'].'"');
-				}
-				if ($_POST['dislike']) {
-					$req = $db->query('UPDATE `Image` SET `dislike` = "'.$dislike.'" WHERE `id` = "'.$afficher_image['id_image'].'"');
 				}
 				if ($_POST['date']) {
 					//rajouter l'heure
@@ -113,7 +110,6 @@
 				<li>Le nom est : <?= $afficher_image['image_name'] ?></li>
 				<li>Son path est : <?= $afficher_image['image_path'] ?></li>
 				<li>Elle possede : <?= $afficher_image['like'] ?> like(s)</li>
-				<li>Elle possede : <?= $afficher_image['dislike'] ?> dislike(s)</li>
 				<li>L'image a été posté le : <?= $afficher_image['creation_date'] ?></li>
 				<br>
 			</ul>
@@ -140,9 +136,6 @@
 				<br>
 				<br>
 				<input size=50 type="text" placeholder="Nouveau nombre de like" name="like" value="">
-				<br>
-				<br>
-				<input size=50 type="text" placeholder="Nouveau nombre de dislike" name="dislike" value="">
 				<br>
 				<br>
 				<p>Date de creation : <input size=10 style="height:30px" type="date" name="date"></p>

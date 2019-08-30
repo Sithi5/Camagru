@@ -101,7 +101,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 			<th>Path</th>
 			<th>Nom</th>
 			<th>Like</th>
-			<th>Dislike</th>
 			<th>Date de Creation</th>
 			<th>Utilisateur root</th>
 			<th>Modification</th>
@@ -111,7 +110,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 		$reponse = $db->query("SELECT User.id, User.login, User.`super-root`,
 							Image.id as id_image,
 							Image.image_path, Image.image_name, Image.like,
-							Image.dislike, Image.creation_date FROM `User`
+							Image.creation_date FROM `User`
 							INNER JOIN `Image` ON User.id = Image.user_id");
 		$reponse = $reponse->fetchAll();
 		foreach ($reponse as $donnees) {
@@ -123,7 +122,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['sa']) || (isset($_SESSION['sa']
 				<td><?php echo $donnees['image_path']; ?></td>
 				<td><?php echo $donnees['image_name']; ?></td>
 				<td><?php echo $donnees['like']; ?></td>
-				<td><?php echo $donnees['dislike']; ?></td>
 				<td><?php echo $donnees['creation_date']; ?></td>
 				<td><?php
 					if ($donnees['super-root'] == "1")

@@ -41,7 +41,6 @@ if (isset($_POST) && !empty($_POST)) {
 					if ($user['super-root'] == 1) {
 						$_SESSION['sa'] = "1";
 					}
-					header('Location: ./');
 					exit();
 				} else {
 					$er_password_connect = ("Le mot de passe ne correspond pas au login");

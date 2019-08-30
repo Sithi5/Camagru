@@ -12,7 +12,7 @@
 	$profil_image = $db->query('SELECT User.id, User.login,
 									Image.id as id_image, Image.`user_id`,
 									Image.image_path, Image.image_name, Image.like,
-									Image.dislike, Image.creation_date FROM `User`
+									Image.creation_date FROM `User`
 									INNER JOIN `Image` ON User.id = Image.`user_id`
 									WHERE Image.id = "'.$id.'"');
 	$profil_image = $profil_image->fetch();

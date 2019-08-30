@@ -11,6 +11,7 @@ body {
 	text-align: center;
 	font-family: arial, sans-serif;
 	margin: 0;
+	background-color: grey;
 }
 
 
@@ -51,6 +52,7 @@ body {
 h1, h2 {
 	font-weight: normal;
 	margin: 50px auto;
+	color: white;
 }
 </style>
 </head>
@@ -59,7 +61,6 @@ h1, h2 {
 <div class="title"><img src="ressources/img/404.png" alt=""></div>
 <div class="screen">
 	<div class="main-image">
-
 	</div>
 	<img src="ressources/img/macbook.png" alt="">
 </div>

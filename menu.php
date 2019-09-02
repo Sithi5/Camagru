@@ -44,7 +44,7 @@
 							</div> ';
 					}
 					echo '<a href="logout.php">Logout</a>';
-					echo '<img href="#" src="ressources\img\logo-insta.png" onclick="modal_onclick(3)" alt="take a picture" class="insta-logo">';
+					//echo '<img href="#" src="ressources\img\logo-insta.png" onclick="modal_onclick(3)" alt="take a picture" class="insta-logo">';
 				}
 			?>
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>

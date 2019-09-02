@@ -12,6 +12,15 @@ video,
     left: 25vw;
 }
 
+.filter-img:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+.filter-img:active {
+    background-color: rgba(168, 218, 220, 1.00);
+}
+
 video,
 #cssfilters-stream {
     z-index: 1;

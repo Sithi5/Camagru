@@ -4,7 +4,7 @@
 <div class="parent_div_container_1">
 	<div class="child-1">
 		<?php $filtre = "" ?>
-		<div id="cssfilters" style="text-align:center;">
+		<div id="cssfilters" style="text-align:center;" ondrop="drop(event)" ondragover="allowDrop(event)">
 			<video class="videostream" autoplay></video>
 			<?php if ($filtre !== "") echo '<img id=filtre src="' . $filtre . '">' ?>
 			<img id="screenshot-img">
@@ -13,9 +13,12 @@
 				<p><button id="stop-button">Stop</button></p>
 		</div>
 	</div>
-	<div class="child-2">
-		<img class="filter-img" onclick="" href="#" src="./ressources/filters/sombrero.png" alt="filter">		
-		<img class="filter-img" onclick="" href="#" src="./ressources/filters/beachball.png" alt="filter">		
+	<div class="child-2" id="container">
+		<? $filter = 0 ?>
+		<img id="<? $result = "f" . $filter++;
+					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/sombrero.png" alt="filter">
+		<img id="<? $result = "f" . $filter++;
+					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/like.png" alt="filter">
 	</div>
 </div>
 
@@ -48,15 +51,39 @@
 			then(handleSuccess).catch(handleError);
 		};
 
+		document.querySelector('#stop-button').onclick = function() {
+			video.pause();
+			localMediaStream.stop();
+		};
+
+
+
+
 		function handleSuccess(stream) {
 			screenshotButton.disabled = false;
 			localMediaStream = stream;
 			video.srcObject = stream;
 		}
-
-		document.querySelector('#stop-button').onclick = function() {
-			video.pause();
-			localMediaStream.stop();
-		};
 	})();
+
+
+
+
+	//////////////////////////////// drag n drop function
+
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		console.log("filter " + data + " dropped");
+	}
+
+	///////////end of drag n drop funct
 </script>

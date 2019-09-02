@@ -10,6 +10,9 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<meta charset="UTF-16">
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
+	<link rel="stylesheet" type="text/css" href="./css/camera.css">
+	<link rel="stylesheet" type="text/css" href="./css/modal.css">
+
 </head>
 
 <body>
@@ -50,7 +53,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<!-- End of Modal -->
 	<!-- The Modal take a picture -->
 	<div id="modal03" class="modal">
-		<div class="modal-content">
+		<div class="modal-image">
 			<?php
 			include './camera.php' ?>
 		</div>

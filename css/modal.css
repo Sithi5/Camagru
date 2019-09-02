@@ -24,7 +24,6 @@
 /* Modal Content/Box */
 
 .modal-content {
-    position: relative;
     background-color: #fefefe;
     margin: 5px auto;
     /* 15% from the top and centered */
@@ -36,14 +35,14 @@
 }
 
 .modal-image {
-    position: relative;
+    display: flex;
     background-color: #fefefe;
     margin: 5px auto;
     /* 15% from the top and centered */
     width: 80%;
     /* Could be more or less, depending on screen size */
-    max-width: 1000px;
-    min-width: 500px;
+    max-width: 1000px!important;
+    max-height: 50%!important;
 }
 
 

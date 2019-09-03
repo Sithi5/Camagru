@@ -4,6 +4,7 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 	header('Location: ../');
 	exit();
 }
+
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
 	if (isset($loginco))
@@ -41,7 +42,6 @@ if (isset($_POST) && !empty($_POST)) {
 					if ($user['super-root'] == 1) {
 						$_SESSION['sa'] = "1";
 					}
-					exit();
 				} else {
 					$er_password_connect = ("Le mot de passe ne correspond pas au login");
 				}
@@ -100,7 +100,7 @@ if (isset($_POST) && !empty($_POST)) {
 				<br>
 				<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 			</div>
-			<button type="submit" data-dismiss = "modal" name="connexion" class="btn" value="ok">Valider</button>
+			<button type="submit" name="connexion" class="btn" value="ok">Valider</button>
 			<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal(1)">Annuler</button>
 		<br>
 			<button type="button" href="#" class="cobtn btn" onclick="hide_modal(1), modal_onclick(2)">Pas encore inscrit ?</button>		

@@ -8,7 +8,7 @@
 			<video class="videostream" autoplay></video>
 			<?php if ($filtre !== "") echo '<img id=filtre src="' . $filtre . '">' ?>
 			<img id="screenshot-img">
-			<p><button class="capture-button">Capture video</button>
+			<p><button class="capture-button">Capture video</button></p>
 				<p><button id="screenshot-button" disabled>Take screenshot</button></p>
 				<p><button id="stop-button">Stop</button></p>
 		</div>
@@ -56,9 +56,6 @@
 			localMediaStream.stop();
 		};
 
-
-
-
 		function handleSuccess(stream) {
 			screenshotButton.disabled = false;
 			localMediaStream = stream;
@@ -84,6 +81,6 @@
 		var data = ev.dataTransfer.getData("text");
 		console.log("filter " + data + " dropped");
 	}
-
 	///////////end of drag n drop funct
+
 </script>

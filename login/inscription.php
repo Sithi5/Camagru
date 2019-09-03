@@ -7,7 +7,7 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
 	$valid = true;
-	if (isset($_POST['inscription'])) {
+	if (isset($_POST['inscription']) && $_SESSION['logged_on'] == 0) {
 		$login = htmlentities(trim($login));
 		$prenom = htmlentities(trim($prenom));
 		$nom  = htmlentities(trim($nom));
@@ -69,6 +69,10 @@ if (isset($_POST) && !empty($_POST)) {
 			//On insert de facon securisé les donnees recup
 			$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
 			$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdp));
+		}
+		else
+		{
+			echo '<script type="text/javascript">','modal_onclick(2);','</script>';
 		}
 	}
 }

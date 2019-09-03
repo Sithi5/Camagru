@@ -7,7 +7,7 @@ if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
 
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
-	if (isset($loginco))
+	if (isset($loginco) && $_SESSION['logged_on'] == 0)
 	{
 			$loginco = htmlentities(trim($loginco));
 			$passwordco = shamalo(htmlentities(trim($passwordco)));
@@ -32,6 +32,7 @@ if (isset($_POST) && !empty($_POST)) {
 			//Fetch row return the result of the sql request as an array. NULL if no result.
 			$user = $stmt->fetch(PDO::FETCH_ASSOC);
 			if ($user === false) {
+				echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 				$er_login_connect = ("Le login ne correspond pas a un utilisateur inscrit");
 			} else {
 				if ($user['pwd'] === $passwordco) {
@@ -42,7 +43,9 @@ if (isset($_POST) && !empty($_POST)) {
 					if ($user['super-root'] == 1) {
 						$_SESSION['sa'] = "1";
 					}
+					echo("<meta http-equiv='refresh' content='0'>");
 				} else {
+					echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 					$er_password_connect = ("Le mot de passe ne correspond pas au login");
 				}
 			}

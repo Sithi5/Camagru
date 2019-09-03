@@ -26,6 +26,9 @@ var imgArray = [
 document.getElementById("current-slide-number").innerHTML = "image " + (slideindex + 1) + " / " +
     imgArray.length;
 
+var element = document.getElementById('images-slideshow'); //element get the id of the img
+element.src = imgArray[0];
+
 function slideShow(way, onclick, directselect, changefirstin) {
 
     if (changefirstin == 1)
@@ -37,7 +40,7 @@ function slideShow(way, onclick, directselect, changefirstin) {
         }
         slideindex += way; //way is -1 with the left arrow and +1 for the right arrow. 0 otherwise
 
-        var element = document.getElementById('images-slideshow'); //element get the id of the img
+
 
         if (directselect > 0) {
             slideindex = directselect - 1;

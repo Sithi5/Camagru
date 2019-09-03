@@ -3,6 +3,8 @@
     width: 1000px;
     position: relative;
     margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 #images-slideshow {

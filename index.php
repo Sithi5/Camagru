@@ -12,19 +12,16 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<link rel="stylesheet" type="text/css" href="./css/slideshow.css">
 	<link rel="stylesheet" type="text/css" href="./css/camera.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
-
+	<link rel="stylesheet" type="text/css" href="./css/footer.css">
 </head>
 
 <body>
 	<?php
 	include 'menu.php';
-	if (isset($_SESSION['logged_on'])) {
-		echo "<br><br>";
-	}
 	?>
 	<!--slideshow-->
 	<div class="slide-container">
-		<img id="images-slideshow" src="./ressources\img\menu-des-roulants-preview.jpg" alt="slideshow">
+		<img id="images-slideshow" alt="slideshow">
 		<p id="current-slide-number"></p>
 		<a class="prev" onclick="slideShow(-1, 1, 0, 0)">&#10094;</a>
 		<a class="next" onclick="slideShow(1, 1, 0, 0)">&#10095;</a>
@@ -60,6 +57,14 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	</div>
 	<!-- End of Modal -->
 </body>
+<footer>
+	<div class="footer-container">
+		<section class="footer-autor">
+			<a>Made by Mabouce and Judumay</a>
+		</section>
+	</div>
+	<small class="footer-credit">© 2019 Envoy. All Rights Reserved.</small>
+</footer>
 
 </html>
 <script src="./script/index.js"></script>

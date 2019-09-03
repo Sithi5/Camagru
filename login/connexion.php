@@ -1,7 +1,7 @@
 <?php
 // Si n'es pas executer a partir de index, go index
 if ($magic != "c00f0c4675b91fb8b918e4079a0b1bac") {
-	header('Location: ./');
+	header('Location: ../');
 	exit();
 }
 if (isset($_POST) && !empty($_POST)) {
@@ -48,9 +48,6 @@ if (isset($_POST) && !empty($_POST)) {
 			}
 		}
 	}
-}
-if (isset($er_login_connect) || isset($er_password_connect))
-{
 }
 ?>
 

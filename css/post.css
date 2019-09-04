@@ -1,0 +1,38 @@
+#mega_box {
+	height: 30vw;
+	max-height: 430px;
+	overflow: auto;
+}
+#box {
+	text-align:left;
+	border: black solid 1px;
+	max-width: 500px;
+	margin: auto;
+	word-wrap: break-word;
+}
+#like {
+	height: 1vw;
+	width: 10%;
+}
+
+#close-img {
+	position: absolute;
+	color: #000;
+	font-size: 20px;
+	margin-right: 10px;
+	right: 10px;
+	font-weight: bold;
+}
+#close-img:hover,
+#close-img:focus {
+	color: red;
+	cursor: pointer;
+}
+
+.child-2-post {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}

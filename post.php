@@ -19,69 +19,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
-		<style>
-		.imgs {
-			height: 35vw;
-			width: 35vw;
-			max-height: 498px;
-			max-width: 498px;
-		}
-		#mega_box {
-			height: 30vw;
-			max-height: 430px;
-			overflow: auto;
-		}
-		#box {
-			text-align:left;
-			border: black solid 1px;
-			max-width: 500px;
-			margin: auto;
-			word-wrap: break-word;
-		}
-		table {
-		border: 0;
-		background-color: white;
-		}
-		td { 
-		width:50%;
-		}
-		tr {
-			text-align: center;
-		}
-		#namespace
-		{
-			max-height: 10px;
-		}
-		#comment {
-			height: 10vw;
-			width: 20vw;
-			max-width: 200px;
-		}
-		#like {
-			height: 1vw;
-			width: 10%;
-		}
-		.border_bottom {
-			border-bottom:1px solid darkgrey;
-		}
-		.border_right {
-			border-right:1px solid darkgrey;
-		}
-		#close-img {
-			position: absolute;
-			color: #000;
-			font-size: 20px;
-			margin-top: -10px;
-			margin-right: -2vw;
-			font-weight: bold;
-		}
-		#close-img:hover,
-		#close-img:focus {
-			color: red;
-			cursor: pointer;
-		}
-
-		</style>
 	<head>
 	<body>
 		<?php
@@ -95,40 +32,31 @@
 			$like = $db->query('SELECT img_id, liker_id FROM `like` WHERE img_id = "'.$profil_image['id_image'].'"
 								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
-		<div width="50%" height="100%" style="position:relative; float:left">
-			<img class="imgs" src="<?= $profil_image['image_path']?>"></td>
-		</div>
-		<div width="50%" height="100%" style="position:relative; float:left">
-			<table class="table">
-				<tbody>
-					<tr>
-						<td class="border_bottom" id="namespace">Nom du mec
-						<?php echo '<a class="close" id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
-						</td>
-					</tr>
-					<tr>
-						<td id="comment" class="border_bottom">
-							<div id="mega_box">
-								<?php
-								if (isset($reponse['0']))
-								{
-									foreach ($reponse as $donnees) {
-									?>
-									<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
-										<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
-									</div>
-									<br>
-								<?php }
-								}
-								?>
+		<div width="100%" style="position: relative;">
+			<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
+			<div class="parent_div_container_1">
+				<div class="child-1">
+					<img src="<?= $profil_image['image_path']?>" width="100%">
+				</div>
+				<div class="child-2-post">
+					<p><?php echo "Posted By: " . $profil_image['login'] . $count?>
+					<div id="mega_box">
+						<?php
+						if (isset($reponse['0']))
+						{
+							foreach ($reponse as $donnees) {
+							?>
+							<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
+								<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
 							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="border_right" id="like"><img style="width:2vw; height:2vw; max-width:30px; max-height:30px" src="./ressources/img/jaime.png"><?=$donnees['like']?></td>
-					</tr>
-				</tbody>
-			</table>
+							<br>
+						<?php }
+						}
+						?>
+					</div>
+					<img id="like" style="width:2vw; height:2vw; max-width:30px; max-height:30px" src="./ressources/img/jaime.png"><?=$donnees['like']?>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -3,15 +3,20 @@
 </head>
 <div class="parent_div_container_1">
 	<div class="child-1">
-		<?php $filtre = "" ?>
-		<div id="cssfilters" style="text-align:center;" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<video class="videostream" autoplay></video>
-			<?php if ($filtre !== "") echo '<img id=filtre src="' . $filtre . '">' ?>
-			<img id="screenshot-img">
-			<p><button class="capture-button">Capture video</button></p>
-				<p><button id="screenshot-button" disabled>Take screenshot</button></p>
-				<p><button id="stop-button">Stop</button></p>
-		</div>
+        <?php $filtre = "" ?>
+		<div id="cssfilters">
+			<div class="child-1-1" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<video class="videostream" autoplay></video>
+			</div>
+			<div class="child-1-1">
+				<img class="screenshot" id="screenshot-img">
+			</div>
+			<center>
+            <p><button class="capture-button btncapt">Capture video</button></p>
+                <p><button class="btncapt" id="screenshot-button" disabled>Take screenshot</button></p>
+				<p><button class="btncapt" id="stop-button">Stop</button></p>
+			</center>
+        </div>
 	</div>
 	<div class="child-2" id="container">
 		<?php $filter = 0 ?>
@@ -19,7 +24,8 @@
 					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/sombrero.png" alt="filter">
 		<img id="<?php $result = "f" . $filter++;
 					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/like.png" alt="filter">
-	</div>
+
+</div>
 </div>
 
 

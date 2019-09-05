@@ -72,11 +72,10 @@ if (isset($_POST) && !empty($_POST)) {
 			$cle = shamalo($login);
 			$entete = "From: Camagru" ;
 			$message = 'Bienvenue sur Camagru,
-			
 			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 			ou copier/coller dans votre navigateur internet.
-			
-			l'.urlencode($login).'&cle='.urlencode($cle).'
+
+			http://' . $_SERVER['HTTP_HOST'] . '/login/activation.php?log='.urlencode($login).'&cle='.urlencode($cle).'
 			
 			---------------
 			Ceci est un mail automatique, Merci de ne pas y répondre.';

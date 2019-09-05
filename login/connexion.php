@@ -52,6 +52,8 @@ if (isset($_POST) && !empty($_POST)) {
 				else {
 					echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 					$er_password_connect = ("Votre compte n'est pas actif.");
+					mail($mail, $sujet, $message, $entete);
+					echo "Mail renvoyé";
 				}
 			}
 		}

@@ -14,10 +14,10 @@
 		</div>
 	</div>
 	<div class="child-2" id="container">
-		<? $filter = 0 ?>
-		<img id="<? $result = "f" . $filter++;
+		<?php $filter = 0 ?>
+		<img id="<?php $result = "f" . $filter++;
 					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/sombrero.png" alt="filter">
-		<img id="<? $result = "f" . $filter++;
+		<img id="<?php $result = "f" . $filter++;
 					echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/like.png" alt="filter">
 	</div>
 </div>

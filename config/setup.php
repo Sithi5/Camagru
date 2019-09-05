@@ -28,6 +28,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `User` (
 		`pp` VARCHAR(255) NOT NULL,
 		`pwd` VARCHAR(255) NOT NULL,
 		`creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		`act-key` VARCHAR(255) NOT NULL DEFAULT '0',
+		`verified` INT NOT NULL DEFAULT '0',
 		`super-root` INT NOT NULL DEFAULT '0',
 		`theme` INT NOT NULL DEFAULT '0'
 	)";
@@ -58,13 +60,13 @@ $sql = "CREATE TABLE IF NOT EXISTS `Like` (
 $db->exec($sql);
 // Creation admin root
 $mdph = shamalo("root");
-$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 1));
-$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png', $mdph, 1));
+$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 'abcd', 1, 1));
+$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png',$mdph, 'abcd', 1, 1));
 $mdph = shamalo("test");
-$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`) VALUES (?, ?, ?, ?, ?, ?)');
-$req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph));
+$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `verified`, `act-key`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph, 1, 'ahd'));
 // creation d'une image
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'test.png', './ressources/img/test.png', 1);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'test.png', './ressources/img/test.png', 0);");

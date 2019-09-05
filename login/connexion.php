@@ -20,7 +20,7 @@ if (isset($_POST) && !empty($_POST)) {
 				$er_password_connect = ("Le mot de passe ne peut pas être vide");
 			}
 		} else {
-			$sql = "SELECT `login`, id, pwd, `super-root` FROM user WHERE `login` = :login";
+			$sql = "SELECT `login`, id, pwd, `super-root`, `verified` FROM user WHERE `login` = :login";
 			$stmt = $db->prepare($sql);
 
 			//Bind value.
@@ -35,7 +35,7 @@ if (isset($_POST) && !empty($_POST)) {
 				echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 				$er_login_connect = ("Le login ne correspond pas a un utilisateur inscrit");
 			} else {
-				if ($user['pwd'] === $passwordco) {
+				if ($user['pwd'] === $passwordco && $user['verified'] == 1) {
 					$_SESSION['id'] = $user['id'];
 					$_SESSION['user_login'] = $user['login'];
 					$_SESSION['logged_on'] = "1";
@@ -44,9 +44,14 @@ if (isset($_POST) && !empty($_POST)) {
 						$_SESSION['sa'] = "1";
 					}
 					echo("<meta http-equiv='refresh' content='0'>");
-				} else {
+				}
+				else if ($user['pwd'] !== $passwordco) {
 					echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 					$er_password_connect = ("Le mot de passe ne correspond pas au login");
+				} 
+				else {
+					echo '<script type="text/javascript">','modal_onclick(1);','</script>';
+					$er_password_connect = ("Votre compte n'est pas actif.");
 				}
 			}
 		}
@@ -76,7 +81,7 @@ if (isset($_POST) && !empty($_POST)) {
 		<a class="close" onclick="hide_modal(1)">&#10006</a>
 		<img src="./ressources\img\default.png" class="avatar">
 		<form action="" method="post">
-			<div class="form-group">
+			<div>
 				<?php
 				if (isset($er_login_connect)) {
 					?>
@@ -89,7 +94,7 @@ if (isset($_POST) && !empty($_POST)) {
 				<br>
 				<input class="" id="Inputlogin1" type="text" name="loginco" placeholder="Votre login" maxlength="10" required>
 			</div>
-			<div class="form-group">
+			<div>
 				<?php
 				if (isset($er_password_connect)) {
 					?>

@@ -70,17 +70,8 @@ if (isset($_POST) && !empty($_POST)) {
 			
 			//debut partie envoi message
 			$cle = shamalo($login);
-			$entete = "From: Camagru" ;
-			$message = 'Bienvenue sur Camagru,
-			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
-			ou copier/coller dans votre navigateur internet.
-
-			http://' . $_SERVER['HTTP_HOST'] . '/login/activation.php?log='.urlencode($login).'&cle='.urlencode($cle).'
-			
-			---------------
-			Ceci est un mail automatique, Merci de ne pas y répondre.';
-			
-			mail($mail, $sujet, $message, $entete);
+			require 'mail.php';
+			ft_sendmail($mail, $cle, $login);
 			$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `pp`, `mail`, `pwd`, `act-key`) VALUES (?, ?, ?, ?, ?, ?, ?)');
 			$req->execute(array($login, $prenom, $nom, './ressources/img/default.png', $mail, $mdp, $cle));
 		}

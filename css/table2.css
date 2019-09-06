@@ -18,3 +18,9 @@
 	background-color: rgb(255, 255, 255);
 	color: black;
 	}
+	@media screen and (max-width: 850px) {
+		table, tbody, tr, td {
+			width: auto!important;
+			font-size: 1.4vw;
+		}
+	}

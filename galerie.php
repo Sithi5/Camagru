@@ -20,29 +20,30 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 			</span></center>
 		<div class="flex-container">
 			<?php
-			$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
-			$liste = $liste->fetchALL();
-			$count = 10;
-			foreach ($liste as $donnees) {
-				?>
-				<a onclick="modal_onclick(<?= $count ?>)" href="#">
-					<div class="container">
-						<img width="50px" src="<?php echo $donnees['image_path'] ?>">
-						<div class="overlay">
-							<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= $donnees['like'] ?> </div> </div> </div> </a> <!-- The Modal Images -->
-								<div id="modal<?= $count ?>" class="modal">
-									<div class="modal-image">
-										<?php include "./post.php" ?>
-									</div>
-								</div>
-								<!-- End of Modal -->
-								<?php
-									$count++;
-								}
-								?>
-							</div>
-						</div>
+				$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
+				$liste = $liste->fetchALL();
+				$count = 10;
+				foreach ($liste as $donnees) {
+			?>
+			<a onclick="modal_onclick(<?= $count ?>)" href="#">
+				<div class="container">
+					<img width="50px" src="<?php echo $donnees['image_path'] ?>">
+					<div class="overlay">
+						<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= $donnees['like'] ?> </div>
 					</div>
+				</div>
+			</a>
+			<!-- The Modal Images -->
+			<div id="modal<?= $count ?>" class="modal">
+				<div class="modal-image">
+					<?php include "./post.php" ?>
+				</div>
+			</div>
+			<!-- End of Modal -->
+			<?php
+				$count++;
+			}
+			?>
 		</div>
 		<!-- The Modal connection -->
 		<div id="modal01" class="modal">

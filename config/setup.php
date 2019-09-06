@@ -68,9 +68,15 @@ $mdph = shamalo("test");
 $req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `verified`, `act-key`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph, 1, 'ahd'));
 // creation d'une image
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'test.png', './ressources/img/test.png', 1);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'test.png', './ressources/img/test.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'test.png', './ressources/img/test.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
 // creation d'un commentaire
 $db->exec("INSERT INTO `Comment` (`user_id`, `id_image`,`description`) VALUES ('1', '1', 'Ceci est un test')");
 //creation d'un like

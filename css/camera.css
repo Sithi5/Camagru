@@ -108,10 +108,9 @@ video,
 
 @media screen and (max-width: 600px) {
     .btncapt {
-        font-size: 2.5vw;
+        font-size: 1.5vw;
         text-align: center;
         border: none;
         cursor: pointer;
-        width: 30%;
     }
 }

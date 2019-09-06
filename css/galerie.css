@@ -1,53 +1,82 @@
-.flex-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
+.galery {
+    margin-top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 935px;
 }
 
-img {
-width: 300px;
-height: 300px;
+.galery-flex-container {
+    display: flex;
+    position: relative;
+    align-items: stretch;
+    flex-direction: column;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    box-sizing: border-box;
 }
 
-.container {
-position: relative;
-width: 300px;
-height: 300px;
-margin-bottom:10px;
+.column-galery {
+    align-items: stretch;
+    display: flex;
+    margin-bottom: 28px;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    position: relative;
+    flex-direction: row;
+}
+
+.galery-img-container-margin {
+    display: block;
+    position: relative;
+    background-color: white;
+    margin-right: 28px;
+    width: 100%;
+}
+
+.galery-img-container {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.galery-img-container img {
+    object-fit: cover;
+    width: 30vw;
 }
 
 .overlay {
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-height: 100%;
-width: 100%;
-opacity: 0;
-transition: .5s ease;
-background-color: grey;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: grey;
 }
 
-.container:hover .overlay {
-opacity: 0.7;
+.galery-img-container:hover .overlay {
+    opacity: 0.7;
 }
 
 .text {
-color: white;
-font-size: 20px;
-position: absolute;
-top: 50%;
-left: 50%;
--webkit-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
-text-align: center;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 #jaime {
-	vertical-align:top;
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }

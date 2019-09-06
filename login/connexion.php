@@ -20,7 +20,7 @@ if (isset($_POST) && !empty($_POST)) {
 				$er_password_connect = ("Le mot de passe ne peut pas être vide");
 			}
 		} else {
-			$sql = "SELECT `login`, id, pwd, `super-root`, `verified` FROM user WHERE `login` = :login";
+			$sql = "SELECT `login`, id, pwd, `super-root`, `mail`, `verified`, `act-key` FROM user WHERE `login` = :login";
 			$stmt = $db->prepare($sql);
 
 			//Bind value.
@@ -52,8 +52,9 @@ if (isset($_POST) && !empty($_POST)) {
 				else {
 					echo '<script type="text/javascript">','modal_onclick(1);','</script>';
 					$er_password_connect = ("Votre compte n'est pas actif.");
-					mail($mail, $sujet, $message, $entete);
-					echo "Mail renvoyé";
+					require 'mail.php';
+					ft_sendmail($user['mail'], $user['act-key'], $user['login']);
+					$send_mail = ("Un mail a été renvoyé automatiquement");
 				}
 			}
 		}
@@ -101,6 +102,13 @@ if (isset($_POST) && !empty($_POST)) {
 				if (isset($er_password_connect)) {
 					?>
 					<p style="color:red;"><?= $er_password_connect ?></p>
+				<?php
+				}
+				?>
+				<?php
+				if (isset($send_mail)) {
+					?>
+					<p style="color:green;"><?= $send_mail ?></p>
 				<?php
 				}
 				?>

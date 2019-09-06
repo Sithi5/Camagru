@@ -93,6 +93,8 @@
 	border-radius: 50%;
 	width: 15vw;
 	height: 15vw;
+	max-width: 250px;
+	max-height: 250px;
 }
 
 input[type=text],
@@ -189,4 +191,30 @@ input[type=email] {
 	.modal-content label {
 		font-size: 2.5vw;
 	}
+}
+
+@media screen and (min-width: 1200px) {
+	.modal-content h1 {
+		font-size: 40px
+	}
+	
+	.modal-content small {
+		font-size: 20px;
+	}
+	
+	.modal-content label {
+		font-size: 25px;
+	}
+	.close {
+		position: absolute;
+		right: 20px;
+		top: 10px;
+		color: #000;
+		font-size: 50px;
+		font-weight: bold;
+	}
+	input[type=text],
+	input[type=password],
+	input[type=email] {
+		font-size: 15px;
 }

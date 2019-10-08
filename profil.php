@@ -12,6 +12,13 @@
 	// On récupère les informations de l'utilisateur connecté
 	$req = $db->query("SELECT * FROM User WHERE id = $res");
 	$afficher_profil = $req->fetch();
+	$reponse = $db->query('SELECT User.id, User.login, User.`super-root`,
+							Image.id as id_image,
+							Image.image_path, Image.image_name, Image.like,
+							Image.creation_date FROM `User`
+							INNER JOIN `Image` ON User.id = Image.user_id
+							WHERE User.id= "'.$res.'"');
+	$reponse = $reponse->fetchAll();
 ?>
 
 <html lang="fr">
@@ -24,7 +31,7 @@
 			text-align: left;
 			margin-left: 200px;;
 		}
-		img {
+		#profil {
 			margin-left:25px;			
 			margin-top:25px;			
 			float:left;
@@ -41,6 +48,16 @@
 		#info {
 			margin-top: -20px;
 		}
+		img {
+			width : 10vw
+		}
+		#remove {
+			width: 2vw;
+			height: 2vw;
+			position:relative;
+			top: -7.5vw;
+			right: 2.5vw;
+		}
 		</style>
 	<head>
 	<body>
@@ -49,7 +66,7 @@
 		<h2>Votre profil</h2>
 		<br>
 		<div id="box">
-		<img src="<?php echo $afficher_profil['pp']; ?>">
+		<img id=profil src="<?php echo $afficher_profil['pp']; ?>">
 		<br>
 		<div id="info"><h3>Quelques informations sur vous : </h3></div>
 		<br>
@@ -61,6 +78,13 @@
 			<li>Votre compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 		</ul>
 		</div>
+		<h2>Vos photos</h2>
+		<?php foreach ($reponse as $donnees) {
+		?>
+		<img src="<?php echo $donnees['image_path'] ?>">
+		<a href="./remove_img.php?path=1&id=<?= $donnees['id_image']?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a>
+		<?php }
+		?>
 		</center>
 	</body>
 </html>

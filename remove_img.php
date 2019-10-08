@@ -15,6 +15,9 @@
 		;exit;
 	}
 	$req = $db->query('DELETE FROM `Image` WHERE `Image`.`id` = "'.$id.'"');
-	header("Location: ./list_img.php");
+	if ($path == "1")
+	header("Location: ./profil.php");
+	else
+		header("Location: ./list_img.php");
 	exit;
 ?>

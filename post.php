@@ -32,30 +32,31 @@
 			$like = $db->query('SELECT img_id, liker_id FROM `like` WHERE img_id = "'.$profil_image['id_image'].'"
 								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
-		<div width="100%" style="position: relative;">
-			<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
-			<div class="parent_div_container_1">
-				<div class="child-1">
-					<img src="<?= $profil_image['image_path']?>" width="100%">
-				</div>
-				<div class="child-2-post">
-					<p><?php echo "Posted By: " . $profil_image['login'] . $count?>
-					<div id="mega_box">
-						<?php
-						if (isset($reponse['0']))
-						{
-							foreach ($reponse as $donnees) {
-							?>
-							<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
-								<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
-							</div>
-							<br>
-						<?php }
-						}
+		<div class="parent_div_container_2">
+				<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
+			<div class="child-1-galery">
+				<img width="100%" id="img-galery-id" src="<?= $profil_image['image_path']?>">
+			</div>
+			<div class="child-2-galery">
+				<center>
+				<p width="100%"><?php echo "Posted By: " . $profil_image['login']?></p>
+				</center>
+				<div id="mega_box">
+					<?php
+					if (isset($reponse['0']))
+					{
+						foreach ($reponse as $donnees) {
 						?>
-					</div>
-					<img id="like" style="width:2vw; height:2vw; max-width:30px; max-height:30px" src="./ressources/img/jaime.png"><?=$donnees['like']?>
+						<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
+							<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
+						</div>
+						<br>
+					<?php }
+					}
+					?>
 				</div>
+				<?=$donnees['like']?>
+				<img id="like" src="./ressources/img/jaime.png">
 			</div>
 		</div>
 	</body>

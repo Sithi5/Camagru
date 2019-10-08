@@ -32,17 +32,17 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 				if ($div % 3 == 0)
 					echo '<div class="column-galery">';
 				?>
-					<div class="galery-img-container-margin">
-						<a onclick="modal_onclick(<?= $count ?>)" href="#">	
+				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+					<a onclick="modal_onclick(<?= $count ?>)" href="#">
 						<div class="galery-img-container">
-							<img sizes="248px" src="<?php echo $donnees['image_path'] ?>">
+							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
 								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= $donnees['like'] ?>
 								</div>
 							</div>
 						</div>
-						</a>
-					</div>
+					</a>
+				</div>
 				<!-- The Modal Images -->
 				<div id="modal<?= $count ?>" class="modal">
 					<div class="modal-image">

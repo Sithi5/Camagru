@@ -46,11 +46,11 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 				</div>
 				<!-- The Modal Images -->
 				<div id="modal<?= $count ?>" class="modal">
-					<div class="modal-image">
+					<div class="modal-image-post">
 						<?php include "./post.php" ?>
 					</div>
 				</div>
-				<!-- End of Modal -->
+			<!-- End of Modal -->
 			<?php
 				$count++;
 				if ($div % 3 == 2)

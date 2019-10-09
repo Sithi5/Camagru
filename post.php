@@ -33,10 +33,30 @@
 								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
 		<div class="parent_div_container_2">
+			<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
 			<div class="child-post-1">
-				<img id="img-post-1" src="<?= $profil_image['image_path']?>">
+				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
 			</div>
 			<div class="child-post-2">
+				<center>
+					<p width="100%"><?php echo "Posted By: " . $profil_image['login']?></p>
+				</center>
+				<div id="mega_box">
+					<?php
+					if (isset($reponse['0']))
+					{
+						foreach ($reponse as $donnees) {
+						?>
+						<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
+							<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
+						</div>
+						<br>
+					<?php }
+					}
+					?>
+				</div>
+				<!---after megabox--->
+				<img id="like-post" src="./ressources/img/jaime.png">
 			</div>
 		</div>
 	</body>

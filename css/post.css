@@ -1,70 +1,65 @@
-#mega_box {
-    width: 100%;
-    height: 30vw;
-    height: 50%;
-    overflow: auto;
-}
-
-#box {
-    text-align: left;
-    max-width: 500px;
-    margin: auto;
-    word-wrap: break-word;
-}
-
-#like {
-    position: absolute;
-    bottom: 0;
-    width: 5%;
-    height: 7%;
-    left: 50%;
-}
-
-#close-img {
-    position: absolute;
-    color: #000;
-    font-size: 20px;
-    margin-right: 10px;
-    right: 10px;
-    font-weight: bold;
-}
-
-#close-img:hover,
-#close-img:focus {
-    color: red;
-    cursor: pointer;
-}
-
-.parent_div_container_2 {
-    position: relative;
-    display: flex;
-    align-content: stretch;
-    width: 450px;
-}
-
-.child-1-galery,
-.child-2-galery {
-    width: 50% !important;
-    height: 100% !important;
-}
-
-.child-2-galery {
-    display: flex;
-    flex-direction: column;
-}
-
-#img-galery-id {
-    margin: auto;
-    width: 450px;
-    height: 450px;
-}
-
-@media screen and (max-width: 1450px) and (max-height: 1000px) {
-    #img-galery-id {
-        width: 100%;
-        height: 100%;
-    }
-    .parent_div_container_2 {
-        width: 100%;
-    }
-}
+                                                        #mega_box {
+                                                        width: 100%;
+                                                        height: 50%;
+                                                        overflow: auto;
+                                                        border: solid 1px black;
+                                                    }
+                                                    
+                                                    #box {
+                                                        text-align: left;
+                                                        max-width: 500px;
+                                                        margin: auto;
+                                                        word-wrap: break-word;
+                                                    }
+                                                    
+                                                    #like {
+                                                        position: relative;
+                                                        bottom: 0;
+                                                        width: 5%;
+                                                        height: 7%;
+                                                        left: 50%;
+                                                    }
+                                                    
+                                                    #close-img {
+                                                        position: absolute;
+                                                        color: #000;
+                                                        font-size: 20px;
+                                                        margin-right: 10px;
+                                                        right: 10px;
+                                                        font-weight: bold;
+                                                    }
+                                                    
+                                                    #close-img:hover,
+                                                    #close-img:focus {
+                                                        color: red;
+                                                        cursor: pointer;
+                                                    }
+                                                    
+                                                    .parent_div_container_2 {
+                                                        position: relative;
+                                                        display: flex;
+                                                        align-content: stretch;
+                                                        width: 100%;
+                                                    }
+                                                    
+                                                    .child-post-1,
+                                                    .child-post-2 {
+                                                        position: relative;
+                                                        width: 50%;
+                                                        background-color: #000;
+                                                    }
+                                                    
+                                                    .child-post-2 {
+                                                        background-color: red;
+                                                    }
+                                                    
+                                                    #img-post-1 {
+                                                        position: relative;
+                                                        width: 50%;
+                                                    }
+                                                    
+                                                    @media screen and (min-width: 1100px) {
+                                                        .parent_div_container_2 {
+                                                            width: 100%;
+                                                            height: 500px;
+                                                        }

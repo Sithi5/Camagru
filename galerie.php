@@ -12,6 +12,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/galerie.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
+	<link rel="stylesheet" type="text/css" href="./css/post.css">
 </head>
 
 <body>

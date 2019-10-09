@@ -19,7 +19,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
-		<link rel="stylesheet" type="text/css" href="./css/post.css">
 	<head>
 	<body>
 		<?php
@@ -34,30 +33,10 @@
 								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
 		<div class="parent_div_container_2">
-				<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
-			<div class="child-1-galery">
-				<img width="100%" id="img-galery-id" src="<?= $profil_image['image_path']?>">
+			<div class="child-post-1">
+				<img id="img-post-1" src="<?= $profil_image['image_path']?>">
 			</div>
-			<div class="child-2-galery">
-				<center>
-				<p width="100%"><?php echo "Posted By: " . $profil_image['login']?></p>
-				</center>
-				<div id="mega_box">
-					<?php
-					if (isset($reponse['0']))
-					{
-						foreach ($reponse as $donnees) {
-						?>
-						<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
-							<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
-						</div>
-						<br>
-					<?php }
-					}
-					?>
-				</div>
-				<?=$donnees['like']?>
-				<img id="like" src="./ressources/img/jaime.png">
+			<div class="child-post-2">
 			</div>
 		</div>
 	</body>

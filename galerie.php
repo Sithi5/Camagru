@@ -12,15 +12,15 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<title>Mes projets Web</title>
 	<link rel="stylesheet" type="text/css" href="./css/galerie.css">
 	<link rel="stylesheet" type="text/css" href="./css/modal.css">
-	<link rel="stylesheet" type="text/css" href="./css/camera.css">
-	<link rel="stylesheet" type="text/css" href="./css/post.css">
 </head>
 
 <body>
 	<?php include 'menu.php' ?>
-	<center><span style="text-decoration: underline;">
-			<h2>WALL OF FAME</h2>
-		</span></center>
+	<center>
+	<span style="text-decoration: underline;">
+		<h2>WALL OF FAME</h2>
+	</span>
+	<center>
 	<div class="galery">
 		<article class="galery-flex-container">
 			<?php
@@ -59,7 +59,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 			if ($div % 3 != 2)
 				echo "</div>";
 			?>
-
 		</article>
 	</div>
 	<!-- The Modal connection -->

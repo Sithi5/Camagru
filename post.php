@@ -19,6 +19,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
+		<link rel="stylesheet" type="text/css" href="./css/post.css">
 	<head>
 	<body>
 		<?php

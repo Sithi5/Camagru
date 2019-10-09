@@ -1,5 +1,6 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./css/camera.css">
 </head>
 <div class="parent_div_container_1">
 	<div class="child-1">

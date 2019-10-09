@@ -18,11 +18,11 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<?php include 'menu.php' ?>
 	<center>
 	<span style="text-decoration: underline;">
-		<h2>WALL OF FAME</h2>
+		<h2 id="name-galery-txt">WALL OF FAME</h2>
 	</span>
 	<center>
 	<div class="galery">
-		<article class="galery-flex-container">
+		<article class="galery-flex-container" style="margin-bottom: 100px;">
 			<?php
 			$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
 			$liste = $liste->fetchALL();
@@ -56,9 +56,16 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 					echo "</div>";
 				$div++;
 			}
-			if ($div % 3 != 2)
-				echo "</div>";
+			while ($div % 3 != 0)
+			{
 			?>
+				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+					<div class="galery-img-container">
+					</div>
+				</div>
+			<?php
+				$div++;
+			}?>
 		</article>
 	</div>
 	<!-- The Modal connection -->

@@ -70,17 +70,19 @@
 				<!---after megabox--->
 				<div class="like-comment">
 					<?php
-						if (isset($_SESSION['logged_on']) && isset($_SESSION['id'])) {
-							echo '<form method="post">';
-							echo ' <input type="hidden" name="image" value="' . $profil_image["id_image"] . '">';
-							echo ' <input type="hidden" name="image" value="' . $count . '">';
-							echo ' <textarea cols="4" maxlength="250" name="com" required></textarea>';
-							echo ' <input type="submit">';
-							echo ' </form>';
-						}
-						else
-							echo '<p>Veuillez vous connecter pour poster un commentaire';
-					?>
+						if ((isset($_SESSION['logged_on']) && isset($_SESSION['id'])))
+						{
+						?>
+							<form method="post">
+							<input type="hidden" name="image" value="<?=$profil_image['id_image']?>">
+							<input type="hidden" name="modal_id" value="<?=$count?>">
+							<textarea cols="4" maxlength="250" name="com" required></textarea>
+							<input type="submit">
+						</form>
+						<?php }
+						else {
+							?><small>CONNECTE TOI</small>
+						<?php } ?>
 				</div>
 			</div>
 		</div>

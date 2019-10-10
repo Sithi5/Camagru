@@ -56,7 +56,9 @@
 					?>
 				</div>
 				<!---after megabox--->
-				<img id="like-post" src="./ressources/img/jaime.png">
+					<img class="like-post" src="./ressources/img/jaime.png">
+					<p class="like-post"><?=$donnees['like']?></p>
+					<input style="position: flex;" type="text" class="type text">
 			</div>
 		</div>
 	</body>

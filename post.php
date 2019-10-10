@@ -70,7 +70,7 @@
 							<input type="hidden" name="image" value="<?=$profil_image['id_image']?>">
 							<input type="hidden" name="modal_id" value="<?=$count?>">
 							<textarea cols="4" maxlength="250" name="com" required></textarea>
-							<input type="submit">
+							<input type="submit" value="Send">
 						</form>
 						<?php }
 						else {

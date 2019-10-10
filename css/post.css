@@ -99,8 +99,10 @@ textarea {
 	margin-top:5px;
 	margin-left:10px;
 	resize: none;
-	width: 80%;
-	height: 60px;
+	border: solid 1px black;
+}
+
+input {
 	border: solid 1px black;
 }
 
@@ -121,7 +123,13 @@ textarea {
 		width: 50px;
 		height: 50px;
 	}
-
+	textarea {
+		width: 80%;
+		height: 60px;
+	}
+	input {
+		margin-top: 20px;
+	}
 }
 
 @media screen and (min-width: 650px) and (max-width: 1100px) {
@@ -141,6 +149,13 @@ textarea {
 		width: 25px;
 		height: 25px;
 	}
+	textarea {
+		width: 200px;
+		height: 30px;
+	}
+	input {
+		margin-top: 7px;
+	}
 }
 
 @media screen and (max-width: 650px) {
@@ -158,6 +173,11 @@ textarea {
 		margin-top: 1px;
 		margin-left: 1px;
 		width: 10px;
+		height: 10px;
+	}
+	textarea {
+		margin-top: 1px;
+		width: 100px;
 		height: 10px;
 	}
 }

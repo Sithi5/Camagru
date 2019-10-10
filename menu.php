@@ -3,6 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="./css/menu.css">
+		<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	</head>
 	<body>
 		<div class="topnav" id="myTopnav">
@@ -49,6 +50,14 @@
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 		</div>
 		<div style="padding-left:16px"></div>
+			<!-- The Modal take a picture -->
+	<div id="modal03" class="modal">
+	<div class="modal-image">
+		<?php
+		include './camera.php' ?>
+	</div>
+	</div>
+	<!-- End of Modal -->
 		<script>
 			function myFunction() {
 				var x = document.getElementById("myTopnav");

@@ -2,6 +2,7 @@
 	session_start();
 	require './config/database.php';
 	require './config/connexiondb.php'; 
+	require './phpfunctions/number_format.php';
 	// S'il n'y a pas de session alors on ne va pas sur cette page
 	if (!isset($_SESSION['logged_on']) || $_SESSION['logged_on'] == '0'
 		|| !isset($_SESSION['id']) || $_SESSION['id'] == "0") {
@@ -25,40 +26,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
-		<style>
-		ul {
-			list-style: none;
-			text-align: left;
-			margin-left: 200px;;
-		}
-		#profil {
-			margin-left:25px;			
-			margin-top:25px;			
-			float:left;
-			height: 150px;
-			width: 150px;
-		}
-		#box {
-			background-color: lightgrey;
-			box-shadow:15px 15px 10px black;
-			border-radius: 10px;
-			height:200px;
-			width: 600px;
-		}
-		#info {
-			margin-top: -20px;
-		}
-		img {
-			width : 10vw
-		}
-		#remove {
-			width: 2vw;
-			height: 2vw;
-			position:relative;
-			top: -7.5vw;
-			right: 2.5vw;
-		}
-		</style>
+	<link rel="stylesheet" type="text/css" href="./css/profil.css">
+	<link rel="stylesheet" type="text/css" href="./css/galerie.css">
+	<link rel="stylesheet" type="text/css" href="./css/modal.css">
+	<link rel="stylesheet" type="text/css" href="./css/post.css">
+
+
 	<head>
 	<body>
 		<?php include("menu.php") ?>
@@ -79,12 +52,52 @@
 		</ul>
 		</div>
 		<h2>Vos photos</h2>
-		<?php foreach ($reponse as $donnees) {
-		?>
-		<img src="<?php echo $donnees['image_path'] ?>">
-		<a href="./remove_img.php?path=1&id=<?= $donnees['id_image']?>"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a>
-		<?php }
-		?>
+	<div class="galery">
+		<article class="galery-flex-container" style="margin-bottom: 100px;">
+		<?php 
+			$count = 1000;
+			$div = 0;
+			foreach ($reponse as $donnees) {
+				if ($div % 3 == 0)
+					echo '<div class="column-galery">';
+			?>
+			<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+					<a onclick="modal_onclick(<?= $count ?>)" href="#">
+						<div class="galery-img-container">
+							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
+							<div class="overlay">
+								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!-- The Modal Images -->
+				<div id="modal<?= $count ?>" class="modal">
+					<div class="modal-image-post">
+						<?php include "./post.php" ?>
+					</div>
+				</div>
+			<!-- End of Modal -->
+			<?php
+				$count++;
+				if ($div % 3 == 2)
+					echo "</div>";
+				$div++;
+			}
+			while ($div % 3 != 0)
+			{
+			?>
+				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+					<div class="galery-img-container">
+					</div>
+				</div>
+			<?php
+				$div++;
+			}?>
+		</article>
 		</center>
+	</div>
 	</body>
 </html>
+<script src="./script/modal.js"></script>

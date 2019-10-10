@@ -36,9 +36,9 @@
 	<body>
 		<?php include("menu.php") ?>
 		<center>
-		<h2>Votre profil</h2>
+		<h2 class="name-galery-txt">Votre profil</h2>
 		<br>
-		<div id="box">
+		<div id="box_profil">
 		<img id=profil src="<?php echo $afficher_profil['pp']; ?>">
 		<br>
 		<div id="info"><h3>Quelques informations sur vous : </h3></div>
@@ -51,7 +51,7 @@
 			<li>Votre compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 		</ul>
 		</div>
-		<h2>Vos photos</h2>
+		<h2 class="name-galery-txt">Vos photos</h2>
 	<div class="galery">
 		<article class="galery-flex-container" style="margin-bottom: 100px;">
 		<?php 
@@ -66,7 +66,7 @@
 						<div class="galery-img-container">
 							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
-								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+								<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 								</div>
 							</div>
 						</div>

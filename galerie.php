@@ -20,7 +20,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<?php include 'menu.php' ?>
 	<center>
 	<span style="text-decoration: underline;">
-		<h2 id="name-galery-txt">WALL OF FAME</h2>
+		<h2 class="name-galery-txt">WALL OF FAME</h2>
 	</span>
 	<center>
 	<div class="galery">
@@ -39,7 +39,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 						<div class="galery-img-container">
 							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
-								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+								<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 								</div>
 							</div>
 						</div>

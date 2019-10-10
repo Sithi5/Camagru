@@ -13,12 +13,20 @@
 	if(!isset($profil_image['id_image'])){
 		exit;
 	}
+	if (isset($_SESSION['logged_on']) && isset($_SESSION['id']) && isset($_POST)) {
+		extract($_POST);
+		$id = $_SESSION['id'];
+		$req = $db->prepare('INSERT INTO `Comment` (`user_id`, `id_image`,`description`) VALUES (?, ?, ?)');
+		$req->execute(array($id, $image, $com));
+		unset($_POST);
+	}
 ?>
 
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<title>Mon profil</title>
+		<link rel="stylesheet" type="text/css" href="./css/galerie.css">
 	<head>
 	<body>
 		<?php
@@ -36,6 +44,10 @@
 			<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
 			<div class="child-post-1">
 				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
+				<div class="overlay">
+					<div class="text-post"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+					</div>
+				</div>
 			</div>
 			<div class="child-post-2">
 				<center>
@@ -57,9 +69,12 @@
 				</div>
 				<!---after megabox--->
 				<div class="like-comment">
-					<img class="like-post" src="./ressources/img/jaime.png">
-					<p class="like-post"><?=number_format_short($donnees['like'])?></p>
-					<input style="width: 10px" type="text">
+					<form method="post">
+						<input type="hidden" name="image" value="<?=$profil_image['id_image']?>">
+						<input type="hidden" name="modal_id" value="<?=$count?>">
+						<textarea cols="4" maxlength="250" name="com" required></textarea>
+						<input type="submit">
+					</form>
 				</div>
 			</div>
 		</div>

@@ -76,7 +76,7 @@
 						if ((isset($_SESSION['logged_on']) && isset($_SESSION['id'])))
 						{
 						?>
-							<form method="post">
+							<form method="post" action="comment_send.php">
 							<input type="hidden" name="image" value="<?=$profil_image['id_image']?>">
 							<input type="hidden" name="modal_id" value="<?=$count?>">
 							<textarea cols="4" maxlength="250" name="com" required></textarea>

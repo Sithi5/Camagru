@@ -4,6 +4,31 @@ require './config/database.php';
 require './config/connexiondb.php';
 require './hashing/hash.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
+function number_format_short( $n ) {
+	if ($n >= 0 && $n < 1000) {
+		// 1 - 999
+		$n_format = floor($n);
+		$suffix = '';
+	} else if ($n >= 1000 && $n < 1000000) {
+		// 1k-999k
+		$n_format = floor($n / 1000);
+		$suffix = 'K';
+	} else if ($n >= 1000000 && $n < 1000000000) {
+		// 1m-999m
+		$n_format = floor($n / 1000000);
+		$suffix = 'M';
+	} else if ($n >= 1000000000 && $n < 1000000000000) {
+		// 1b-999b
+		$n_format = floor($n / 1000000000);
+		$suffix = 'B';
+	} else if ($n >= 1000000000000) {
+		// 1t+
+		$n_format = floor($n / 1000000000000);
+		$suffix = 'T';
+	}
+
+	return !empty($n_format . $suffix) ? $n_format . $suffix : 0;
+}
 ?>
 <html>
 
@@ -38,7 +63,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 						<div class="galery-img-container">
 							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
-								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= $donnees['like'] ?>
+								<div class="text"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 								</div>
 							</div>
 						</div>
@@ -82,14 +107,6 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 		<div class="modal-content">
 			<?php
 			include './login/inscription.php' ?>
-		</div>
-	</div>
-	<!-- End of Modal -->
-	<!-- The Modal take a picture -->
-	<div id="modal03" class="modal">
-		<div class="modal-content">
-			<?php
-			include './camera.php' ?>
 		</div>
 	</div>
 	<!-- End of Modal -->

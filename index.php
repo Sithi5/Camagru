@@ -46,14 +46,6 @@
 			</div>
 		</div>
 		<!-- End of Modal -->
-		<!-- The Modal take a picture -->
-		<div id="modal03" class="modal">
-			<div class="modal-image">
-				<?php
-				include './camera.php' ?>
-			</div>
-		</div>
-		<!-- End of Modal -->
 	</body>
 	<?php include 'footer.html' ?>
 </html>

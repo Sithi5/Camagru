@@ -10,16 +10,6 @@
 									INNER JOIN `Image` ON User.id = Image.`user_id`
 									WHERE Image.id = "'.$donnees['id_image'].'"');
 	$profil_image = $profil_image->fetch();
-	if(!isset($profil_image['id_image'])){
-		exit;
-	}
-	if (isset($_SESSION['logged_on']) && isset($_SESSION['id']) && isset($_POST)) {
-		extract($_POST);
-		$id = $_SESSION['id'];
-		$req = $db->prepare('INSERT INTO `Comment` (`user_id`, `id_image`,`description`) VALUES (?, ?, ?)');
-		$req->execute(array($id, $image, $com));
-	}
-	unset($_POST);
 ?>
 
 <html lang="fr">

@@ -18,8 +18,8 @@
 		$id = $_SESSION['id'];
 		$req = $db->prepare('INSERT INTO `Comment` (`user_id`, `id_image`,`description`) VALUES (?, ?, ?)');
 		$req->execute(array($id, $image, $com));
-		unset($_POST);
 	}
+	unset($_POST);
 ?>
 
 <html lang="fr">
@@ -58,9 +58,12 @@
 					if (isset($reponse['0']))
 					{
 						foreach ($reponse as $donnees) {
+							$sql = $db->query ('SELECT `user`.`id`, `user`.`login`, `comment`.`user_id` FROM `comment` INNER JOIN `user` ON `user`.`id` = `comment`.`user_id`
+												WHERE `user`.`id`="'.$donnees['user_id'].'" LIMIT 0,1');
+							$sql = $sql->fetchAll();
 						?>
 						<div id="box"><p style="margin-left: 5px;"><?php echo $donnees['description']?></p>
-							<small style="margin-left: 10px;">By: <?=$donnees['user_id']?> at: <?=$donnees['creation_date']?></small>
+							<small style="margin-left: 10px;">By: <?=$sql[0]['login']?> at: <?=$donnees['creation_date']?></small>
 						</div>
 						<br>
 					<?php }

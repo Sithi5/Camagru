@@ -38,11 +38,7 @@
 		<center>
 		<h2 class="name-galery-txt">Votre profil</h2>
 		<br>
-		<div id="box_profil">
-		<img id=profil src="<?php echo $afficher_profil['pp']; ?>">
-		<br>
 		<div id="info"><h3>Quelques informations sur vous : </h3></div>
-		<br>
 		<ul>
 			<li>Votre login est : <?= $afficher_profil['login'] ?></li>
 			<li>Votre prenom est : <?= ucfirst($afficher_profil['prenom']) ?></li>
@@ -50,54 +46,53 @@
 			<li>Votre mail est : <?= $afficher_profil['mail'] ?></li>
 			<li>Votre compte a été crée le : <?= $afficher_profil['creation_date'] ?></li>
 		</ul>
-		</div>
 		<h2 class="name-galery-txt">Vos photos</h2>
-	<div class="galery">
-		<article class="galery-flex-container" style="margin-bottom: 100px;">
-		<?php 
-			$count = 1000;
-			$div = 0;
-			foreach ($reponse as $donnees) {
-				if ($div % 3 == 0)
-					echo '<div class="column-galery">';
-			?>
-			<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
-					<a onclick="modal_onclick(<?= $count ?>)" href="#">
-						<div class="galery-img-container">
-							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
-							<div class="overlay">
-								<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+		<div class="galery">
+			<article class="galery-flex-container" style="margin-bottom: 100px;">
+			<?php 
+				$count = 1000;
+				$div = 0;
+				foreach ($reponse as $donnees) {
+					if ($div % 3 == 0)
+						echo '<div class="column-galery">';
+				?>
+				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+						<a onclick="modal_onclick(<?= $count ?>)" href="#">
+							<div class="galery-img-container">
+								<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
+								<div class="overlay">
+									<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+									</div>
 								</div>
 							</div>
+						</a>
+					</div>
+					<!-- The Modal Images -->
+					<div id="modal<?= $count ?>" class="modal">
+						<div class="modal-image-post">
+							<?php include "./post.php" ?>
 						</div>
-					</a>
-				</div>
-				<!-- The Modal Images -->
-				<div id="modal<?= $count ?>" class="modal">
-					<div class="modal-image-post">
-						<?php include "./post.php" ?>
 					</div>
-				</div>
-			<!-- End of Modal -->
-			<?php
-				$count++;
-				if ($div % 3 == 2)
-					echo "</div>";
-				$div++;
-			}
-			while ($div % 3 != 0)
-			{
-			?>
-				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
-					<div class="galery-img-container">
+				<!-- End of Modal -->
+				<?php
+					$count++;
+					if ($div % 3 == 2)
+						echo "</div>";
+					$div++;
+				}
+				while ($div % 3 != 0)
+				{
+				?>
+					<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
+						<div class="galery-img-container">
+						</div>
 					</div>
-				</div>
-			<?php
-				$div++;
-			}?>
-		</article>
-		</center>
-	</div>
+				<?php
+					$div++;
+				}?>
+			</article>
+			</center>
+		</div>
 	</body>
 </html>
 <script src="./script/modal.js"></script>

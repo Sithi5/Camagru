@@ -51,23 +51,18 @@
 			}
 			if ($valid) {
 				//On insert de facon securisé les donnees recup
-				if ($_POST['login'])
-				{
+				if ($_POST['login']){
 					$req = $db->query('UPDATE `User` SET `login` = "'.$login.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
-				if ($_POST['prenom'])
-				{
+				if ($_POST['prenom']){
 					$req = $db->query('UPDATE `User` SET `prenom` = "'.$prenom.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
-				if ($_POST['nom'])
-				{
+				if ($_POST['nom']){
 					$req = $db->query('UPDATE `User` SET `nom` = "'.$nom.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
-				if ($_POST['mail'])
-				{
+				if ($_POST['mail']){
 					$req = $db->query('UPDATE `User` SET `mail` = "'.$mail.'" WHERE `id` = "'.$_SESSION['id'].'"');
 				}
-
 			}
 		}
 	}

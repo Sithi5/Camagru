@@ -5,6 +5,7 @@ function myAjax(id_image) {
         data: { action: 'call_a_like', img_id: id_image },
         success: function(html) {
             alert(html);
+            location.reload();
         }
     });
 }

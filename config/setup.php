@@ -71,10 +71,10 @@ $req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 1);");
+$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f1.png', './ressources/profile/default_f1.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('1', 'default_f2.png', './ressources/profile/default_f2.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', 'default_h1.png', './ressources/profile/default_h1.png', 0);");
 // creation d'un commentaire

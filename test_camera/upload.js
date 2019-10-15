@@ -50,13 +50,6 @@ window.addEventListener("load", function(){
 						var xhrq = new XMLHttpRequest();
 						xhrq.open('GET', "filtre.php?img=" + hello + "&filtre=" + src, true);
 						xhrq.send(null);
-						xhrq.onload = function(){
-							if (xhr.status==403 || xhr.status==404) {
-								alert("ERROR LOADING UPLOAD.PHP");
-							} else {
-								alert(this.response);
-							}
-						};
 					}
 				};
 			});

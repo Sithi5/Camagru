@@ -25,14 +25,25 @@ window.addEventListener("load", function(){
 				data.append('upimage', blob);
 				var xhr = new XMLHttpRequest();
 				xhr.open('POST', "upload.php", true);
+				xhr.send(data);
+				var filter = "../ressources/filters/sombrero.png";
 				xhr.onload = function(){
 					if (xhr.status==403 || xhr.status==404) {
 						alert("ERROR LOADING UPLOAD.PHP");
 					} else {
-						alert(this.response);
+						hello = this.response;
+						var xhrq = new XMLHttpRequest();
+						xhrq.open('GET', "filtre.php?img=" + hello + "&filtre=" + filter, true);
+						xhrq.send(null);
+						xhrq.onload = function(){
+							if (xhr.status==403 || xhr.status==404) {
+								alert("ERROR LOADING UPLOAD.PHP");
+							} else {
+								alert(this.response);
+							}
+						};
 					}
 				};
-				xhr.send(data);
 			});
 		});
 	})

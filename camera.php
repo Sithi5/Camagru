@@ -4,7 +4,7 @@
 </head>
 <div class="parent_div_container_1">
 	<div class="child-1">
-        <?php $filtre = "" ?>
+		<?php $filtre = "" ?>
 		<div id="cssfilters">
 			<div class="child-1-1" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<video class="videostream" autoplay></video>
@@ -13,11 +13,10 @@
 				<img class="screenshot" id="screenshot-img">
 			</div>
 			<center>
-            <p><button class="capture-button btncapt">Capture video</button></p>
-                <p><button class="btncapt" id="screenshot-button" disabled>Take screenshot</button></p>
-				<p><button class="btncapt" id="stop-button">Stop</button></p>
+			<p><button class="capture-button btncapt">Capture video</button></p>
+				<p><button class="btncapt" id="screenshot-button" disabled>Take screenshot</button></p>
 			</center>
-        </div>
+		</div>
 	</div>
 	<div class="child-2" id="container">
 		<?php $filter = 0 ?>
@@ -57,12 +56,6 @@
 			navigator.mediaDevices.getUserMedia(constraints).
 			then(handleSuccess).catch(handleError);
 		};
-
-		document.querySelector('#stop-button').onclick = function() {
-			video.pause();
-			localMediaStream.stop();
-		};
-
 		function handleSuccess(stream) {
 			screenshotButton.disabled = false;
 			localMediaStream = stream;

@@ -1,3 +1,19 @@
+function allowDrop(ev) {
+	ev.preventDefault();
+}
+
+function drag(ev) {
+	ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("text");
+	console.log("filter " + data + " dropped");
+	src = document.getElementById(data).src;
+	console.log(src);
+}
+
 window.addEventListener("load", function(){
 	// [1] GET ALL THE HTML ELEMENTS
 	var video = document.getElementById("vid-show"),
@@ -26,14 +42,13 @@ window.addEventListener("load", function(){
 				var xhr = new XMLHttpRequest();
 				xhr.open('POST', "upload.php", true);
 				xhr.send(data);
-				var filter = "../ressources/filters/sombrero.png";
 				xhr.onload = function(){
 					if (xhr.status==403 || xhr.status==404) {
 						alert("ERROR LOADING UPLOAD.PHP");
 					} else {
 						hello = this.response;
 						var xhrq = new XMLHttpRequest();
-						xhrq.open('GET', "filtre.php?img=" + hello + "&filtre=" + filter, true);
+						xhrq.open('GET', "filtre.php?img=" + hello + "&filtre=" + src, true);
 						xhrq.send(null);
 						xhrq.onload = function(){
 							if (xhr.status==403 || xhr.status==404) {

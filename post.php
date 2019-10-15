@@ -10,6 +10,7 @@
 									INNER JOIN `Image` ON User.id = Image.`user_id`
 									WHERE Image.id = "'.$donnees['id_image'].'"');
 	$profil_image = $profil_image->fetch();
+	$id_img = $profil_image['id_image'];
 ?>
 
 <html lang="fr">
@@ -22,20 +23,18 @@
 		<?php
 			$reponse = $db->query('SELECT `Comment`.`id`, `Comment`.`user_id`, Comment.`id_image`,
 			`Comment`.`description`, `Comment`.`creation_date`,
-			`Image`.`id` as img_id, `Image`.`like`, 
+			`Image`.`id` as img_id, `Image`.`like`,
 			`Image`.`user_id` as `id_user_img` FROM `Comment`
 			INNER JOIN `Image` ON Comment.id_image = `Image`.`id`
 			WHERE `Image`.`id`= "'.$profil_image['id_image'].'"');
 			$reponse = $reponse->fetchAll();
-			$like = $db->query('SELECT img_id, liker_id FROM `like` WHERE img_id = "'.$profil_image['id_image'].'"
-								AND liker_id = "'.$_SESSION['id'].'"');
 		?>
 		<div class="parent_div_container_2">
 			<?php echo '<a id="close-img" onclick="hide_modal('.$count.')">&#10006</a>'?>
 			<div class="child-post-1">
 				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
 				<div class="overlay">
-					<div class="text-post"><img id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+					<div class="text-post"><img ondblclick="myAjax(`<?=$id_img?>`)" id="jaime" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 					</div>
 				</div>
 			</div>
@@ -81,3 +80,5 @@
 		</div>
 	</body>
 </html>
+<script src="./jaimeonclick.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

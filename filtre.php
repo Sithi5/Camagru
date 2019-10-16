@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	if (isset($_GET['filtre']) && isset($_GET['img']) && $_GET['filtre'] != "none"){
 		$png = imagecreatefrompng($_GET['filtre']);
 		$jpeg = imagecreatefrompng($_GET['img']);
@@ -21,4 +22,5 @@
 		imageflip($out, IMG_FLIP_HORIZONTAL);
 		imagejpeg($out, $_GET['img'], 100);
 	}
+	$_SESSION['img'] = $_GET['img'];
 ?>

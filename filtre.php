@@ -1,5 +1,5 @@
 <?php
-	if (isset($_GET['filtre']) && isset($_GET['img'])){
+	if (isset($_GET['filtre']) && isset($_GET['img']) && $_GET['filtre'] != "none"){
 		$png = imagecreatefrompng($_GET['filtre']);
 		$jpeg = imagecreatefrompng($_GET['img']);
 		list($width, $height) = getimagesize($_GET['img']);

@@ -49,21 +49,20 @@ window.addEventListener("load", function(){
 						hello = this.response;
 						var xhrq = new XMLHttpRequest();
 						if (typeof(src) === 'undefined' ){
-							alert("ici");
-							src = "";
-							xhrq.open('GET', "./filtre.php?img=" + hello + "&filtre=0", true);
+							src = "none";
+							xhrq.open('GET', "./filtre.php?img=" + hello + "&filtre=" + src, true);
 						}
 						else {
 							var words = src.split('/');
 							console.log("./filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5]);
 							xhrq.open('GET', "./filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5], true);
-							xhrq.send(null);
-							xhrq.onload = function(){
-								if (xhr.status==403 || xhr.status==404) {
-									alert("ERROR LOADING UPLOAD.PHP");
-								} else {
-									console.log(this.response);
-								}
+						}
+						xhrq.send(null);
+						xhrq.onload = function(){
+							if (xhr.status==403 || xhr.status==404) {
+								alert("ERROR LOADING UPLOAD.PHP");
+							} else {
+								console.log(this.response);
 							}
 						}
 					}

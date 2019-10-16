@@ -5,10 +5,8 @@ require './config/connexiondb.php';
 require './hashing/hash.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
-$mailissend = 0;
-
 // Si user logged go index
-if (!empty($_SESSION) || $_SESSION['logged_on'] == 1)
+if (!empty($_SESSION) && $_SESSION['logged_on'] == 1)
 {
 	header('Location: ../');
 	exit();
@@ -36,11 +34,11 @@ if (isset($_POST) && !empty($_POST)) {
 		}
 		else {
 			require 'mail.php';
-			$code = substr(shamalo(rand(1, 10000) + calcsumchar($user['login'])), 6);
-			echo substr(shamalo(rand(1, 10000) + calcsumchar($user['login'])), 6);
-			echo $code;
-			//ft_sendmail_forget($user['mail'], $user['login'], $code);
-			//$mailissend = 1;
+			$code = substr(shamalo(strval(calcsumchar($user['login']) + rand(1, 10000))), rand(0, 194), 6);
+			ft_sendmail_forget($user['mail'], $user['login'], $code);
+			$_SESSION['code'] = $code;
+			header('Location: ./mdp_forget_change.php');
+			exit();
 		}
 	}
 	else
@@ -56,9 +54,6 @@ if (isset($_POST) && !empty($_POST)) {
 	<body>
 		<?php include 'menu.php' ?>
 		<center>
-		<?php
-			if ($mailissend == 0) {
-		?>
 				<h1> mot de passe oublie?</h1>
 				<?php
 					if (isset($er_login_forget)) {
@@ -70,32 +65,17 @@ if (isset($_POST) && !empty($_POST)) {
 				<form action="" method="post">
 				<label for="Inputlogin1">Votre login</label>
 				<br>
-				<input id="Inputlogin1" type="text" name="login" placeholder="Votre login" maxlength="10" required>
+				<input id="Inputlogin5" type="text" name="login" placeholder="Votre login" maxlength="10" required>
 				<br>
 				<label for="Inputemail1">Votre email</label>
 					<br>
-					<input type="email" class="form-control" id="Inputemail1" placeholder="Adresse mail" name="mail" 
+					<input type="email" class="form-control" id="Inputemail2" placeholder="Adresse mail" name="mail"
 					value="<?php if (isset($mail)) {
 						echo $mail;
 					} ?>" maxlength="50" required>
 					<br>
 				<button type="submit" name="send-forget-passwd-mail" value="ok">Valider</button>
 				</form>
-		<?php
-			}
-			else {
-			echo $code;
-
-		?>
-			<h1> mot de passe oublie?</h1>
-			<p>Vous trouverez le code dans un mail que nous venons de vous envoyer.</p>
-			<label for="Inputlogin1">Votre login</label>
-				<br>
-				<input id="Inputlogin1" type="text" name="login" placeholder="Votre login" maxlength="10" required>
-			<br>
-		<?php
-			}
-		?>
 		</center>
 
 	<!-- The Modal connection -->

@@ -14,14 +14,15 @@ mail($mail, $sujet, $message, $entete);
 }
 
 function ft_sendmail_forget($mail, $login, $code) {
-	$sujet = "Activation de votre compte Camagru";
+	$sujet = "Modification de votre compte Camagru";
 	$entete = "From: Camagru" ;
-	$message = 'Bienvenue sur le Camagru de Julien et Malo powered by 42 school mac,
-	Pour modifier votre mdp, veuillez inscrire ce code : ' + $code + ' et entre votre nouveau
+	$message = "Bienvenue sur le Camagru de Julien et Malo powered by 42 school mac,
+	Pour modifier votre mdp, veuillez inscrire ce code : " . $code . " et entrez votre nouveau
 	mot de passe sur la page.
-	
+
 	---------------
-	Ceci est un mail automatique, Merci de ne pas y repondre.';
+	Ceci est un mail automatique, Merci de ne pas y repondre.";
 	mail($mail, $sujet, $message, $entete);
+echo $message;
 	}
 ?>

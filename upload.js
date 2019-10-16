@@ -48,8 +48,17 @@ window.addEventListener("load", function(){
 					} else {
 						hello = this.response;
 						var xhrq = new XMLHttpRequest();
-						xhrq.open('GET', "filtre.php?img=" + hello + "&filtre=" + src, true);
-						xhrq.send(null);
+						var words = src.split('/');
+						console.log("http://localhost:8081/filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5]);
+						xhrq.open('GET', "http://localhost:8081/filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5], true);
+						xhrq.send(data);
+						xhrq.onload = function(){
+							if (xhr.status==403 || xhr.status==404) {
+								alert("ERROR LOADING UPLOAD.PHP");
+							} else {
+								console.log(this.response);
+							}
+						}
 					}
 				};
 			});

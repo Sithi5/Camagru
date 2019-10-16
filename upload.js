@@ -48,10 +48,14 @@ window.addEventListener("load", function(){
 					} else {
 						hello = this.response;
 						var xhrq = new XMLHttpRequest();
+						if (typeof src === "undifined"){
+							;
+						}
 						var words = src.split('/');
+						src = "";
 						console.log("http://localhost:8081/filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5]);
 						xhrq.open('GET', "http://localhost:8081/filtre.php?img=" + hello + "&filtre=./ressources/filters/" + words[5], true);
-						xhrq.send(data);
+						xhrq.send(null);
 						xhrq.onload = function(){
 							if (xhr.status==403 || xhr.status==404) {
 								alert("ERROR LOADING UPLOAD.PHP");

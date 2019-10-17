@@ -35,7 +35,7 @@
 				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
 				<div class="overlay">
 					<div class="text-post">
-						<img ondblclick="myAjax(`<?=$id_img?>`)" id="jaime"
+						<img ondblclick="myAjaxChangeLike(`<?=$id_img?>`)" id="jaime"
 						src="./ressources/img/
 						<?php
 						$is_liked = $db->query('SELECT id, img_id, liker_id  FROM `like`
@@ -92,5 +92,5 @@
 		</div>
 	</body>
 </html>
-<script src="./jaimeonclick.js"></script>
+<script src="./ajax.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -122,7 +122,8 @@ if (isset($_POST) && !empty($_POST)) {
 			<button type="button" name="Annuler" class="cancelbtn btn" onclick="hide_modal(1)">Annuler</button>
 		<br>
 			<button type="button" href="#" class="cobtn btn" onclick="hide_modal(1), modal_onclick(2)">Pas encore inscrit ?</button>		
-			<a href="mdp_forget.php" onclick="">mot de passe oublie?</a>		
+		<br>
+			<a style="text-decoration:none" href="mdp_forget.php" onclick="">mot de passe oublie</a>		
 		</div>
 		</form>
 	</center>

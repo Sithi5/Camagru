@@ -37,6 +37,8 @@ if (isset($_POST) && !empty($_POST)) {
 			$code = substr(shamalo(strval(calcsumchar($user['login']) + rand(1, 10000))), rand(0, 194), 6);
 			ft_sendmail_forget($user['mail'], $user['login'], $code);
 			$_SESSION['code'] = $code;
+			$_SESSION['login'] = $user['login'];
+			$_SESSION['mail'] = $user['mail'];
 			header('Location: ./mdp_forget_change.php');
 			exit();
 		}

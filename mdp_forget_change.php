@@ -7,10 +7,10 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
 if (!empty($_SESSION) && $_SESSION['logged_on'] == 1)
 {
+	echo "deja log\n";
 	header('Location: ../');
 	exit();
 }
-echo $_SESSION['code'];
 if (isset($_POST) && !empty($_POST)) {
 	extract($_POST);
 	if (isset($_POST['login']) && isset($_POST['code'])) {
@@ -18,7 +18,7 @@ if (isset($_POST) && !empty($_POST)) {
 		$codepost = htmlentities(trim($code));
 		$mdp = htmlentities(trim($mdp));
 		$confmdp = htmlentities(trim($confmdp));
-		$sql = "SELECT `login`, `verified` FROM user WHERE `login` = :login";
+		$sql = "SELECT `login`, `verified`, `mail` FROM user WHERE `login` = :login";
 		$stmt = $db->prepare($sql);
 		//Bind value.
 		$stmt->bindValue(':login', $login);
@@ -43,12 +43,9 @@ if (isset($_POST) && !empty($_POST)) {
 				if ($valid) {
 					$mdph = shamalo($mdp);
 					//On insert de facon securisé les donnees recup
-					if ($_POST['mdp'])
-					{
-						$req = $db->exec('UPDATE `user` SET `pwd` = "'.$mdph.'" WHERE `login` = "'.$login.'"');
-						header('Location: ../');
-						exit();
-					}
+					$req = $db->exec('UPDATE `user` SET `pwd` = "'.$mdph.'" WHERE `login` = "'.$login.'"');
+					header('Location: ../');
+					exit();
 				}
 			}
 			else
@@ -84,12 +81,13 @@ if (isset($_POST) && !empty($_POST)) {
 				<input id="Inputlogin4" type="text" name="login" placeholder="Votre login" maxlength="10" required>
 				<br>
 				<label for="code">Votre code</label>
+				<p style="display: none;"><?php echo $_SESSION['code'];?></p>
 				<br>
 				<input id="code" type="text" name="code" placeholder="Votre code" maxlength="6" minlength="6" required>
 				<br>
 				<label for="mdp">Votre nouveau mdp</label>
 				<br>
-				<input size=50 type="password" placeholder="Mot de passe" name="mdp" value="" maxlength="25" required>
+				<input size=50 type="password" placeholder="Mot de passe" name="mdp" maxlength="25" required>
 				<br>
 				<label for="confmdp">confmdp</label>
 				<br>
@@ -97,8 +95,13 @@ if (isset($_POST) && !empty($_POST)) {
 				<br>
 				<button type="submit" name="send-forget-passwd-code" value="ok">Valider</button>
 			</form>
+			<?php 
+				$code = $_SESSION['code'];
+				$login = $_SESSION['login'];
+				$mail = $_SESSION['mail'];
+			?>
+			<a href="#" onclick="myAjaxSendMailForget('<?=$code?>', '<?=$login?>', '<?=$mail?>')">renvoyer le mail</a>
 		</center>
-
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
 		<div class="modal-content">
@@ -119,3 +122,5 @@ if (isset($_POST) && !empty($_POST)) {
 	<?php include 'footer.html' ?>
 </html>
 <script src="./script/modal.js"></script>
+<script src="./Ajax.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -1,16 +1,20 @@
 <?php
+session_start();
+require './config/database.php';
+require './config/connexiondb.php';
+
 function ft_sendmail($mail, $cle, $login) {
-$sujet = "Activation de votre compte Camagru";
-$entete = "From: Camagru" ;
-$message = 'Bienvenue sur le Camagru de Julien et Malo powered by 42 school mac,
-Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.
+	$sujet = "Activation de votre compte Camagru";
+	$entete = "From: Camagru" ;
+	$message = 'Bienvenue sur le Camagru de Julien et Malo powered by 42 school mac,
+		Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.
 
-http://' . $_SERVER['HTTP_HOST'] . '/login/activation.php?log='.urlencode($login).'&cle='.urlencode($cle).'
+		http://' . $_SERVER['HTTP_HOST'] . '/login/activation.php?log='.urlencode($login).'&cle='.urlencode($cle).'
 
-Merci de votre confiance.
----------------
-Ceci est un mail automatique, Merci de ne pas y repondre.';
-mail($mail, $sujet, $message, $entete);
+		Merci de votre confiance.
+		---------------
+		Ceci est un mail automatique, Merci de ne pas y repondre.';
+	mail($mail, $sujet, $message, $entete);
 }
 
 function ft_sendmail_forget($mail, $login, $code) {
@@ -23,6 +27,10 @@ function ft_sendmail_forget($mail, $login, $code) {
 	---------------
 	Ceci est un mail automatique, Merci de ne pas y repondre.";
 	mail($mail, $sujet, $message, $entete);
-echo $message;
 	}
+
+if(isset($_POST) && $_POST['call'] === "ft_sendmail_forget") {
+	ft_sendmail_forget($_POST['mail'], $_POST['login'], $_POST['code']);
+	echo "email sent!";
+}
 ?>

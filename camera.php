@@ -7,9 +7,9 @@
 			<!-- left part of modal-->
 			<div class="child-camera-1">
 				<div id="vid-controls">
-					<div style="overflow:hidden; width: 480px;height:480px;border: solid 1px black"ondrop="drop(event)" ondragover="allowDrop(event)">
+					<div class="camera-div" style=""ondrop="drop(event)" ondragover="allowDrop(event)">
 							<video class="vid-class" id="vid-show" autoplay></video></div>
-					<div style="width: 480px;height:480px;border: solid 1px black; position: relative;">
+					<div class="camera-div">
 						<?php if (isset($_SESSION['img']) && file_exists($_SESSION['img'])) {
 							echo '<img style="position: relative; max-width:100%; max-height:100%;" src="' . $_SESSION['img'] . '">';}?>
 							</div>

@@ -17,6 +17,13 @@
     margin-bottom: 20px;
 }
 
+.camera-div {
+    overflow: hidden;
+    width: 480px;
+    height: 480px;
+    border: solid 1px black;
+}
+
 .vid-class {
     position: relative;
     right: 17%;

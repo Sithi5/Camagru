@@ -30,7 +30,7 @@
 					if (++$filter > 0) {
 			?>
 			<img id="<?php $result = "f" . $filter;
-				echo $result ?>" class="filter-img" onclick="onclickfilter(this.id)" href="#" draggable="true" ondragstart="drag(event)" src="../ressources/filters/<?=$entry?>" alt="filter">
+				echo $result ?>" class="filter-img" onclick="onclickfilter(this.id)" href="#" draggable="true" ondragstart="drag(event)" src="./ressources/filters/<?=$entry?>" alt="filter">
 			<?php
 					}
 				}

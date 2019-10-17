@@ -6,11 +6,23 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
+function ondblclickfilter(data) {
+    let elem_preview_img = document.getElementById("img-preview-in-camera");
+    let filter = document.getElementById(data);
+    elem_preview_img.style.display = "block";
+    elem_preview_img.src = filter.src;
+    console.log(filter.src);
+    src = filter.src;
+}
+
 function drop(ev) {
     ev.preventDefault();
+    let elem_preview_img = document.getElementById("img-preview-in-camera");
+    elem_preview_img.style.display = "block";
     var data = ev.dataTransfer.getData("text");
     console.log("filter " + data + " dropped");
     src = document.getElementById(data).src;
+    elem_preview_img.src = src;
     console.log(src);
 }
 

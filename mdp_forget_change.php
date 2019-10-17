@@ -122,5 +122,5 @@ if (isset($_POST) && !empty($_POST)) {
 	<?php include 'footer.html' ?>
 </html>
 <script src="./script/modal.js"></script>
-<script src="./Ajax.js"></script>
+<script src="./script/Ajax.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

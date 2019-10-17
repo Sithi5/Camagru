@@ -6,7 +6,7 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function ondblclickfilter(data) {
+function onclickfilter(data) {
     let elem_preview_img = document.getElementById("img-preview-in-camera");
     let filter = document.getElementById(data);
     elem_preview_img.style.display = "block";

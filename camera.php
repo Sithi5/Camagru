@@ -8,7 +8,7 @@
 		<div class="child-camera-1">
 		<center>
 			<div class="camera-div" style=""ondrop="drop(event)" ondragover="allowDrop(event)">
-					<img style="display:none ;" id="img-preview-in-camera" src="./ressources/filters/hat.png">
+					<img style="display:none ;" id="img-preview-in-camera">
 					<video class="vid-class" id="vid-show" autoplay></video>
 			</div>
 				<p>

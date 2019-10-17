@@ -8,6 +8,7 @@
 		<div class="child-camera-1">
 		<center>
 			<div class="camera-div" style=""ondrop="drop(event)" ondragover="allowDrop(event)">
+					<img style="display:none ;" id="img-preview-in-camera" src="./ressources/filters/hat.png">
 					<video class="vid-class" id="vid-show" autoplay></video>
 			</div>
 				<p>
@@ -23,7 +24,7 @@
 		<div class="child-camera-2">
 		<center>
 			<?php
-				$filter = -3;
+				$filter = -2;
 				$d = dir("./ressources/filters/.");
 				while (false !== ($entry = $d->read())) {
 					if (++$filter > 0) {

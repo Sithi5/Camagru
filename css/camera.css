@@ -20,6 +20,15 @@
     border: solid 1px black;
 }
 
+.camera-div img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: calc(50% - 50px);
+    top: calc(50% - 50px);
+    z-index: 1;
+}
+
 .vid-class {
     position: relative;
     object-fit: fill;
@@ -83,6 +92,12 @@ body {
         width: 75px;
         height: 75px;
     }
+    .camera-div img {
+        width: 75px;
+        height: 75px;
+        right: calc(50% - 37.5px);
+        top: calc(50% - 37.5px);
+    }
 }
 
 @media screen and (max-width: 1251px) {
@@ -100,6 +115,12 @@ body {
     .filter-img {
         width: 60px;
         height: 60px;
+    }
+    .camera-div img {
+        width: 60px;
+        height: 60px;
+        right: calc(50% - 30px);
+        top: calc(50% - 30px);
     }
     p {
         margin: 5px;
@@ -122,6 +143,12 @@ body {
         width: 45px;
         height: 45px;
     }
+    .camera-div img {
+        width: 45px;
+        height: 45px;
+        right: calc(50% - 27.5px);
+        top: calc(50% - 27.5px);
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -139,6 +166,12 @@ body {
     .filter-img {
         width: 30px;
         height: 30px;
+    }
+    .camera-div img {
+        width: 30px;
+        height: 30px;
+        right: calc(50% - 15px);
+        top: calc(50% - 15px);
     }
 }
 

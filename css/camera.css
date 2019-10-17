@@ -17,13 +17,9 @@
     margin-bottom: 20px;
 }
 
-#vid-show {
-    width: 480px;
-    transform: rotateY(180deg);
-}
-
 .vid-class {
     position: relative;
+    right: 17%;
     width: 100%;
 }
 
@@ -42,4 +38,18 @@ html,
 body {
     padding: 0;
     margin: 0;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .vid-class {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .vid-class {
+        width: auto;
+        height: 100%;
+    }
 }

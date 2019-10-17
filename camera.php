@@ -7,7 +7,7 @@
 			<!-- left part of modal-->
 			<div class="child-camera-1">
 				<div id="vid-controls">
-					<div style="width: 480px;height:480px;border: solid 1px black"ondrop="drop(event)" ondragover="allowDrop(event)">
+					<div style="overflow:hidden; width: 480px;height:480px;border: solid 1px black"ondrop="drop(event)" ondragover="allowDrop(event)">
 							<video class="vid-class" id="vid-show" autoplay></video></div>
 					<div style="width: 480px;height:480px;border: solid 1px black; position: relative;">
 						<?php if (isset($_SESSION['img']) && file_exists($_SESSION['img'])) {
@@ -26,10 +26,10 @@
 					<!-- right part of modal-->
 					<div class="child-camera-2">
 						<?php
-				$filter = -3;
-				$d = dir("./ressources/filters/.");
-				while (false !== ($entry = $d->read())) {
-					if (++$filter > 0) {
+							$filter = -3;
+							$d = dir("./ressources/filters/.");
+							while (false !== ($entry = $d->read())) {
+								if (++$filter > 0) {
 						?>
 					<img style="width:100px;height:100px"id="<?php $result = "f" . $filter;
 						echo $result ?>" class="filter-img" onclick="" href="#" draggable="true" ondragstart="drag(event)" src="../ressources/filters/<?=$entry?>" alt="filter">

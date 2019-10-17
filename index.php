@@ -49,5 +49,5 @@
 	</body>
 	<?php include 'footer.html' ?>
 </html>
-<script src="./script/index.js"></script>
+<script src="./script/slideshow.js"></script>
 <script src="./script/modal.js"></script>

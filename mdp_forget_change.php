@@ -3,6 +3,7 @@ session_start();
 require './config/database.php';
 require './config/connexiondb.php';
 require './hashing/hash.php';
+require './phpfunctions/mdp_is_secure.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
 if (!empty($_SESSION) && $_SESSION['logged_on'] == 1)
@@ -30,6 +31,10 @@ if (isset($_POST) && !empty($_POST)) {
 		}
 		else if ($user['verified'] == '0') {
 			$er_login_forget_two = ("Le compte n'est pas actif");
+		}
+		else if (($er_mdp = mdp_is_secure($mdp)) != 1)
+		{
+			echo "ici";
 		}
 		else {
 			if ($_SESSION['code'] === $codepost)
@@ -66,6 +71,13 @@ if (isset($_POST) && !empty($_POST)) {
 	<body>
 		<?php include 'menu.php' ?>
 		<center>
+			<?php
+				if (isset($er_mdp)) {
+					?>
+					<p style="color:red;"><?= $er_mdp ?></p>
+				<?php
+				}
+			?>
 			<h1> mot de passe oublie?</h1>
 			<?php
 					if (isset($er_login_forget_two)) {
@@ -95,7 +107,7 @@ if (isset($_POST) && !empty($_POST)) {
 				<br>
 				<button type="submit" name="send-forget-passwd-code" value="ok">Valider</button>
 			</form>
-			<?php 
+			<?php
 				$code = $_SESSION['code'];
 				$login = $_SESSION['login'];
 				$mail = $_SESSION['mail'];

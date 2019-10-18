@@ -2,7 +2,8 @@
 	session_start();
 	require './config/database.php';
 	require './config/connexiondb.php';
-	require 'hashing/hash.php';
+	require './phpfunctions/mdp_is_secure.php';
+	require './hashing/hash.php';
 	// Si session dans ce cas go index
 	if (!isset($_SESSION['logged_on']) || !isset($_SESSION['id'])) {
 		header('Location: ./');
@@ -22,20 +23,20 @@
 				$valid = false;
 				$er_mdp = "Nous avons rencontré un problème avec votre requête.";
 			}
-			print_r ($data);
 			$old_mdp = shamalo($old_mdp);
 			if ($old_mdp !== $data['pwd']) {
 				$valid = false;
 				$er_mdp = "L'ancien mot de passe ne correspond pas";
 			}
-			if ($mdp !== $confmdp){
+			if (($er_mdp = mdp_is_secure($mdp)) != 1)
+			{
+				$valid = false;
+			}
+			else if ($mdp !== $confmdp){
 				$valid = false;
 				$er_mdp = "La confirmation du mot de passe ne correspond pas";
 			}
-			if ($mdp !== $confmdp){
-				$valid = false;
-				$er_mdp = "La confirmation du mot de passe ne correspond pas";
-			}
+
 			if ($valid) {
 				$mdph = shamalo($mdp);
 				//On insert de facon securisé les donnees recup
@@ -79,7 +80,7 @@
 			<?php
 				if (isset($er_mdp)){
 				?>
-					<div><?= $er_mdp ?></div>
+				<p style="color:red;"><?= $er_mdp ?></p>
 				<?php
 				}
 				else if ($modif == 1){

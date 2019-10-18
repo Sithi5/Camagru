@@ -12,62 +12,69 @@ if (isset($_POST) && !empty($_POST)) {
 		$prenom = htmlentities(trim($prenom));
 		$nom  = htmlentities(trim($nom));
 		$mail = htmlentities(strtolower(trim($mail)));
-		$mdp = shamalo(htmlentities(trim($mdp)));
-		$confmdp = shamalo(htmlentities(trim($confmdp)));
-		if (empty($login)) {
+		$mdp = htmlentities(trim($mdp));
+		//verification si le mot de passe est suffisement securise
+		if (($er_mdp = mdp_is_secure($mdp)) != 1)
 			$valid = false;
-			$er_login = ("Le login ne peut pas être vide");
-		} else if (!empty($login)) {
-			$sql = $db->query('SELECT COUNT(*) AS existe_pseudo FROM User WHERE `login` = "' . $login . '"');
-			while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
-			{
-				//Si il n'y a aucune ligne le login est inexistant
-				if (($data['existe_pseudo'] != '0')) {
-					$valid = false;
-					$er_login = ("Le pseudo choisis existe déjà");
+		else
+		{
+			$mdp = shamalo(htmlentities(trim($mdp)));
+			$confmdp = shamalo(htmlentities(trim($confmdp)));
+			if (empty($login)) {
+				$valid = false;
+				$er_login = ("Le login ne peut pas être vide");
+			} else if (!empty($login)) {
+				$sql = $db->query('SELECT COUNT(*) AS existe_pseudo FROM User WHERE `login` = "' . $login . '"');
+				while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
+				{
+					//Si il n'y a aucune ligne le login est inexistant
+					if (($data['existe_pseudo'] != '0')) {
+						$valid = false;
+						$er_login = ("Le pseudo choisis existe déjà");
+					}
 				}
 			}
-		}
-		if (empty($prenom)) {
-			$valid = false;
-			$er_prenom = ("Le prenom d' utilisateur ne peut pas être vide");
-		}
-		if (empty($nom)) {
-			$valid = false;
-			$er_nom = ("Le nom d' utilisateur ne peut pas être vide");
-		}
-		if (empty($mail)) {
-			$valid = false;
-			$er_mail = "Le mail ne peut pas être vide";
-			// verif si le mail est dans un bon format
-		} else if (!preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail)) {
-			$valid = false;
-			$er_mail = "Le mail n'est pas valide";
-		} else if ($mail === $login) {
-			$valid = false;
-			$er_mail = "Le login et le mail ne peuvent pas etre les memes";
-		} else {
-			$sql = $db->query('SELECT COUNT(*) AS existe_mail FROM User WHERE `mail` = "' . $mail . '"');
-			while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
-			{
-				//Si il n'y a aucune ligne le login est inexistant
-				if (($data['existe_mail'] != '0')) {
-					$valid = false;
-					$er_login = ("Adresse email deja prise.");
+			if (empty($prenom)) {
+				$valid = false;
+				$er_prenom = ("Le prenom d' utilisateur ne peut pas être vide");
+			}
+			if (empty($nom)) {
+				$valid = false;
+				$er_nom = ("Le nom d' utilisateur ne peut pas être vide");
+			}
+			if (empty($mail)) {
+				$valid = false;
+				$er_mail = "Le mail ne peut pas être vide";
+				// verif si le mail est dans un bon format
+			} else if (!preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail)) {
+				$valid = false;
+				$er_mail = "Le mail n'est pas valide";
+			} else if ($mail === $login) {
+				$valid = false;
+				$er_mail = "Le login et le mail ne peuvent pas etre les memes";
+			} else {
+				$sql = $db->query('SELECT COUNT(*) AS existe_mail FROM User WHERE `mail` = "' . $mail . '"');
+				while ($data = $sql->fetch()) // recup sous formne de tab les donnes de la table
+				{
+					//Si il n'y a aucune ligne le login est inexistant
+					if (($data['existe_mail'] != '0')) {
+						$valid = false;
+						$er_login = ("Adresse email deja prise.");
+					}
 				}
 			}
-		}
-		// Vérification du mot de passe
-		if (empty($mdp)) {
-			$valid = false;
-			$er_mdp = "Le mot de passe ne peut pas être vide";
-		} else if ($mdp != $confmdp) {
-			$valid = false;
-			$er_mdp = "La confirmation du mot de passe ne correspond pas";
+			// Vérification du mot de passe
+			if (empty($mdp)) {
+				$valid = false;
+				$er_mdp = "Le mot de passe ne peut pas être vide";
+			} else if ($mdp != $confmdp) {
+				$valid = false;
+				$er_mdp = "La confirmation du mot de passe ne correspond pas";
+			}
 		}
 		if ($valid) {
 			//On insert de facon securisé les donnees recup
-			
+
 			//debut partie envoi message
 			$cle = shamalo($login);
 			require 'mail.php';
@@ -152,9 +159,9 @@ if (isset($_POST) && !empty($_POST)) {
 																															echo $mail;
 																														} ?>" maxlength="50" required>
 				<?php
-				if (isset($er_password)) {
+				if (isset($er_mdp)) {
 					?>
-					<p style="color:red;"><?= $er_password ?></p>
+					<p style="color:red;"><?= $er_mdp ?></p>
 				<?php
 				}
 				?>

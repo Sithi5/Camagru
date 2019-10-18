@@ -3,6 +3,7 @@ session_start();
 require './config/database.php';
 require './config/connexiondb.php';
 require './hashing/hash.php';
+require './phpfunctions/mdp_is_secure.php';
 require './phpfunctions/number_format.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 ?>

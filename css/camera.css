@@ -159,9 +159,9 @@ body {
         height: 200px;
     }
     .btn-camera {
-        margin: 0px;
-        padding: 2px;
-        font-size: 7px;
+        width: 90%;
+        height: 15px;
+        font-size: 10px;
     }
     .screenshot-div {
         width: 150px;
@@ -188,8 +188,7 @@ body {
         width: 80%;
         height: 10px;
         margin: 4px;
-        padding-bottom: 2px;
-        font-size: 7px;
+        font-size: 10px;
     }
     .screenshot-div {
         width: 100px;
@@ -204,9 +203,7 @@ body {
 @media screen and (max-width: 500px) {
     .btn-camera {
         width: 90%;
-        height: 5px;
-        margin: 4px;
-        font-size: 5px;
-        padding: 5px;
+        height: 15px;
+        font-size: 10px;
     }
 }

@@ -36,10 +36,11 @@
 				}
 				$d->close();
 			?>
-			<div class="screenshot-div">
+			<div style="margin-bottom: 5px;" class="screenshot-div">
 				<?php if (isset($_SESSION['img']) && file_exists($_SESSION['img'])) {
 					echo '<img id="img-screenshot" src="' . $_SESSION['img'] . '">';}?>
 			</div>
+			<button id="save-screenshot" class="btn-camera" value="save Picture">Save to galery</button> 
 		</div>
 	</center>
 	</div>

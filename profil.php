@@ -60,9 +60,10 @@
 				<div style="position: relative;" class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
 						<a onclick="modal_onclick(<?= $count ?>)" href="#">
 							<div class="galery-img-container">
-								<a style="position: absolute; top: 4px; right: 4px;" href="./remove_img.php?id=<?= $donnees['id_image']?>&path=1"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a>
 								<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 								<div class="overlay">
+								<a style="position: absolute; top: 4px; right: 4px;" href="./remove_img.php?id=<?= $donnees['id_image']?>&path=1"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a>
+
 									<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 								</div>
 								</div>

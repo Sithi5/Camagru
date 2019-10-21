@@ -20,6 +20,7 @@
 							INNER JOIN `Image` ON User.id = Image.user_id
 							WHERE User.id= "'.$res.'"');
 	$reponse = $reponse->fetchAll();
+	$reponse = array_reverse($reponse, TRUE);
 ?>
 
 <html lang="fr">

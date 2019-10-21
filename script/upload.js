@@ -80,7 +80,6 @@ function startWebcam() {
                                     console.log(this.response);
                                 }
                             }
-
                         }
                     };
                 });

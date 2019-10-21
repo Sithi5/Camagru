@@ -75,6 +75,8 @@ function startWebcam() {
                                 if (xhr.status == 403 || xhr.status == 404) {
                                     alert("ERROR LOADING UPLOAD.PHP");
                                 } else {
+                                    let elem = document.getElementById("img-screenshot");
+                                    elem.src = hello;
                                     console.log(this.response);
                                 }
                             }

@@ -29,7 +29,8 @@ function myAjaxSendToGalery() {
         data: { call: 'save_to_galery' },
         success: function(html) {
             alert(html);
-            location.reload();
+            if (html === "vous etes bien connecter, upload du screenshot...")
+                window.location.href = "./galerie.php";
         }
     });
 }

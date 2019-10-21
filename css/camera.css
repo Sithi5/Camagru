@@ -187,8 +187,9 @@ body {
     .btn-camera {
         width: 80%;
         height: 10px;
+        margin: 4px;
+        padding-bottom: 2px;
         font-size: 7px;
-        margin: 2px;
     }
     .screenshot-div {
         width: 100px;
@@ -204,8 +205,8 @@ body {
     .btn-camera {
         width: 90%;
         height: 5px;
+        margin: 4px;
         font-size: 5px;
         padding: 5px;
-        margin: 1px;
     }
 }

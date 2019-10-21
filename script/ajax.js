@@ -30,7 +30,7 @@ function myAjaxSendToGalery() {
         success: function(html) {
             alert(html);
             if (html === "vous etes bien connecter, upload du screenshot...")
-                window.location.href = "./galerie.php";
+                window.location.href = "./profil.php";
         }
     });
 }

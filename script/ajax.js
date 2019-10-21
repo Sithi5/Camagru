@@ -21,3 +21,15 @@ function myAjaxSendMailForget(code, login, mail) {
         }
     });
 }
+
+function myAjaxSendToGalery() {
+    $.ajax({
+        type: "POST",
+        url: '../phpfunctions/save_to_galery.php',
+        data: { call: 'save_to_galery' },
+        success: function(html) {
+            alert(html);
+            location.reload();
+        }
+    });
+}

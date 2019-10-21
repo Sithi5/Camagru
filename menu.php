@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +17,7 @@
 				echo 'class="active"'?>
 			>Galerie</a>
 			<?php
-				if (!isset($_SESSION['logged_on'])) {
+				if (!isset($_SESSION['logged_on']) || $_SESSION['logged_on'] == 0) {
 					echo '<a href="#" onclick="modal_onclick(1)" >Connexion</a>';
 					echo '<a href="#" onclick="modal_onclick(2)" >Inscription</a>';
 					echo '<a href="./config/tmp.php">Co root tmp</a>';

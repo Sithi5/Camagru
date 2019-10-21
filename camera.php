@@ -1,3 +1,6 @@
+<?php
+require './phpfunctions/save_to_galery.php';
+?>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 	<link rel="stylesheet" type="text/css" href="./css/camera.css">
@@ -40,9 +43,11 @@
 				<?php if (isset($_SESSION['img']) && file_exists($_SESSION['img'])) {
 					echo '<img id="img-screenshot" src="' . $_SESSION['img'] . '">';}?>
 			</div>
-			<button id="save-screenshot" class="btn-camera" value="save Picture">Save to galery</button> 
+			<button onclick="myAjaxSendToGalery()" id="save-screenshot" class="btn-camera" value="save Picture">Save to galery</button>
 		</div>
 	</center>
 	</div>
 </body>
 <script src="./script/upload.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./script/ajax.js"></script>

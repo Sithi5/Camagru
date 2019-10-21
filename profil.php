@@ -63,7 +63,9 @@
 								<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 								<div class="overlay">
 									<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
-									</div>
+									<a href="./remove_img.php?id=<?= $donnees['id_image']?>&path=1"><img id="remove" src="./ressources/img/remove.png" alt="Supprimer"></a></td>
+									
+								</div>
 								</div>
 							</div>
 						</a>

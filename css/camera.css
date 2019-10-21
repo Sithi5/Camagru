@@ -159,8 +159,8 @@ body {
         height: 200px;
     }
     .btn-camera {
-        width: 90%;
-        height: 15px;
+        width: 30%;
+        height: 20px;
         font-size: 10px;
     }
     .screenshot-div {
@@ -179,14 +179,20 @@ body {
     }
 }
 
+@media screen and (max-width: 654px) {
+    .btn-camera {
+        height: 30px;
+    }
+}
+
 @media screen and (max-width: 550px) {
     .camera-div {
         width: 100px;
         height: 100px;
     }
     .btn-camera {
-        width: 80%;
-        height: 10px;
+        width: 30%;
+        height: 30px;
         margin: 4px;
         font-size: 10px;
     }
@@ -202,8 +208,16 @@ body {
 
 @media screen and (max-width: 500px) {
     .btn-camera {
-        width: 90%;
+        width: 30%;
         height: 15px;
-        font-size: 10px;
+        margin: 4px;
+        font-size: 5px;
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 418px) {
+    .btn-camera {
+        height: 20px;
     }
 }

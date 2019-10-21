@@ -29,6 +29,8 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 			<?php
 			$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
 			$liste = $liste->fetchALL();
+			$liste = array_reverse($liste, TRUE);
+
 			$count = 10;
 			$div = 0;
 			foreach ($liste as $donnees) {

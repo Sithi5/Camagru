@@ -1,9 +1,9 @@
 <?php
 session_start();
-
 function save_to_galery()
 {
 	require '../config/database.php';
+	require '../config/connexiondb.php';
 	if (!isset($_SESSION['logged_on'])) {
 		echo "erreur, vous n'etes pas connecte";
 	}

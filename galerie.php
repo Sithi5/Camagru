@@ -25,7 +25,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	</span>
 	<center>
 	<div class="galery">
-		<article class="galery-flex-container" style="margin-bottom: 100px;">
+		<article class="galery-flex-container" style="margin-bottom: 5px;">
 			<?php
 			$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
 			$liste = $liste->fetchALL();
@@ -72,6 +72,11 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 				$div++;
 			}?>
 		</article>
+		<br>
+		<div class="ajax-loader">
+        <img style="position: relative; width: 2%;" src="./ressources/img/LoadingIndicator.png"> Loading more posts...
+    </div>
+
 	</div>
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
@@ -94,3 +99,4 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
 </html>
 <script src="./script/modal.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

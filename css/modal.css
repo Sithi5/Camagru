@@ -205,9 +205,3 @@
             font-size: 15px;
         }
     }
-    
-    @media screen and (max-height: 1100px) {
-        .modal-image {
-            max-height: 60%!important;
-        }
-    }

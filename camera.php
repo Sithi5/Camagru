@@ -17,7 +17,9 @@ require './phpfunctions/save_to_galery.php';
 				<p>
 					<button class="btn-camera" onclick="startWebcam();">Start WebCam</button>
 					<button class="btn-camera" onclick="stopWebcam();">Stop WebCam</button> 
-					<button id="vid-take" class="btn-camera" value="Take Photo">Take a Picture</button> 
+					<button id="vid-take" class="btn-camera" value="Take Photo">Take a Picture</button>
+					<br>
+					<a href="#">Si vous n'avez pas de caméra, cliquez ici</a>
 				</p>
 			</center>
 			<div id="vid-canvas">
@@ -41,7 +43,9 @@ require './phpfunctions/save_to_galery.php';
 			?>
 			<div style="margin-bottom: 5px;" class="screenshot-div">
 				<?php if (isset($_SESSION['img']) && file_exists($_SESSION['img'])) {
-					echo '<img id="img-screenshot" src="' . $_SESSION['img'] . '">';}?>
+					echo '<img id="img-screenshot" src="' . $_SESSION['img'] . '">';}
+				else
+					echo '<img id="img-screenshot" src="./ressources/img/blank.png">';?>
 			</div>
 			<button onclick="myAjaxSendToGalery()" id="save-screenshot" class="btn-camera" value="save Picture">Save to galery</button>
 		</div>

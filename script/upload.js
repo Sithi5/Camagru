@@ -77,6 +77,7 @@ function startWebcam() {
                                 } else {
                                     let elem = document.getElementById("img-screenshot");
                                     elem.src = hello;
+                                    console.log(hello);
                                     console.log(this.response);
                                 }
                             }

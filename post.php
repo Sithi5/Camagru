@@ -35,7 +35,7 @@
 				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
 				<div class="overlay">
 					<div class="text-post">
-						<img ondblclick="myAjaxChangeLike(`<?=$id_img?>`)" id="jaime"
+						<img onclick="myAjaxChangeLike(`<?=$id_img?>`)" id="jaime"
 						src="./ressources/img/
 						<?php
 						$is_liked = $db->query('SELECT id, img_id, liker_id  FROM `like`

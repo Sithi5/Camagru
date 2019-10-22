@@ -32,6 +32,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `User` (
 		`verified` INT NOT NULL DEFAULT '0',
 		`super-root` INT NOT NULL DEFAULT '0',
 		`theme` INT NOT NULL DEFAULT '0'
+		`notifications` INT NOT NULL DEFAULT '1'
 	)";
 $db->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS `Image` (
@@ -60,10 +61,10 @@ $sql = "CREATE TABLE IF NOT EXISTS `Like` (
 $db->exec($sql);
 // Creation admin root
 $mdph = shamalo("root");
-$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 'abcd', 1, 1));
-$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
-$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png',$mdph, 'abcd', 1, 1));
+$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`, `notifications`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('judumay', 'julien', 'dumay', 'julien.dumay@hotmail.fr', './ressources/img/default.png', $mdph, 'abcd', 1, 1, 1));
+$req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `act-key`, `verified`, `super-root`, `notifications`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$req->execute(array('mabouce', 'malo', 'bouce', 'ma.sithis@gmail.com', './ressources/img/default.png',$mdph, 'abcd', 1, 1, 1));
 $mdph = shamalo("test");
 $req = $db->prepare('INSERT INTO `User` (`login`, `prenom`, `nom`, `mail`, `pp`, `pwd`, `verified`, `act-key`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 $req->execute(array('test', 'test', 'test', 'test@gmail.com', './ressources/img/default.png', $mdph, 1, 'ahd'));

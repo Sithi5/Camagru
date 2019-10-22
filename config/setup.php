@@ -77,9 +77,7 @@ $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) V
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206625.png', './ressources/screenshots/5daf03a206625.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206626.png', './ressources/screenshots/5daf03a206626.png', 0);");
 $db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206627.png', './ressources/screenshots/5daf03a206627.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206628.png', './ressources/screenshots/5daf03a206628.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206629.png', './ressources/screenshots/5daf03a206629.png', 0);");
-$db->exec("INSERT INTO `Image` (`user_id`, `image_name`, `image_path`, `like`) VALUES ('3', '5daf03a206630.png', './ressources/screenshots/5daf03a206630.png', 0);");
+
 // creation d'un commentaire
 $db->exec("INSERT INTO `Comment` (`user_id`, `id_image`,`description`) VALUES ('1', '1', 'Ceci est un test')");
 //creation d'un like

@@ -7,8 +7,9 @@ require './phpfunctions/mdp_is_secure.php';
 require './phpfunctions/number_format.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
-
-
+$sth = $db->prepare('SELECT count(*) as total from image');
+$sth->execute();
+$image_total = $sth->fetch()[0];
 $element_per_page = 12;
 $start = 0;
 ?>
@@ -34,7 +35,7 @@ $start = 0;
 			<?php
 			$liste = $db->query("SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image` ORDER BY `id`");
 			$liste = $liste->fetchALL(PDO::FETCH_ASSOC);
-
+			$liste = array_reverse($liste);
 			$count = 10;
 			$div = 0;
 			foreach ($liste as $donnees) {
@@ -75,11 +76,15 @@ $start = 0;
 			<?php
 				$div++;
 			}?>
-			<div id="loader">
+	
+		</article>
+				<div id="loader">
 				<img src="https://scrollmagic.io/assets/img/example_loading.gif">
 				LOADING...
 			</div>
-		</article>
+			<div onclick="add_displayed_img(9, <?=$image_total?>)" id="clicktoloadmore">
+				Click to load more...
+			</div>
 	</div>
 
 	<!-- The Modal connection -->
@@ -108,6 +113,7 @@ $start = 0;
 
 //id of first image;
 var start_displayed = 10;
+var display = 0;
 
 //number to display
 var NbDisplayed = 9;
@@ -119,25 +125,25 @@ $.ajax({
 	success: function(html) {
 		 total_img = html;
 		//mise en place du scroll event
-	if (start_displayed < total_img)
-	{
+
 		$(window).scroll(function() {;
-		if ($(window).scrollTop() + window.innerHeight == $(document).height()) {
-			if (!$("#loader").hasClass("activee")) {
-				$("#loader").addClass("activee");
-				setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
-			}
-			}
-		});
-		if (start_displayed < 22)
+		if (display < total_img)
 		{
-			if (!$("#loader").hasClass("activee")) {
-				$("#loader").addClass("activee");
-				setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
+			if ($(window).scrollTop() + window.innerHeight == $(document).height()) {
+				if (!$("#loader").hasClass("activee")) {
+					document.getElementById("clicktoloadmore").style.display = "none";
+					$("#loader").addClass("activee");
+					setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
+				}
 			}
 		}
+		});
+		if (!$("#loader").hasClass("activee") && display < total_img) {
+					document.getElementById("clicktoloadmore").style.display = "none";
+					$("#loader").addClass("activee");
+					setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
+		}
 		//fin scroll event
-	}
 	}
 });
 
@@ -146,14 +152,21 @@ function add_displayed_img(NbDisplayed, total_img)
 	let save_start_displayed = start_displayed;
 	while(start_displayed < save_start_displayed + NbDisplayed)
 	{
-
 		let elem = document.getElementById("picid" + start_displayed);
 		elem.style.display = "block";
 		start_displayed++;
-		if (start_displayed == total_img)
+		display++;
+		if (display == total_img)
+		{
 			break ;
+		}
 	}
 	$("#loader").removeClass("activee");
+	document.getElementById("clicktoloadmore").style.display = "block";
+	if (display == total_img)
+	{
+		document.getElementById("clicktoloadmore").style.display = "none";
+	}
 }
 
 </script>

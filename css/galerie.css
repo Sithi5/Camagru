@@ -95,6 +95,20 @@
     z-index: 2;
 }
 
+#loader {
+    height: 0;
+    overflow: hidden;
+    line-height: 60px;
+}
+
+#loader.activee {
+    height: 60px;
+}
+
+#loader img {
+    vertical-align: text-bottom;
+}
+
 @media screen and (min-width: 1100px) {
     .galery-img-container-margin {
         margin-right: 10px;

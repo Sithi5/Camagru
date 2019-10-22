@@ -3,6 +3,24 @@ session_start();
 require './config/database.php';
 require './config/connexiondb.php';
 
+function ft_sendnotif($mail, $login, $liker, $commentorlike, $comment) {
+	if ($commentorlike == 1) {
+		$commentorlike = "like";
+	}
+	else {
+		$commentorlike = "commentaire";
+	}
+	$sujet = ucfirst($commentorlike) . " sur un de vos postes camagru";
+	$entete = "From: Camagru" ;
+	$message = "L'utilisateur " . $liker. " a mis un " . $commentorlike . " sur l'un de vos postes.";
+	if ($commentorlike == 0)
+	{
+		$message = $message . '
+Commentaire : "' . $comment . '"';
+	}
+	mail($mail, $sujet, $message, $entete);
+}
+
 function ft_sendmail($mail, $cle, $login) {
 	$sujet = "Activation de votre compte Camagru";
 	$entete = "From: Camagru" ;

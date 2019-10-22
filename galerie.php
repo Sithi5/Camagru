@@ -7,18 +7,9 @@ require './phpfunctions/mdp_is_secure.php';
 require './phpfunctions/number_format.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 
-if (!isset($_SESSION['element_per_page']) || $_SESSION['element_per_page'] < 1)
-{	
-	$_SESSION['element_per_page'] = 12;
-}
-if (!isset($total_image))
-{
-$sth = $db->prepare('SELECT count(*) as total from `image`');
-$sth->execute();
-$total_image = $sth->fetch()[0];
-}
 
-$element_per_page = $_SESSION['element_per_page'];
+
+$element_per_page = 12;
 $start = 0;
 ?>
 <html>
@@ -35,15 +26,14 @@ $start = 0;
 	<?php include 'menu.php' ?>
 	<center>
 	<span style="text-decoration: underline;">
-		<h2 class="name-galery-txt">WALL OF FAME : <?php echo $_SESSION['element_per_page']?> elements displayed</h2>
+		<h2 class="name-galery-txt">WALL OF FAME</h2>
 	</span>
 	<center>
 	<div class="galery">
 		<article class="galery-flex-container" style="margin-bottom: 5px;">
 			<?php
-			$liste = $db->query("SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image` LIMIT ".$start.", ".$element_per_page."");
+			$liste = $db->query("SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image` ORDER BY `id`");
 			$liste = $liste->fetchALL(PDO::FETCH_ASSOC);
-			$liste = array_reverse($liste, TRUE);
 
 			$count = 10;
 			$div = 0;
@@ -53,7 +43,7 @@ $start = 0;
 				?>
 				<div class="galery-img-container-margin<?php if ($div % 3 == 2) echo '_last'?>">
 					<a onclick="modal_onclick(<?= $count ?>)" href="#">
-						<div class="galery-img-container">
+						<div id="picid<?php echo $count?>" style="display: none;" class="galery-img-container">
 							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
 								<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
@@ -85,6 +75,10 @@ $start = 0;
 			<?php
 				$div++;
 			}?>
+			<div id="loader">
+				<img src="https://scrollmagic.io/assets/img/example_loading.gif">
+				LOADING...
+			</div>
 		</article>
 	</div>
 
@@ -111,19 +105,57 @@ $start = 0;
 
 
 <script>
-//mise en place du scroll event
-	$(window).scroll(function() {;
-  if ($(window).scrollTop() + window.innerHeight == $(document).height()) {
-	  <?php
-	  if ($_SESSION['element_per_page'] < $total_image)
-	  {
-			$_SESSION['element_per_page'] += 12;
-			echo "location.reload();";
-	  }
-	  ?>
+
+//id of first image;
+var start_displayed = 10;
+
+//number to display
+var NbDisplayed = 9;
+
+$.ajax({
+	type: "POST",
+	url: '../phpfunctions/GetTotalImage.php',
+	data: {},
+	success: function(html) {
+		 total_img = html;
+		//mise en place du scroll event
+	if (start_displayed < total_img)
+	{
+		$(window).scroll(function() {;
+		if ($(window).scrollTop() + window.innerHeight == $(document).height()) {
+			if (!$("#loader").hasClass("activee")) {
+				$("#loader").addClass("activee");
+				setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
+			}
+			}
+		});
+		if (start_displayed < 22)
+		{
+			if (!$("#loader").hasClass("activee")) {
+				$("#loader").addClass("activee");
+				setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);
+			}
+		}
+		//fin scroll event
+	}
 	}
 });
-//fin scroll event
+
+function add_displayed_img(NbDisplayed, total_img)
+{
+	let save_start_displayed = start_displayed;
+	while(start_displayed < save_start_displayed + NbDisplayed)
+	{
+
+		let elem = document.getElementById("picid" + start_displayed);
+		elem.style.display = "block";
+		start_displayed++;
+		if (start_displayed == total_img)
+			break ;
+	}
+	$("#loader").removeClass("activee");
+}
+
 </script>
 
 <script src="./script/modal.js"></script>

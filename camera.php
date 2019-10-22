@@ -10,7 +10,7 @@ require './phpfunctions/save_to_galery.php';
 		<!-- left part of modal-->
 		<div class="child-camera-1">
 		<center>
-			<div class="camera-div" style=""ondrop="drop(event)" ondragover="allowDrop(event)">
+			<div class="camera-div" ondrop="drop(event)" ondragover="allowDrop(event)">
 					<img style="display:none ;" id="img-preview-in-camera">
 					<video class="vid-class" id="vid-show" autoplay></video>
 			</div>

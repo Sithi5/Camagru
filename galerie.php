@@ -6,6 +6,20 @@ require './hashing/hash.php';
 require './phpfunctions/mdp_is_secure.php';
 require './phpfunctions/number_format.php';
 $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
+
+if (!isset($_SESSION['element_per_page']) || $_SESSION['element_per_page'] < 1)
+{	
+	$_SESSION['element_per_page'] = 12;
+}
+if (!isset($total_image))
+{
+$sth = $db->prepare('SELECT count(*) as total from `image`');
+$sth->execute();
+$total_image = $sth->fetch()[0];
+}
+
+$element_per_page = $_SESSION['element_per_page'];
+$start = 0;
 ?>
 <html>
 
@@ -21,14 +35,14 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 	<?php include 'menu.php' ?>
 	<center>
 	<span style="text-decoration: underline;">
-		<h2 class="name-galery-txt">WALL OF FAME</h2>
+		<h2 class="name-galery-txt">WALL OF FAME : <?php echo $_SESSION['element_per_page']?> elements displayed</h2>
 	</span>
 	<center>
 	<div class="galery">
-		<article class="galery-flex-container" style="margin-bottom: 100px;">
+		<article class="galery-flex-container" style="margin-bottom: 5px;">
 			<?php
-			$liste = $db->query('SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image`');
-			$liste = $liste->fetchALL();
+			$liste = $db->query("SELECT `Image`.image_path, `Image`.id as id_image, `Image`.`like` FROM `Image` LIMIT ".$start.", ".$element_per_page."");
+			$liste = $liste->fetchALL(PDO::FETCH_ASSOC);
 			$liste = array_reverse($liste, TRUE);
 
 			$count = 10;
@@ -73,6 +87,7 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 			}?>
 		</article>
 	</div>
+
 	<!-- The Modal connection -->
 	<div id="modal01" class="modal">
 		<div class="modal-content">
@@ -93,4 +108,23 @@ $magic = "c00f0c4675b91fb8b918e4079a0b1bac";
 <?php include 'footer.html' ?>
 
 </html>
+
+
+<script>
+//mise en place du scroll event
+	$(window).scroll(function() {;
+  if ($(window).scrollTop() + window.innerHeight == $(document).height()) {
+	  <?php
+	  if ($_SESSION['element_per_page'] < $total_image)
+	  {
+			$_SESSION['element_per_page'] += 12;
+			echo "location.reload();";
+	  }
+	  ?>
+	}
+});
+//fin scroll event
+</script>
+
 <script src="./script/modal.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

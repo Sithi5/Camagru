@@ -33,8 +33,8 @@
 		$uploadOk = 0;
 	}
 	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "jpeg") {
-		$_SESSION['error'] = "Sorry, only JPG, JPEG files are allowed.";
+	if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+		$_SESSION['error'] = "Sorry, only JPG, JPEG, PNG files are allowed.";
 		$uploadOk = 0;
 	}
 	// Check if $uploadOk is set to 0 by an error

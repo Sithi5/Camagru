@@ -39,8 +39,12 @@ function upload_to_galery()
 		$jpeg = @imagecreatefromjpeg($_POST['src']);
 		if (!$jpeg)
 		{
-			echo "Fichier n'est pas un bon jpeg";
-			exit;
+			$jpeg = @imagecreatefrompng($_POST['src']);
+			if (!$jpeg)
+			{
+				echo "Fichier n'est pas un bon jpeg/jpg/png";
+				exit;
+			}
 		}
 		echo "Upload du screenshot...";
 		$width = 480;

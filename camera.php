@@ -17,7 +17,7 @@ require './phpfunctions/save_to_galery.php';
 				<p>
 					<button class="btn-camera" onclick="startWebcam();">Start WebCam</button>
 					<button class="btn-camera" onclick="stopWebcam();">Stop WebCam</button> 
-					<button id="vid-take" class="btn-camera" value="Take Photo">Take a Picture</button>
+					<button id="vid-take" class="btn-camera" value="Take Photo" disabled="true" >Take a Picture</button>
 					<br>
 					<a href="upload_an_image.php">Si vous n'avez pas de caméra, cliquez ici</a>
 				</p>

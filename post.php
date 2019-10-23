@@ -45,7 +45,7 @@
 						?>
 						<img onclick="myAjaxChangeLike(`<?=$id_img?>`, `<?=$count?>`)" class="jaime "id="jaime<?=$count?>"
 						src="./ressources/img/<?=$tqt?>">
-						<p style="float:right" id="nb_like<?=$count?>"><?= number_format_short($donnees['like']) ?><p>
+						<a id="nb_like<?=$count?>"><?= number_format_short($donnees['like']) ?></a>
 					</div>
 				</div>
 			</div>

@@ -118,12 +118,15 @@ var display = 0;
 //number to display
 var NbDisplayed = 9;
 
+
 $.ajax({
 	type: "POST",
 	url: '../phpfunctions/GetTotalImage.php',
 	data: {},
 	success: function(html) {
 		 total_img = html;
+		 if (total_img == 0)
+			document.getElementById("clicktoloadmore").style.display = "none";
 		//mise en place du scroll event
 
 		$(window).scroll(function() {;
@@ -138,7 +141,7 @@ $.ajax({
 			}
 		}
 		});
-		if (!$("#loader").hasClass("activee") && display < total_img) {
+		if (!$("#loader").hasClass("activee") && display < total_img && total_img != 0) {
 					document.getElementById("clicktoloadmore").style.display = "none";
 					$("#loader").addClass("activee");
 					setTimeout(add_displayed_img, 1000, NbDisplayed, total_img);

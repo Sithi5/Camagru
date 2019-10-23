@@ -10,6 +10,7 @@
 	}
 	extract($_GET);
 	extract($_POST);
+	$com = htmlentities(trim($com));
 	if (isset($_GET) && isset($_POST['com']))
 	{
 		$req = $db->exec('UPDATE `comment` SET `description` = "'.$com.'" WHERE `id` = "'.$id.'"');

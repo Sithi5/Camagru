@@ -45,6 +45,12 @@
 				$sql = $sql->fetch();
 			}
 			if ($valid) {
+				$sql['id_to_put'] = htmlentities(trim($sql['id_to_put']));
+				htmlentities(trim($name));
+				htmlentities(trim($path));
+				htmlentities(trim($like));
+				htmlentities(trim($name));
+				htmlentities(trim($date));
 				//On insert de facon securisé les donnees recup
 				if ($_POST['auteur']) {
 					$req = $db->query('UPDATE `Image` SET `user_id` = "'.$sql['id_to_put'].'" WHERE `id` = "'.$id.'"');

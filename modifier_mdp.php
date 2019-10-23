@@ -14,9 +14,9 @@
 		extract($_POST);
 		$valid = true;
 		if (isset($_POST['modification_profil'])){
-			$old_mdp = trim($old_mdp);
-			$mdp = trim($mdp);
-			$confmdp = trim($confmdp);
+			$old_mdp = htmlentities(trim($old_mdp));
+			$mdp = htmlentities(trim($mdp));
+			$confmdp = htmlentities(trim($confmdp));
 			$sql = $db->query('SELECT `pwd` FROM `user` WHERE `id` = "'.$_SESSION['id'].'"');
 			$data = $sql->fetch();
 			if (!isset($data)) {

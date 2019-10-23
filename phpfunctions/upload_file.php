@@ -12,7 +12,7 @@
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	// Check if image file is a actual image or fake image
-	if (isset($_POST["submit"])) {
+	if (isset($_POST["submit"]) && isset($_FILES['file'])) {
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 		if($check !== false) {
 			$_SESSION['error'] = "File is an image - " . $check["mime"] . ".";
@@ -22,11 +22,12 @@
 			$uploadOk = 0;
 		}
 	}
-	// Check if file already exists
-	if (file_exists($target_file)) {
-		$_SESSION['error'] = "Sorry, file already exists.";
-		$uploadOk = 0;
+	else {
+		$_SESSION['error'] = "There is a problem with this file!";
+		header('Location: ../upload_an_image.php');
+		exit;
 	}
+
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
 		$_SESSION['error'] = "Sorry, your file is too large.";

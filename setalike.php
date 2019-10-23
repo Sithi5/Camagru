@@ -14,11 +14,12 @@ if ($_POST['action'] == 'call_a_like') {
 						WHERE img_id = "'.$_POST['img_id'].'"
 						AND liker_id = "'.$_SESSION['id'].'"');
 	$users_liked = $users->fetch();
+	$data = array();
 	if (isset($users_liked) && $users_liked['id'] >= 1)
 	{
 		$like = -1;
 		$users = $db->query('DELETE FROM `like` WHERE id = "'.$users_liked['id'].'"');
-		echo "Picture unliked!";
+		$data['one'] = "jaime_pas.png";
 	}
 	else
 	{
@@ -37,7 +38,11 @@ if ($_POST['action'] == 'call_a_like') {
 		{
 			ft_sendnotif($notif['mail'], $notif['login'], $liker['login'], 1, 0);
 		}
-		echo "Picture liked!";
+		$data['one'] = "jaime.png";
 	}
 	$db->query('UPDATE `image` SET `like` = `like` + "'.$like.'" WHERE id = "'.$_POST['img_id'].'"');
+	$nb_like = $db->query('SELECT `like`, `id` FROM `Image` WHERE id = "'.$_POST['img_id'].'"');
+	$nb_like = $nb_like->fetch();
+	$data['two'] = $nb_like[0];
+	echo json_encode($data);
 }

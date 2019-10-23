@@ -47,7 +47,7 @@ $start = 0;
 						<div id="picid<?php echo $count?>" style="display: none;" class="galery-img-container">
 							<img class="img-in-galery"  src="<?php echo $donnees['image_path'] ?>">
 							<div class="overlay">
-								<div class="text"><img class="jaimee" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
+								<div class="text"><img class="jaimee" id="jaime_galery<?=$count?>" src="./ressources/img/jaime.png"><?= number_format_short($donnees['like']) ?>
 								</div>
 							</div>
 						</div>
@@ -172,4 +172,5 @@ function add_displayed_img(NbDisplayed, total_img)
 </script>
 
 <script src="./script/modal.js"></script>
+<script src="./script/ajax.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

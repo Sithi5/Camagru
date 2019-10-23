@@ -13,7 +13,7 @@ function ft_sendnotif($mail, $login, $liker, $commentorlike, $comment) {
 	$sujet = ucfirst($commentorlike) . " sur un de vos postes camagru";
 	$entete = "From: Camagru" ;
 	$message = "L'utilisateur " . $liker. " a mis un " . $commentorlike . " sur l'un de vos postes.";
-	if ($commentorlike == 0)
+	if ($commentorlike != "like")
 	{
 		$message = $message . '
 Commentaire : "' . $comment . '"';

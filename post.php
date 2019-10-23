@@ -35,18 +35,17 @@
 				<img id="img-post-1" src="<?=$profil_image['image_path']?>">
 				<div class="overlay">
 					<div class="text-post">
-						<img onclick="myAjaxChangeLike(`<?=$id_img?>`)" id="jaime"
-						src="./ressources/img/
 						<?php
-						$is_liked = $db->query('SELECT id, img_id, liker_id  FROM `like`
-						WHERE img_id = "'.$id_img.'"
-						AND liker_id = "'.$_SESSION['id'].'"');
-						$is_like = $is_liked->fetch();
-						if (isset($is_like) && $is_like['id'] >= 1){echo 'jaime.png';}
-						else {echo 'jaime_pas.png';}
+							$is_liked = $db->query('SELECT id, img_id, liker_id  FROM `like`
+													WHERE img_id = "'.$id_img.'"
+													AND liker_id = "'.$_SESSION['id'].'"');
+							$is_like = $is_liked->fetch();
+							if (isset($is_like) && $is_like['id'] >= 1){$tqt = 'jaime.png';}
+							else {$tqt = 'jaime_pas.png';}
 						?>
-						">
-						<?= number_format_short($donnees['like']) ?>
+						<img onclick="myAjaxChangeLike(`<?=$id_img?>`, `<?=$count?>`)" class="jaime "id="jaime<?=$count?>"
+						src="./ressources/img/<?=$tqt?>">
+						<p style="float:right" id="nb_like<?=$count?>"><?= number_format_short($donnees['like']) ?><p>
 					</div>
 				</div>
 			</div>

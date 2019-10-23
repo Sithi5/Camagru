@@ -33,11 +33,16 @@ function upload_to_galery()
 	}
 	else
 	{
-		echo "Upload du screenshot...";
 		$_POST['src'] =  "../" . substr($_POST['src'], 22);
 		$name = substr(strrchr($_POST['src'], "/"), 1);
 		$_POST['filtre'] = "../" . substr($_POST['filtre'], 22);
-		$jpeg = imagecreatefromjpeg($_POST['src']);
+		$jpeg = @imagecreatefromjpeg($_POST['src']);
+		if (!$jpeg)
+		{
+			echo "Fichier n'est pas un bon jpeg";
+			exit;
+		}
+		echo "Upload du screenshot...";
 		$width = 480;
 		$height = 480;
 		list($newwidth, $newheight) = getimagesize($_POST['filtre']);

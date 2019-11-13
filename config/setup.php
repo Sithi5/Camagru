@@ -3,8 +3,8 @@ $_SESSION['logged_on'] = "0";
 $_SESSION['sa'] = "0";
 $_SESSION['id'] = "0";
 //lancer avec php config/setup.sh
-require 'database.php';
-require 'hashing/hash.php';
+require(dirname(__FILE__).'/database.php');
+require(dirname(dirname(__FILE__), 1).'../hashing/hash.php');
 $dsn = "mysql:host=".$DB_HOST;
 try {
 	$db = new PDO($dsn, $DB_USER, $DB_PASSWORD);
